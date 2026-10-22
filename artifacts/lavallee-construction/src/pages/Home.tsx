@@ -93,10 +93,10 @@ export default function Home() {
               
               <ul className="space-y-4 mb-10">
                 {[
-                  "Travaux d’émondage, d’élagage et d’abattage",
-                  "Techniques de grimpe et équipements arboricoles",
-                  "Interventions sur des arbres matures et de grande hauteur",
-                  "Évaluation adaptée aux conditions de chaque terrain"
+                  "Assurance responsabilité de 5 000 000 $",
+                  "Certification Certified Arborist — ISA",
+                  "Formation en élagage — Centre horticole de Laval",
+                  "Techniques de grimpe et équipements arboricoles adaptés au site"
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 font-medium text-secondary">
                     <CheckCircle className="w-6 h-6 text-primary shrink-0" />
@@ -195,21 +195,19 @@ export default function Home() {
       <section id="certifications" className="py-16 md:py-20 xl:py-24 bg-forest text-white scroll-mt-32 xl:scroll-mt-36">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16">
-            <span className="section-eyebrow text-white font-bold tracking-widest uppercase text-sm mb-4">Notre approche</span>
-            <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold">Des interventions réfléchies, arbre par arbre.</h2>
-            <p className="text-white/80 mt-4">Chaque projet est évalué en tenant compte de l’arbre, de l’accès au terrain et des éléments environnants.</p>
+            <span className="section-eyebrow text-white font-bold tracking-widest uppercase text-sm mb-4">Qualifications</span>
+            <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold">Assurance et certifications</h2>
+            <p className="text-white/80 mt-4">Les accréditations et l’assurance présentées ci-dessous sont confirmées pour Services d’arbres S.M.R.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-12 items-center max-w-6xl mx-auto">
             {[
-              { title: "Sécurité", text: "Une attention particulière est accordée à la préparation et aux conditions de chaque intervention.", icon: <CheckCircle className="w-10 h-10" /> },
-              { title: "Techniques de grimpe", text: "Des méthodes et équipements adaptés aux travaux en hauteur, selon la configuration du site.", icon: <HardHat className="w-10 h-10" /> },
-              { title: "Évaluation du terrain", text: "La méthode de travail tient compte de l’état de l’arbre, de son emplacement et de son accessibilité.", icon: <Building2 className="w-10 h-10" /> },
+              { img: "/certifications/assurance-responsabilite.png", alt: "Attestation d’assurance responsabilité de 5 000 000 $" },
+              { img: "/certifications/isa-certified-arborist.png", alt: "Certification Certified Arborist de l’ISA" },
+              { img: "/certifications/elagage-centre-horticole-laval.png", alt: "Formation en élagage du Centre horticole de Laval" },
             ].map((credential) => (
-              <figure key={credential.title} className="flex min-h-[330px] flex-col items-center justify-center overflow-visible px-6 py-8 text-center">
-                <div className="mb-5 text-primary">{credential.icon}</div>
-                <h3 className="mb-3 text-xl font-extrabold">{credential.title}</h3>
-                <p className="max-w-xs text-sm leading-relaxed text-white/75">{credential.text}</p>
+              <figure key={credential.img} className="flex min-h-[330px] items-center justify-center overflow-visible py-3">
+                <img src={credential.img} alt={credential.alt} className="block h-auto max-h-[300px] w-full max-w-[320px] object-contain mix-blend-screen" loading="lazy" />
               </figure>
             ))}
           </div>

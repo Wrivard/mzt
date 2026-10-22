@@ -124,10 +124,10 @@ export default function Soumission() {
   ];
 
   const trustItems = [
-    { icon: ShieldCheck, title: "Préparation du travail", detail: "Une évaluation adaptée aux conditions du site" },
-    { icon: Award, title: "Techniques de grimpe", detail: "Travaux d’arboriste-grimpeur" },
-    { icon: GraduationCap, title: "Arbres matures", detail: "Interventions en hauteur selon le projet" },
-    { icon: TreePine, title: "Environnement du terrain", detail: "Attention portée aux éléments environnants" },
+    { icon: ShieldCheck, title: "Assurance responsabilité", detail: "Couverture de 5 000 000 $" },
+    { icon: Award, title: "Certified Arborist", detail: "Certification ISA" },
+    { icon: GraduationCap, title: "Formation en élagage", detail: "Centre horticole de Laval" },
+    { icon: TreePine, title: "Travaux en hauteur", detail: "Techniques de grimpe arboricole" },
   ];
 
   return (

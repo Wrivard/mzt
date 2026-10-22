@@ -41,6 +41,7 @@ _Populate as you build — non-obvious choices a reader couldn't infer from the 
 ## User preferences
 
 - Garder la structure du site; utiliser le logo fourni par Services d’arbres S.M.R, l’orange comme accent et préserver le noir `#1B1B1B` de la navigation, du pied de page et du texte.
+- Éléments confirmés par le client : assurance responsabilité de 5 000 000 $, certification Certified Arborist de l’ISA et formation en élagage au Centre horticole de Laval.
 - Identifier les images comme illustratives lorsqu’elles ne documentent pas une réalisation vérifiée.
 - Ne pas inventer de réalisations, adresse, territoire desservi, numéro RBQ, certifications, garanties ou témoignages.
 - Ne pas réutiliser la même photo à plusieurs endroits du site; choisir des visuels distincts et adaptés au contenu.
