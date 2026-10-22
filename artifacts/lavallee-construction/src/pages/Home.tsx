@@ -22,15 +22,15 @@ export default function Home() {
         <div className="container relative z-10 mx-auto px-6 md:px-12 flex-1 flex flex-col justify-center pt-[150px] xl:pt-[169px] pb-8 sm:pb-10">
           <div className="max-w-3xl 2xl:max-w-5xl">
             <div className="section-eyebrow inline-flex items-center gap-2 px-3 py-1 bg-primary/20 text-white border border-primary/30 mb-6 backdrop-blur-sm">
-              <span className="text-xs font-bold tracking-widest uppercase">Élagage · Abattage · Taille de haies</span>
+              <span className="text-xs font-bold tracking-widest uppercase">Émondage · Élagage · Abattage</span>
             </div>
             
             <h1 className="text-[clamp(2.5rem,5vw,5.5rem)] font-extrabold text-white leading-[1.08] mb-5 sm:mb-6 tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]">
-              Vos arbres entre de bonnes mains.
+              L’expertise au sommet de vos arbres.
             </h1>
             
             <p className="text-base sm:text-lg xl:text-xl text-white/90 mb-8 sm:mb-10 max-w-2xl leading-relaxed font-medium drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
-              Élagage, abattage d’arbres et taille de haies dans le secteur de Montmagny et de Berthier-sur-Mer. Service d’Arbres Aubois adapte chaque intervention à votre propriété.
+              Émondage, élagage et abattage d’arbres dans les Laurentides. Services d’arbres S.M.R adapte chaque intervention à vos arbres et à votre terrain.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-12 xl:mb-16">
@@ -39,7 +39,7 @@ export default function Home() {
                   Demander une soumission <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <a href="#certifications">
+              <a href="#services">
                 <Button size="lg" variant="outline" className="h-14 px-5 sm:px-8 text-sm sm:text-base font-bold uppercase tracking-wider w-full sm:w-auto bg-white/5 text-white border-white/20 hover:bg-white hover:text-secondary">
                   Découvrir nos services
                 </Button>
@@ -71,7 +71,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 items-center">
             <div className="relative w-full max-w-xl lg:max-w-none mx-auto">
               <div className="aspect-square bg-muted relative z-10 clip-diagonal overflow-hidden">
-                <img src="/photos/arbres-aubois/about.jpg" alt="Arboriste effectuant des travaux dans un arbre" className="w-full h-full object-cover object-bottom" loading="lazy" />
+                <img src="/photos/arbres-aubois/about.jpg" alt="Image illustrative d’une intervention arboricole en hauteur" className="w-full h-full object-cover object-bottom" loading="lazy" />
               </div>
               <div className="absolute -bottom-6 -right-6 w-2/3 aspect-square bg-primary -z-0 clip-diagonal"></div>
               
@@ -82,21 +82,21 @@ export default function Home() {
             </div>
             
             <div>
-              <span className="section-eyebrow text-secondary font-bold tracking-widest uppercase text-sm mb-4">À propos de Service d’Arbres Aubois</span>
-              <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold mb-6 lg:mb-8 text-secondary">Un service professionnel pour vos arbres.</h2>
+              <span className="section-eyebrow text-secondary font-bold tracking-widest uppercase text-sm mb-4">À propos de Services d’arbres S.M.R</span>
+              <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold mb-6 lg:mb-8 text-secondary">Des professionnels passionnés par les arbres.</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Les arbres contribuent à la beauté, au confort et au caractère de votre propriété. Leur entretien demande des interventions adaptées à leur état et à leur environnement.
+                Les arbres jouent un rôle important dans votre environnement, mais leur entretien peut nécessiter des interventions spécialisées.
               </p>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Service d’Arbres Aubois se spécialise dans l’élagage, l’abattage et la taille de haies. Nous évaluons les travaux nécessaires en tenant compte de l’emplacement des arbres et des particularités du terrain.
+                Services d’arbres S.M.R accompagne les propriétaires dans leurs projets d’émondage, d’élagage, d’abattage et d’entretien arboricole. Chaque projet est évalué selon l’état de l’arbre, son emplacement, l’accessibilité du terrain et les éléments environnants.
               </p>
               
               <ul className="space-y-4 mb-10">
                 {[
-                  "Assurance responsabilité de 5 000 000 $",
-                  "Certification Certified Arborist — ISA",
-                  "Formation en élagage — Centre horticole de Laval",
-                  "Interventions en hauteur avec une nacelle, selon le projet"
+                  "Travaux d’émondage, d’élagage et d’abattage",
+                  "Techniques de grimpe et équipements arboricoles",
+                  "Interventions sur des arbres matures et de grande hauteur",
+                  "Évaluation adaptée aux conditions de chaque terrain"
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 font-medium text-secondary">
                     <CheckCircle className="w-6 h-6 text-primary shrink-0" />
@@ -122,52 +122,52 @@ export default function Home() {
                 <span className="section-eyebrow text-secondary font-bold tracking-widest uppercase text-sm mb-4">Nos services</span>
               <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold mb-6 text-secondary">Des services adaptés à vos arbres.</h2>
             <p className="text-lg text-muted-foreground">
-                Élagage, abattage, taille de haies et entretien des arbres à Montmagny et dans le secteur de Berthier-sur-Mer.
+                Services d’émondage, d’élagage, d’abattage et d’entretien arboricole dans les Laurentides. Les photos du site sont illustratives et ne documentent pas nécessairement des réalisations de l’entreprise.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {[
               {
-                title: "Élagage d’arbres",
-                desc: "Travaux d’élagage adaptés aux caractéristiques de l’arbre, à son emplacement et aux besoins de votre propriété.",
+                title: "Émondage et élagage",
+                desc: "Entretien et taille des branches selon les besoins de l’arbre et les particularités de votre propriété.",
                 img: "/photos/arbres-aubois/service-elagage.webp",
-                alt: "Arbres taillés dans un environnement résidentiel",
+                alt: "Image illustrative de travaux d’émondage et d’élagage",
                 icon: <Building2 className="w-6 h-6" />
               },
               {
                 title: "Abattage d’arbres",
-                desc: "Intervention adaptée aux dimensions de l’arbre, à son emplacement et aux éléments qui l’entourent.",
+                desc: "Abattage adapté aux dimensions de l’arbre, à son emplacement et aux éléments qui l’entourent.",
                 img: "/photos/arbres-aubois/service-abattage.jpg",
-                alt: "Arboriste équipé travaillant dans un arbre",
+                alt: "Image illustrative de travaux arboricoles",
                 icon: <Ruler className="w-6 h-6" />
-              },
-              {
-                title: "Taille de haies",
-                desc: "Entretien des haies selon leurs dimensions, leur accessibilité et les besoins de votre propriété.",
-                img: "/photos/arbres-aubois/service-haies.webp",
-                alt: "Haie entretenue le long d’une propriété résidentielle",
-                icon: <HardHat className="w-6 h-6" />
-              },
-              {
-                title: "Entretien des arbres",
-                desc: "Interventions ciblées pour entretenir les arbres présents sur votre terrain et répondre à leurs besoins.",
-                img: "/photos/arbres-aubois/service-entretien.jpg",
-                alt: "Arboriste qui travaille dans un arbre à l’aide de cordes",
-                icon: <Building2 className="w-6 h-6" />
               },
               {
                 title: "Travaux en hauteur",
-                desc: "Interventions nécessitant un accès en hauteur, avec des équipements adaptés aux conditions du terrain.",
+                desc: "Interventions arboricoles en hauteur à l’aide de techniques de grimpe et d’équipements adaptés.",
+                img: "/photos/arbres-aubois/service-haies.webp",
+                alt: "Image illustrative d’une haie entretenue",
+                icon: <HardHat className="w-6 h-6" />
+              },
+              {
+                title: "Arboriste-grimpeur",
+                desc: "Accès aux différentes parties de l’arbre lorsque sa configuration et les conditions du site le permettent.",
+                img: "/photos/arbres-aubois/service-entretien.jpg",
+                alt: "Image illustrative de techniques de grimpe arboricole",
+                icon: <Building2 className="w-6 h-6" />
+              },
+              {
+                title: "Entretien arboricole",
+                desc: "Taille, dégagement des branches et travaux d’entretien déterminés selon les besoins de chaque arbre.",
                 img: "/photos/arbres-aubois/service-hauteur.webp",
-                alt: "Équipement de Service d’Arbres Aubois prêt pour des travaux arboricoles",
+                alt: "Image illustrative de travaux d’entretien arboricole",
                 icon: <Ruler className="w-6 h-6" />
               },
               {
-                title: "Évaluation de projet arboricole",
-                desc: "Discussion des travaux d’élagage, d’abattage ou de taille nécessaires pour votre propriété.",
+                title: "Travaux spécialisés",
+                desc: "Haubanage ou déboisement à discuter et à confirmer selon le mandat et les conditions du terrain.",
                 img: "/photos/arbres-aubois/service-evaluation.jpg",
-                alt: "Arbres dans une cour arrière lors de l’évaluation d’un projet arboricole",
+                alt: "Image illustrative d’un terrain boisé",
                 icon: <HardHat className="w-6 h-6" />
               }
             ].map((srv, i) => (
@@ -195,19 +195,21 @@ export default function Home() {
       <section id="certifications" className="py-16 md:py-20 xl:py-24 bg-forest text-white scroll-mt-32 xl:scroll-mt-36">
         <div className="container mx-auto px-6 md:px-12">
           <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16">
-            <span className="section-eyebrow text-white font-bold tracking-widest uppercase text-sm mb-4">Qualifications</span>
-            <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold">Assurance et certifications</h2>
-            <p className="text-white/80 mt-4">Les accréditations et la couverture présentées ci-dessous proviennent des documents fournis pour Service d’Arbres Aubois.</p>
+            <span className="section-eyebrow text-white font-bold tracking-widest uppercase text-sm mb-4">Notre approche</span>
+            <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold">Des interventions réfléchies, arbre par arbre.</h2>
+            <p className="text-white/80 mt-4">Chaque projet est évalué en tenant compte de l’arbre, de l’accès au terrain et des éléments environnants.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-12 items-center max-w-6xl mx-auto">
             {[
-              { img: "/certifications/assurance-responsabilite.png", alt: "Badge d’assurance responsabilité indiquant une couverture de 5 000 000 $" },
-              { img: "/certifications/isa-certified-arborist.png", alt: "Insigne Certified Arborist de l’ISA" },
-              { img: "/certifications/elagage-centre-horticole-laval.png", alt: "Badge de formation en élagage du Centre de formation horticole de Laval" },
+              { title: "Sécurité", text: "Une attention particulière est accordée à la préparation et aux conditions de chaque intervention.", icon: <CheckCircle className="w-10 h-10" /> },
+              { title: "Techniques de grimpe", text: "Des méthodes et équipements adaptés aux travaux en hauteur, selon la configuration du site.", icon: <HardHat className="w-10 h-10" /> },
+              { title: "Évaluation du terrain", text: "La méthode de travail tient compte de l’état de l’arbre, de son emplacement et de son accessibilité.", icon: <Building2 className="w-10 h-10" /> },
             ].map((credential) => (
-              <figure key={credential.img} className="flex min-h-[330px] items-center justify-center overflow-visible py-3">
-                <img src={credential.img} alt={credential.alt} className="block h-auto max-h-[300px] w-full max-w-[320px] object-contain mix-blend-screen" loading="lazy" />
+              <figure key={credential.title} className="flex min-h-[330px] flex-col items-center justify-center overflow-visible px-6 py-8 text-center">
+                <div className="mb-5 text-primary">{credential.icon}</div>
+                <h3 className="mb-3 text-xl font-extrabold">{credential.title}</h3>
+                <p className="max-w-xs text-sm leading-relaxed text-white/75">{credential.text}</p>
               </figure>
             ))}
           </div>
@@ -220,19 +222,19 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div className="max-w-2xl">
                 <span className="section-eyebrow text-secondary font-bold tracking-widest uppercase text-sm mb-4">En images</span>
-              <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold text-secondary">Les arbres en images.</h2>
+              <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold text-secondary">Des travaux arboricoles en images.</h2>
             </div>
             <p className="text-muted-foreground max-w-md leading-relaxed">
-               Découvrez les interventions et les équipements photographiés par Service d’Arbres Aubois.
+               Ces photos illustrent des contextes et des travaux arboricoles; elles ne documentent pas nécessairement des réalisations de Services d’arbres S.M.R.
             </p>
           </div>
           <div className="grid auto-rows-[240px] grid-cols-1 gap-4 sm:auto-rows-[220px] sm:grid-cols-2 md:gap-5 xl:auto-rows-[220px] xl:grid-cols-3">
             {[
-              { src: "/photos/arbres-aubois/gallery-1.jpg", alt: "Grand conifère sur un terrain résidentiel", width: 1536, height: 2048, layout: "sm:col-span-2 sm:row-span-2" },
-              { src: "/photos/arbres-aubois/gallery-6.jpg", alt: "Arboriste en nacelle lors de travaux sur un arbre", width: 1536, height: 2048, layout: "" },
-              { src: "/photos/arbres-aubois/gallery-10.jpg", alt: "Arboriste en équipement de sécurité près d’un arbre", width: 1440, height: 1920, layout: "xl:row-span-2" },
-              { src: "/photos/arbres-aubois/gallery-souche.webp", alt: "Broyeur à proximité d’une souche après une intervention arboricole", width: 1462, height: 1950, layout: "" },
-              { src: "/photos/arbres-aubois/gallery-9.jpg", alt: "Arboristes équipés lors d’une intervention", width: 1440, height: 1920, layout: "" },
+              { src: "/photos/arbres-aubois/gallery-1.jpg", alt: "Photo illustrative d’un arbre mature sur un terrain résidentiel", width: 1536, height: 2048, layout: "sm:col-span-2 sm:row-span-2" },
+              { src: "/photos/arbres-aubois/gallery-6.jpg", alt: "Photo illustrative d’une intervention arboricole en hauteur", width: 1536, height: 2048, layout: "" },
+              { src: "/photos/arbres-aubois/gallery-10.jpg", alt: "Photo illustrative d’un arboriste équipé près d’un arbre", width: 1440, height: 1920, layout: "xl:row-span-2" },
+              { src: "/photos/arbres-aubois/gallery-3.jpg", alt: "Photo illustrative d’un arbre après des travaux arboricoles", width: 1462, height: 1950, layout: "" },
+              { src: "/photos/arbres-aubois/gallery-9.jpg", alt: "Photo illustrative de travaux d’entretien d’arbres", width: 1440, height: 1920, layout: "" },
             ].map((photo) => (
               <figure key={photo.src} className={`group relative overflow-hidden bg-muted ${photo.layout}`}>
                 <img
@@ -263,7 +265,7 @@ export default function Home() {
              <span className="section-eyebrow text-white font-bold tracking-widest uppercase text-sm mb-4">Parlons de votre projet</span>
               <h2 className="text-3xl sm:text-4xl xl:text-6xl font-extrabold mb-6 leading-tight">Vos arbres ont besoin d’attention?</h2>
           <p className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-2xl mx-auto">
-               Élagage, abattage ou taille de haies : Service d’Arbres Aubois est disponible pour discuter de vos besoins. Appelez-nous au <a href="tel:+14189418897" className="underline underline-offset-4">(418) 941-8897</a>.
+                Émondage, élagage ou abattage : Services d’arbres S.M.R est disponible pour discuter de votre projet. Appelez au <a href="tel:+15142993765" className="underline underline-offset-4">(514) 299-3765</a>.
           </p>
           <Link href="/soumission">
             <Button size="lg" className="min-h-14 md:h-16 px-6 md:px-10 text-sm sm:text-lg font-bold uppercase tracking-wider">

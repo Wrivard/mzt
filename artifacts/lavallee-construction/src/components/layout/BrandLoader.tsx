@@ -30,7 +30,7 @@ export function BrandLoader({ active, initial = false }: BrandLoaderProps) {
       <div className="brand-loader__inner">
         <img
           className="brand-loader__logo"
-          src="/logo-service-arbres-aubois.png"
+          src="/logo-services-arbres-smr.png"
           alt=""
           fetchPriority="high"
         />

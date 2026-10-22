@@ -7,13 +7,13 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-10 xl:gap-8 mb-12 md:mb-16">
           <div className="lg:col-span-1 flex flex-col items-start">
             <img 
-              src="/logo-service-arbres-aubois.png"
-              alt="Service d’Arbres Aubois"
+              src="/logo-services-arbres-smr.png"
+              alt="Services d’arbres S.M.R"
               className="h-[150px] w-auto object-contain object-left mb-6 mix-blend-screen"
               loading="lazy"
             />
             <p className="text-white/70 text-sm leading-relaxed mb-6">
-              Service d’Arbres Aubois offre des services d’élagage, d’abattage, de taille de haies et d’entretien des arbres à Montmagny et dans le secteur de Berthier-sur-Mer.
+              Services d’arbres S.M.R se spécialise dans l’émondage, l’élagage, l’abattage et les travaux arboricoles dans les Laurentides.
             </p>
           </div>
           
@@ -23,7 +23,7 @@ export function Footer() {
               <li><Link href="/" className="text-white/70 hover:text-white transition-colors text-sm font-medium">Accueil</Link></li>
               <li><a href="/#a-propos" className="text-white/70 hover:text-white transition-colors text-sm font-medium">À propos</a></li>
               <li><a href="/#services" className="text-white/70 hover:text-white transition-colors text-sm font-medium">Services</a></li>
-               <li><a href="/#certifications" className="text-white/70 hover:text-white transition-colors text-sm font-medium">Certifications</a></li>
+               <li><a href="/#certifications" className="text-white/70 hover:text-white transition-colors text-sm font-medium">Notre approche</a></li>
             </ul>
           </div>
           
@@ -32,15 +32,15 @@ export function Footer() {
             <ul className="flex flex-col gap-4 text-sm text-white/70">
               <li className="flex items-start gap-3">
                 <span className="font-bold text-white">T.</span>
-                <a href="tel:+14189418897" className="hover:text-white">(418) 941-8897</a>
+                <a href="tel:+15142993765" className="hover:text-white">(514) 299-3765</a>
               </li>
               <li className="flex items-start gap-3">
                 <span className="font-bold text-white">C.</span>
-                <a href="mailto:matisaube1@gmail.com" className="hover:text-white break-all">matisaube1@gmail.com</a>
+                <a href="mailto:maximerioux@hotmail.com" className="hover:text-white break-all">maximerioux@hotmail.com</a>
               </li>
               <li className="flex items-start gap-3">
                 <span className="font-bold text-white">A.</span>
-                <span>Montmagny, Québec</span>
+                <span>Laurentides, Québec</span>
               </li>
             </ul>
           </div>
@@ -58,10 +58,10 @@ export function Footer() {
         </div>
         
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left text-xs text-white/70">
-          <p>© {new Date().getFullYear()} Service d’Arbres Aubois. Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} Services d’arbres S.M.R. Tous droits réservés.</p>
           <div className="flex gap-6">
-            <a href="mailto:matisaube1@gmail.com?subject=Confidentialit%C3%A9" className="hover:text-white transition-colors">Questions sur la confidentialité</a>
-            <a href="mailto:matisaube1@gmail.com" className="hover:text-white transition-colors">Nous écrire</a>
+            <a href="mailto:maximerioux@hotmail.com?subject=Confidentialit%C3%A9" className="hover:text-white transition-colors">Questions sur la confidentialité</a>
+            <a href="mailto:maximerioux@hotmail.com" className="hover:text-white transition-colors">Nous écrire</a>
           </div>
         </div>
       </div>

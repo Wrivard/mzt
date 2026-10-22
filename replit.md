@@ -1,6 +1,6 @@
-# Service d’Arbres Aubois
+# Services d’arbres S.M.R
 
-Site vitrine en français présentant les services d’élagage, d’abattage d’arbres, de taille de haies et d’entretien des arbres de Service d’Arbres Aubois à Montmagny et dans le secteur de Berthier-sur-Mer.
+Site vitrine en français présentant les services d’émondage, d’élagage, d’abattage et d’entretien arboricole de Services d’arbres S.M.R dans les Laurentides, au Québec.
 
 ## Run & Operate
 
@@ -34,13 +34,13 @@ _Populate as you build — non-obvious choices a reader couldn't infer from the 
 
 ## Product
 
-- Site vitrine en français pour Service d’Arbres Aubois, entreprise spécialisée en élagage, abattage d’arbres, taille de haies et entretien des arbres à Montmagny et Berthier-sur-Mer
-- Navigation responsive, services arboricoles, section d’assurance et de certifications, témoignages, FAQ, coordonnées et formulaire de soumission
+- Site vitrine en français pour Services d’arbres S.M.R, entrepreneur en services arboricoles dans les Laurentides
+- Navigation responsive, services arboricoles, approche de travail, témoignages, FAQ, coordonnées et formulaire de soumission
 - Demande de soumission en trois étapes qui prépare un courriel dans la messagerie du visiteur; aucune transmission automatique ni téléversement de fichiers
 
 ## User preferences
 
-- Garder la structure et le logo fourni de Service d’Arbres Aubois; utiliser le vert comme accent et préserver le noir `#1B1B1B` de la navigation, du pied de page et du texte.
+- Garder la structure du site; utiliser le logo fourni par Services d’arbres S.M.R, l’orange comme accent et préserver le noir `#1B1B1B` de la navigation, du pied de page et du texte.
 - Identifier les images comme illustratives lorsqu’elles ne documentent pas une réalisation vérifiée.
 - Ne pas inventer de réalisations, adresse, territoire desservi, numéro RBQ, certifications, garanties ou témoignages.
 - Ne pas réutiliser la même photo à plusieurs endroits du site; choisir des visuels distincts et adaptés au contenu.

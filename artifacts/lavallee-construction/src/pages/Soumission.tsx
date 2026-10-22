@@ -46,8 +46,8 @@ export default function Soumission() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    const title = "Soumission | Service d’Arbres Aubois";
-    const description = "Présentez votre projet d’élagage, d’abattage d’arbres ou de taille de haies à Service d’Arbres Aubois.";
+    const title = "Soumission | Services d’arbres S.M.R";
+    const description = "Présentez votre projet d’émondage, d’élagage, d’abattage ou d’entretien arboricole à Services d’arbres S.M.R.";
     const previousTitle = document.title;
     const tags = ['meta[name="description"]', 'meta[property="og:title"]', 'meta[property="og:description"]', 'meta[name="twitter:title"]', 'meta[name="twitter:description"]'];
     const previous = tags.map((selector) => {
@@ -104,7 +104,7 @@ export default function Soumission() {
       "",
        "Vous pouvez joindre des photos directement à ce courriel avant de l'envoyer."
     ].join("\n");
-    window.location.href = `mailto:matisaube1@gmail.com?subject=${encodeURIComponent(`Demande de soumission — ${data.firstName} ${data.lastName}`)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:maximerioux@hotmail.com?subject=${encodeURIComponent(`Demande de soumission — ${data.firstName} ${data.lastName}`)}&body=${encodeURIComponent(body)}`;
     setIsSubmitted(true);
   };
 
@@ -115,19 +115,19 @@ export default function Soumission() {
   ];
 
   const projectTypes = [
-    { id: "elagage", value: "Élagage", label: "Émondage et élagage", icon: TreePine },
+    { id: "elagage", value: "Émondage et élagage", label: "Émondage et élagage", icon: TreePine },
     { id: "abattage", value: "Abattage d’arbre", label: "Abattage", icon: Axe },
-    { id: "haies", value: "Taille de haies", label: "Taille de haies", icon: Scissors },
-    { id: "entretien", value: "Entretien des arbres", label: "Entretien des arbres", icon: Leaf },
     { id: "hauteur", value: "Travaux en hauteur", label: "Travaux en hauteur", icon: ArrowUpRight },
+    { id: "entretien", value: "Entretien arboricole", label: "Entretien arboricole", icon: Leaf },
+    { id: "specialise", value: "Haubanage ou déboisement (à confirmer)", label: "Service spécialisé à confirmer", icon: Scissors },
     { id: "autre", value: "Autre", label: "Autre travail arboricole", icon: CircleHelp },
   ];
 
   const trustItems = [
-    { icon: ShieldCheck, title: "Assurance responsabilité", detail: "Couverture de 5 000 000 $" },
-    { icon: Award, title: "Certified Arborist", detail: "Certification ISA" },
-    { icon: GraduationCap, title: "Formation en élagage", detail: "Centre horticole de Laval" },
-    { icon: TreePine, title: "Interventions en hauteur", detail: "Nacelle selon le projet" },
+    { icon: ShieldCheck, title: "Préparation du travail", detail: "Une évaluation adaptée aux conditions du site" },
+    { icon: Award, title: "Techniques de grimpe", detail: "Travaux d’arboriste-grimpeur" },
+    { icon: GraduationCap, title: "Arbres matures", detail: "Interventions en hauteur selon le projet" },
+    { icon: TreePine, title: "Environnement du terrain", detail: "Attention portée aux éléments environnants" },
   ];
 
   return (
@@ -154,11 +154,11 @@ export default function Soumission() {
               Parlons de votre projet.
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
-              Décrivez-nous l’arbre, le terrain et les travaux souhaités. Notre équipe locale vous guidera vers la bonne solution.
+              Décrivez l’arbre, le terrain et les travaux souhaités. Une évaluation permettra de déterminer les interventions appropriées.
             </p>
             <p className="mt-4 flex items-center gap-2 text-sm font-medium text-white/75">
               <MapPin className="h-4 w-4 text-primary" />
-              Montmagny, Berthier-sur-Mer et les environs
+              Laurentides, Québec
             </p>
 
             <div className="mt-8 sm:mt-10">
@@ -175,13 +175,13 @@ export default function Soumission() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/20 pt-5 text-sm text-white/75">
-              <a data-testid="link-quote-phone" href="tel:+14189418897" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+              <a data-testid="link-quote-phone" href="tel:+15142993765" className="inline-flex items-center gap-2 transition-colors hover:text-white">
                 <Phone className="h-4 w-4 text-primary" />
-                (418) 941-8897
+                (514) 299-3765
               </a>
-              <a data-testid="link-quote-email" href="mailto:matisaube1@gmail.com" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+              <a data-testid="link-quote-email" href="mailto:maximerioux@hotmail.com" className="inline-flex items-center gap-2 transition-colors hover:text-white">
                 <Mail className="h-4 w-4 text-primary" />
-                matisaube1@gmail.com
+                maximerioux@hotmail.com
               </a>
             </div>
           </div>
@@ -194,7 +194,7 @@ export default function Soumission() {
                   </div>
                   <h2 className="text-3xl font-extrabold mb-4 text-secondary">Votre courriel est prêt</h2>
                   <p className="text-lg text-muted-foreground mb-8 max-w-lg mx-auto">
-                    Votre messagerie devrait s’ouvrir avec les détails du projet. Ajoutez vos photos, puis envoyez le courriel. Rien n’a été transmis automatiquement par ce site. Si votre messagerie ne s’ouvre pas, écrivez directement à matisaube1@gmail.com.
+                    Votre messagerie devrait s’ouvrir avec les détails du projet. Ajoutez vos photos, puis envoyez le courriel. Rien n’a été transmis automatiquement par ce site. Si votre messagerie ne s’ouvre pas, écrivez directement à maximerioux@hotmail.com.
                   </p>
                   <Button className="uppercase tracking-wider font-bold px-8" onClick={() => window.location.href = "/"}>
                     Retour à l'accueil
