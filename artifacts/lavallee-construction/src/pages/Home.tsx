@@ -269,8 +269,16 @@ export default function Home() {
       <TestimonialsSection />
 
       {/* Final CTA */}
-      <section className="relative py-20 md:py-28 xl:py-32 bg-forest text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(116,173,8,0.2),transparent_55%),linear-gradient(135deg,#252a20,#10110f)]" />
+      <section id="cta" className="relative py-20 md:py-28 xl:py-32 bg-forest text-white overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/photos/mzt/construction-hero-poster.jpg"
+            alt=""
+            className="h-full w-full object-cover opacity-55"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,15,11,0.82),rgba(12,15,11,0.62))]" />
+        </div>
 
         <div className="container relative z-10 mx-auto px-6 md:px-12 text-center max-w-4xl">
           <span className="section-eyebrow text-white font-bold tracking-widest uppercase text-sm mb-4">Parlons de votre projet</span>
