@@ -25,12 +25,10 @@ export function Navbar() {
   ];
 
   const servicesLinks = [
-    { name: "Émondage et élagage", href: "/#services" },
-    { name: "Abattage d’arbres", href: "/#services" },
-    { name: "Travaux en hauteur", href: "/#services" },
-    { name: "Entretien arboricole", href: "/#services" },
-    { name: "Travaux en milieu boisé", href: "/#services" },
-    { name: "Évaluation d’un projet", href: "/#services" },
+    { name: "Construction et rénovation", href: "/#services" },
+    { name: "Réfection de toiture", href: "/#services" },
+    { name: "Déneigement de toiture", href: "/#services" },
+    { name: "Béton estampé", href: "/#services" },
   ];
 
   return (
@@ -40,10 +38,10 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 relative flex items-center justify-between min-h-[94px] xl:min-h-[113px]">
-        <Link href="/" className="absolute left-1/2 -translate-x-1/2 z-50 block" aria-label="Services d’arbres S.M.R — accueil" onClick={() => setMobileMenuOpen(false)}>
+        <Link href="/" className="absolute left-1/2 -translate-x-1/2 z-50 block" aria-label="MZT Construction — accueil" onClick={() => setMobileMenuOpen(false)}>
           <img
-            src="/logo-services-arbres-smr.png"
-            alt="Services d’arbres S.M.R"
+            src="/logo-mzt-construction.png"
+            alt="MZT Construction"
             className="h-[94px] xl:h-[113px] w-auto object-contain mix-blend-screen"
           />
         </Link>
@@ -93,8 +91,8 @@ export function Navbar() {
         </nav>
 
         <div className="hidden xl:flex items-center gap-4">
-          <a href="tel:+15142993765" className="text-sm font-semibold text-white whitespace-nowrap hover:underline">
-            (514) 299-3765
+          <a href="tel:+14188836242" className="text-sm font-semibold text-white whitespace-nowrap hover:underline">
+            (418) 883-6242
           </a>
           <Link href="/soumission">
             <Button size="lg" className="font-bold tracking-wide uppercase text-xs">
@@ -147,7 +145,7 @@ export function Navbar() {
               </div>
             </div>
             <a 
-              href="/#en-images" 
+              href="/#certifications" 
               className="border-b border-[#333] pb-4 hover:underline"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -168,8 +166,8 @@ export function Navbar() {
                 Demander une soumission
               </Button>
             </Link>
-            <a href="tel:+15142993765" className="mt-3 block text-center text-sm font-semibold text-white/80 hover:underline">
-              (514) 299-3765
+            <a href="tel:+14188836242" className="mt-3 block text-center text-sm font-semibold text-white/80 hover:underline">
+              (418) 883-6242
             </a>
           </div>
         </div>

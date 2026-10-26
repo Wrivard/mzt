@@ -11,20 +11,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
   ArrowLeft,
-  ArrowUpRight,
-  Award,
   CheckCircle2,
   ChevronRight,
   CircleHelp,
-  GraduationCap,
-  Leaf,
+  Building2,
+  HardHat,
+  Home,
   Mail,
-  MapPin,
   Phone,
-  Scissors,
-  ShieldCheck,
-  TreePine,
-  Axe,
+  Ruler,
+  Snowflake,
 } from "lucide-react";
 
 const formSchema = z.object({
@@ -46,8 +42,8 @@ export default function Soumission() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    const title = "Soumission | Services d’arbres S.M.R";
-    const description = "Présentez votre projet d’émondage, d’élagage, d’abattage ou d’entretien arboricole à Services d’arbres S.M.R.";
+    const title = "Soumission | MZT Construction";
+    const description = "Présentez votre projet de construction, de rénovation, de toiture ou de béton estampé à MZT Construction.";
     const previousTitle = document.title;
     const tags = ['meta[name="description"]', 'meta[property="og:title"]', 'meta[property="og:description"]', 'meta[name="twitter:title"]', 'meta[name="twitter:description"]'];
     const previous = tags.map((selector) => {
@@ -104,7 +100,7 @@ export default function Soumission() {
       "",
        "Vous pouvez joindre des photos directement à ce courriel avant de l'envoyer."
     ].join("\n");
-    window.location.href = `mailto:maximerioux@hotmail.com?subject=${encodeURIComponent(`Demande de soumission — ${data.firstName} ${data.lastName}`)}&body=${encodeURIComponent(body)}`;
+     window.location.href = `mailto:jstanguay3@hotmail.com?subject=${encodeURIComponent(`Demande de soumission — ${data.firstName} ${data.lastName}`)}&body=${encodeURIComponent(body)}`;
     setIsSubmitted(true);
   };
 
@@ -115,19 +111,18 @@ export default function Soumission() {
   ];
 
   const projectTypes = [
-    { id: "elagage", value: "Émondage et élagage", label: "Émondage et élagage", icon: TreePine },
-    { id: "abattage", value: "Abattage d’arbre", label: "Abattage", icon: Axe },
-    { id: "hauteur", value: "Travaux en hauteur", label: "Travaux en hauteur", icon: ArrowUpRight },
-    { id: "entretien", value: "Entretien arboricole", label: "Entretien arboricole", icon: Leaf },
-    { id: "specialise", value: "Haubanage ou déboisement (à confirmer)", label: "Service spécialisé à confirmer", icon: Scissors },
-    { id: "autre", value: "Autre", label: "Autre travail arboricole", icon: CircleHelp },
+    { id: "construction-renovation", value: "Construction et rénovation", label: "Construction et rénovation", icon: Building2 },
+    { id: "refection-toiture", value: "Réfection de toiture", label: "Réfection de toiture", icon: HardHat },
+    { id: "deneigement-toiture", value: "Déneigement de toiture", label: "Déneigement de toiture", icon: Snowflake },
+    { id: "beton-estampe", value: "Béton estampé", label: "Béton estampé", icon: Ruler },
+    { id: "autre", value: "Autre", label: "Autre projet", icon: CircleHelp },
   ];
 
   const trustItems = [
-    { icon: ShieldCheck, title: "Assurance responsabilité", detail: "Couverture de 5 000 000 $" },
-    { icon: Award, title: "Certified Arborist", detail: "Certification ISA" },
-    { icon: GraduationCap, title: "Formation en élagage", detail: "Centre horticole de Laval" },
-    { icon: TreePine, title: "Travaux en hauteur", detail: "Techniques de grimpe arboricole" },
+    { icon: Building2, title: "Construction et rénovation", detail: "Projets résidentiels" },
+    { icon: HardHat, title: "Réfection de toiture", detail: "Travaux selon le bâtiment" },
+    { icon: Snowflake, title: "Déneigement de toiture", detail: "Interventions hivernales" },
+    { icon: Ruler, title: "Béton estampé", detail: "Aménagement extérieur" },
   ];
 
   return (
@@ -135,34 +130,29 @@ export default function Soumission() {
       <section id="soumission" className="relative isolate min-h-screen overflow-hidden bg-forest text-white">
         <div className="absolute inset-0" aria-hidden="true">
           <img
-            src="/photos/arbres-aubois/soumission.jpg"
+            src="/logo-mzt-construction.png"
             alt=""
-            className="h-full w-full object-cover object-center"
+            className="h-full w-full object-contain p-16 opacity-[0.08]"
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,18,15,0.93)_0%,rgba(10,18,15,0.84)_48%,rgba(10,18,15,0.78)_100%)]" />
-          <div className="absolute inset-0 bg-forest/20" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_72%_35%,rgba(116,173,8,0.19),transparent_48%),linear-gradient(90deg,#1b1b1b_0%,rgba(20,22,18,0.97)_100%)]" />
         </div>
 
         <div className="container relative z-10 mx-auto grid w-full items-center gap-10 px-6 pb-12 pt-[156px] sm:px-8 md:gap-12 md:px-12 md:pb-16 md:pt-[176px] xl:min-h-screen xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] xl:gap-14 xl:pt-[190px]">
           <div className="max-w-xl">
             <span className="mb-5 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-white/80">
               <span aria-hidden="true" className="h-px w-6 shrink-0 bg-primary" />
-              Un projet. Une équipe de confiance.
+              MZT Construction
             </span>
             <h1 id="soumission-title" className="mb-5 max-w-lg text-4xl font-extrabold leading-[1.02] tracking-tight text-white sm:text-5xl xl:text-6xl">
               Parlons de votre projet.
             </h1>
             <p className="max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
-              Décrivez l’arbre, le terrain et les travaux souhaités. Une évaluation permettra de déterminer les interventions appropriées.
-            </p>
-            <p className="mt-4 flex items-center gap-2 text-sm font-medium text-white/75">
-              <MapPin className="h-4 w-4 text-primary" />
-              Laurentides, Québec
+              Décrivez votre projet de construction, de rénovation, de toiture ou de béton estampé. Nous pourrons discuter des travaux souhaités.
             </p>
 
             <div className="mt-8 sm:mt-10">
-              <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-white/60">Un travail bien encadré</p>
+              <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-white/60">Nos spécialités</p>
               <div className="grid grid-cols-2 gap-3">
                 {trustItems.map(({ icon: Icon, title, detail }) => (
                   <div key={title} className="min-h-[92px] border border-white/15 bg-black/45 p-4 backdrop-blur-sm sm:p-5">
@@ -175,13 +165,13 @@ export default function Soumission() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/20 pt-5 text-sm text-white/75">
-              <a data-testid="link-quote-phone" href="tel:+15142993765" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+              <a data-testid="link-quote-phone" href="tel:+14188836242" className="inline-flex items-center gap-2 transition-colors hover:text-white">
                 <Phone className="h-4 w-4 text-primary" />
-                (514) 299-3765
+                (418) 883-6242
               </a>
-              <a data-testid="link-quote-email" href="mailto:maximerioux@hotmail.com" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+              <a data-testid="link-quote-email" href="mailto:jstanguay3@hotmail.com" className="inline-flex items-center gap-2 transition-colors hover:text-white">
                 <Mail className="h-4 w-4 text-primary" />
-                maximerioux@hotmail.com
+                jstanguay3@hotmail.com
               </a>
             </div>
           </div>
@@ -194,7 +184,7 @@ export default function Soumission() {
                   </div>
                   <h2 className="text-3xl font-extrabold mb-4 text-secondary">Votre courriel est prêt</h2>
                   <p className="text-lg text-muted-foreground mb-8 max-w-lg mx-auto">
-                    Votre messagerie devrait s’ouvrir avec les détails du projet. Ajoutez vos photos, puis envoyez le courriel. Rien n’a été transmis automatiquement par ce site. Si votre messagerie ne s’ouvre pas, écrivez directement à maximerioux@hotmail.com.
+                    Votre messagerie devrait s’ouvrir avec les détails du projet. Ajoutez vos photos, puis envoyez le courriel. Rien n’a été transmis automatiquement par ce site. Si votre messagerie ne s’ouvre pas, écrivez directement à jstanguay3@hotmail.com.
                   </p>
                   <Button className="uppercase tracking-wider font-bold px-8" onClick={() => window.location.href = "/"}>
                     Retour à l'accueil

@@ -1,6 +1,6 @@
-# Services d’arbres S.M.R
+# MZT Construction
 
-Site vitrine en français présentant les services d’émondage, d’élagage, d’abattage et d’entretien arboricole de Services d’arbres S.M.R dans les Laurentides, au Québec.
+Site vitrine en français canadien pour MZT Construction (2018) inc., entrepreneur en construction et rénovation résidentielle, réfection et déneigement de toiture et béton estampé.
 
 ## Run & Operate
 
@@ -25,8 +25,8 @@ Site vitrine en français présentant les services d’émondage, d’élagage, 
 
 - `artifacts/lavallee-construction/src/` — pages, reusable sections, and site interactions
 - `artifacts/lavallee-construction/src/index.css` — global palette and visual tokens
-- `artifacts/lavallee-construction/public/` — client-supplied logo, credentials, and arboriculture photos
-- Use only photos provided by the client on this website; do not add stock or generated imagery.
+- `artifacts/lavallee-construction/public/` — client-supplied logo and media assets
+- Use only photos provided for MZT Construction; do not add stock or generated imagery.
 
 ## Architecture decisions
 
@@ -34,16 +34,18 @@ _Populate as you build — non-obvious choices a reader couldn't infer from the 
 
 ## Product
 
-- Site vitrine en français pour Services d’arbres S.M.R, entrepreneur en services arboricoles dans les Laurentides
-- Navigation responsive, services arboricoles, approche de travail, témoignages, FAQ, coordonnées et formulaire de soumission
+- Site vitrine en français canadien pour MZT Construction (2018) inc.
+- Services confirmés : construction, rénovation, réfection de toiture, déneigement de toiture et béton estampé; les réalisations montrent aussi des patios, terrasses et structures extérieures.
+- Contact confirmé : (418) 883-6242 et jstanguay3@hotmail.com
 - Demande de soumission en trois étapes qui prépare un courriel dans la messagerie du visiteur; aucune transmission automatique ni téléversement de fichiers
 
 ## User preferences
 
-- Garder la structure du site; utiliser le logo fourni par Services d’arbres S.M.R, l’orange comme accent et préserver le noir `#1B1B1B` de la navigation, du pied de page et du texte.
-- Éléments confirmés par le client : assurance responsabilité de 5 000 000 $, certification Certified Arborist de l’ISA et formation en élagage au Centre horticole de Laval.
-- Identifier les images comme illustratives lorsqu’elles ne documentent pas une réalisation vérifiée.
-- Ne pas inventer de réalisations, adresse, territoire desservi, numéro RBQ, certifications, garanties ou témoignages.
+- Garder la structure du site et le noir `#1B1B1B` de la navigation, du pied de page et du texte; utiliser le vert du logo MZT comme accent, assombri d’environ 20 %.
+- Ne pas inventer de réalisations, adresse, territoire desservi, années d’expérience ou garanties; afficher uniquement les logos ACQ, GCR et RBQ fournis.
+- Conserver les statistiques du gabarit à l’identique.
+- Garder la section témoignages comme témoignages et ne publier que des avis vérifiés; conserver les espaces réservés jusqu’à réception d’avis authentiques.
+- Utiliser les photos de réalisations fournies par MZT Construction; ne pas réattribuer les photos d’autres clients.
 - Ne pas réutiliser la même photo à plusieurs endroits du site; choisir des visuels distincts et adaptés au contenu.
 - Conserver inchangés les compteurs et statistiques du gabarit; utiliser uniquement des témoignages vérifiés.
 
