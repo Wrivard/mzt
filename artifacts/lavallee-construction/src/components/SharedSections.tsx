@@ -127,13 +127,7 @@ export function FAQContactSection() {
         </div>
       </div>
 
-      <div id="zone-desservie" className="w-full bg-[#1B1B1B] text-white scroll-mt-32 xl:scroll-mt-36">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-8 text-center sm:px-8 md:px-12 md:py-10">
-          <p className="section-eyebrow justify-center text-white font-bold tracking-widest uppercase text-sm">Votre projet</p>
-          <p className="text-base leading-relaxed text-white/75 sm:text-lg">
-            Carte centrée sur Sainte-Claire, Québec. Le territoire desservi n’étant pas précisé, communiquez avec MZT Construction pour confirmer la disponibilité dans votre municipalité.
-          </p>
-        </div>
+      <div id="zone-desservie" className="w-full scroll-mt-32 xl:scroll-mt-36">
         <iframe
           title="Carte centrée sur Sainte-Claire, Québec"
           src="https://maps.google.com/maps?q=Sainte-Claire%2C%20Qu%C3%A9bec&output=embed"
