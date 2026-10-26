@@ -20,7 +20,6 @@ export function Navbar() {
   const navLinks = [
     { name: "Accueil", href: "/" },
     { name: "À propos", href: "/#a-propos" },
-    { name: "Certifications", href: "/#certifications" },
     { name: "Contact", href: "/#contact" },
   ];
 
@@ -82,9 +81,6 @@ export function Navbar() {
             )}
           </div>
 
-          <a href="/#certifications" className="text-sm font-semibold text-white hover:underline transition-colors">
-            Certifications
-          </a>
           <a href="/#contact" className="text-sm font-semibold text-white hover:underline transition-colors">
             Contact
           </a>
@@ -144,13 +140,6 @@ export function Navbar() {
                 ))}
               </div>
             </div>
-            <a 
-              href="/#certifications" 
-              className="border-b border-[#333] pb-4 hover:underline"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Certifications
-            </a>
             <a 
               href="/#contact"
               className="border-b border-[#333] pb-4 hover:underline"
