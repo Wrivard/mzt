@@ -9,8 +9,8 @@ const serviceCards = [
     category: "Construction et rénovation",
     title: "Construction générale",
     desc: "Des travaux de construction résidentielle et de transformation adaptés aux caractéristiques de votre propriété.",
-    img: "/photos/mzt/aggrandissement.jpg",
-    alt: "Agrandissement résidentiel et façade contemporaine",
+    img: "/photos/mzt/construction-card.jpg",
+    alt: "Chantier résidentiel avec levage d’une structure",
     icon: <Building2 className="w-6 h-6" />,
   },
   {
@@ -138,8 +138,8 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 items-center">
             <div className="relative w-full max-w-xl lg:max-w-none mx-auto">
-              <div className="aspect-square bg-[linear-gradient(145deg,#28331b,#111)] relative z-10 clip-diagonal overflow-hidden flex items-center justify-center p-12">
-                <img src="/logo-mzt-construction.png" alt="MZT Construction" className="h-full w-full object-contain" loading="lazy" />
+              <div className="aspect-square bg-muted relative z-10 clip-diagonal overflow-hidden">
+                <img src="/photos/mzt/aggrandissement.jpg" alt="Agrandissement résidentiel avec façade contemporaine" className="h-full w-full object-cover" loading="lazy" />
               </div>
               <div className="absolute -bottom-6 -right-6 w-2/3 aspect-square bg-primary -z-0 clip-diagonal"></div>
 
