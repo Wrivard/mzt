@@ -130,7 +130,7 @@ export default function Soumission() {
       <section id="soumission" className="relative isolate min-h-screen overflow-hidden bg-forest text-white">
         <div className="absolute inset-0" aria-hidden="true">
           <img
-            src="/photos/mzt/soumission-bg.jpg"
+            src="/photos/mzt/cuisine.jpg"
             alt=""
             className="h-full w-full object-cover"
             fetchPriority="high"

@@ -17,8 +17,8 @@ const serviceCards = [
     category: "Construction et rénovation",
     title: "Rénovation résidentielle",
     desc: "Des projets de rénovation pour faire évoluer vos espaces selon vos besoins et votre propriété.",
-    img: "/photos/mzt/renovation-generale.jpg",
-    alt: "Espace de vie rénové avec cuisine ouverte",
+    img: "/photos/mzt/interieur-ouvert.jpg",
+    alt: "Espace de vie ouvert et lumineux",
     icon: <HomeIcon className="w-6 h-6" />,
   },
   {
@@ -33,8 +33,8 @@ const serviceCards = [
     category: "Déneigement de toiture",
     title: "Déneigement de toiture",
     desc: "Une intervention hivernale adaptée à l’accumulation de neige, à l’accès et aux caractéristiques du bâtiment.",
-    img: "/photos/mzt/interieur-ouvert.jpg",
-    alt: "Espace résidentiel lumineux",
+    img: "/photos/mzt/construction-worker.jpg",
+    alt: "Ouvrier construisant la structure en bois d’une résidence",
     icon: <Snowflake className="w-6 h-6" />,
   },
   {
@@ -57,7 +57,7 @@ const serviceCards = [
 
 const projectPhotos = [
   { src: "/photos/mzt/projet-cuisine.jpg", alt: "Cuisine rénovée avec armoires en bois clair", layout: "sm:col-span-2 sm:row-span-2" },
-  { src: "/photos/mzt/cuisine.jpg", alt: "Cuisine contemporaine avec grand îlot central", layout: "" },
+  { src: "/photos/mzt/renovation-generale.jpg", alt: "Espace de vie rénové avec cuisine ouverte", layout: "" },
   { src: "/photos/mzt/projet-salle-de-bain.jpg", alt: "Salle de bain rénovée avec douche vitrée", layout: "xl:row-span-2" },
   { src: "/photos/mzt/salle-de-bain.jpg", alt: "Vanité et douche dans une salle de bain rénovée", layout: "" },
   { src: "/photos/mzt/sous-sol.jpg", alt: "Sous-sol aménagé avec espace de vie", layout: "" },
