@@ -130,12 +130,12 @@ export default function Soumission() {
       <section id="soumission" className="relative isolate min-h-screen overflow-hidden bg-forest text-white">
         <div className="absolute inset-0" aria-hidden="true">
           <img
-            src="/logo-mzt-construction.png"
+            src="/photos/mzt/soumission-bg.jpg"
             alt=""
-            className="h-full w-full object-contain p-16 opacity-[0.08]"
+            className="h-full w-full object-cover"
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_72%_35%,rgba(116,173,8,0.19),transparent_48%),linear-gradient(90deg,#1b1b1b_0%,rgba(20,22,18,0.97)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_72%_35%,rgba(116,173,8,0.12),transparent_48%),linear-gradient(90deg,rgba(12,15,11,0.66)_0%,rgba(12,15,11,0.73)_54%,rgba(12,15,11,0.82)_100%)]" />
         </div>
 
         <div className="container relative z-10 mx-auto grid w-full items-center gap-10 px-6 pb-12 pt-[156px] sm:px-8 md:gap-12 md:px-12 md:pb-16 md:pt-[176px] xl:min-h-screen xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] xl:gap-14 xl:pt-[190px]">
