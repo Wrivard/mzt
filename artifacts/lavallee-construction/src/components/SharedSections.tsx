@@ -21,39 +21,36 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section id="temoignages" className="py-16 md:py-20 xl:py-24 bg-[#1B1B1B] text-white">
+    <section id="temoignages" className="py-20 md:py-24 xl:py-28 bg-[#1B1B1B] text-white">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-16">
-          <span className="section-eyebrow text-white font-bold tracking-widest uppercase text-sm mb-4">Témoignages</span>
-          <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold mb-6 text-white">Ce que nos clients disent de nous.</h2>
-          <p className="mt-3 text-sm text-white/60">Les avis vérifiés seront publiés avec l’autorisation de leurs auteurs.</p>
+        <div className="max-w-2xl mx-auto text-center mb-12 md:mb-16">
+          <span className="section-eyebrow text-white/70 uppercase mb-5">Témoignages</span>
+          <h2 className="text-3xl sm:text-4xl xl:text-[2.75rem] font-bold leading-[1.1] text-white">Ce que nos clients disent de nous.</h2>
+          <p className="mt-5 text-sm text-white/55">Les avis vérifiés seront publiés avec l’autorisation de leurs auteurs.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-5 lg:gap-6 max-w-5xl mx-auto">
           {reviews.map((review, index) => (
             <article
               key={`${review.name}-${index}`}
-              className="group relative flex h-full flex-col overflow-hidden border border-white/10 bg-white p-7 text-secondary shadow-xl transition-transform duration-300 hover:-translate-y-1 sm:p-9"
+              className="flex h-full flex-col rounded-lg bg-white/[0.04] ring-1 ring-white/[0.08] p-7 sm:p-9 transition-colors duration-300 hover:bg-white/[0.06]"
             >
-              <div className="absolute inset-y-0 left-0 w-1.5 bg-primary" />
-              <div className="mb-7 flex items-center justify-between gap-4">
+              <blockquote className="flex-1 text-lg font-medium leading-relaxed text-white/90 sm:text-xl">
+                « {review.quote} »
+              </blockquote>
+              <div className="mt-8 flex flex-wrap items-center justify-between gap-x-4 gap-y-3 border-t border-white/[0.08] pt-6">
                 <div className="flex min-w-0 items-center gap-3">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-primary text-sm font-bold text-primary-foreground">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-[11px] font-bold tracking-wide text-primary-foreground">
                     {review.initials}
                   </span>
                   <div className="min-w-0">
-                    <p className="truncate font-extrabold text-secondary">{review.name}</p>
-                    <p className="mt-1 text-xs font-medium text-muted-foreground">MZT Construction</p>
+                    <p className="font-bold leading-snug text-white">{review.name}</p>
+                    <p className="mt-0.5 text-xs text-white/50">MZT Construction</p>
                   </div>
                 </div>
-                <span className="shrink-0 text-sm font-semibold text-muted-foreground">Avis à venir</span>
+                <span className="shrink-0 rounded-full px-3 py-1 text-xs font-semibold text-white/60 ring-1 ring-white/15">Avis à venir</span>
               </div>
-              <blockquote className="flex-1 text-lg font-medium leading-relaxed sm:text-xl">
-                « {review.quote} »
-              </blockquote>
-              <div className="mt-7 border-t border-border pt-4">
-                <p className="text-xs font-medium text-muted-foreground">Espace réservé à un témoignage vérifié.</p>
-              </div>
+              <p className="mt-4 text-xs text-white/60">Espace réservé à un témoignage vérifié.</p>
             </article>
           ))}
         </div>
@@ -63,14 +60,20 @@ export function TestimonialsSection() {
 }
 
 export function FAQContactSection() {
-  return (
-    <section id="contact" className="bg-muted scroll-mt-32 xl:scroll-mt-36">
-      <div className="container mx-auto px-6 md:px-12 pt-16 md:pt-20 xl:pt-24 pb-20 xl:pb-32 grid lg:grid-cols-2 gap-10 xl:gap-16">
-        <div>
-          <span className="section-eyebrow text-secondary font-bold tracking-widest uppercase text-sm mb-4">Questions fréquentes</span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 lg:mb-10 text-secondary">Ce qu’il faut savoir</h2>
+  const contactRows = [
+    { icon: Building2, label: "Entreprise", content: <p className="text-secondary font-medium">MZT Construction (2018) inc.</p> },
+    { icon: Phone, label: "Téléphone", content: <a className="text-secondary font-medium hover:text-primary" href="tel:+14188836242">(418) 883-6242</a> },
+    { icon: Mail, label: "Courriel", content: <a className="text-secondary font-medium hover:text-primary break-all" href="mailto:jstanguay3@hotmail.com">jstanguay3@hotmail.com</a> },
+  ];
 
-          <Accordion type="single" collapsible className="w-full bg-white border border-border">
+  return (
+    <section id="contact" className="bg-muted">
+      <div className="container mx-auto px-6 md:px-12 pt-20 md:pt-24 xl:pt-28 pb-20 md:pb-24 xl:pb-28 grid lg:grid-cols-[1.25fr_1fr] gap-14 xl:gap-24">
+        <div>
+          <span className="section-eyebrow text-secondary uppercase mb-5">Questions fréquentes</span>
+          <h2 className="text-3xl sm:text-4xl font-bold leading-[1.1] mb-8 lg:mb-10 text-secondary">Ce qu’il faut savoir</h2>
+
+          <Accordion type="single" collapsible className="w-full border-t border-secondary/15">
             {[
               ["Quels services offrez-vous?", "MZT Construction offre des services de construction, de rénovation, de réfection de toiture, de déneigement de toiture et de béton estampé."],
               ["Réalisez-vous des rénovations résidentielles?", "Oui. Nous réalisons différents projets de rénovation selon les besoins de votre propriété."],
@@ -79,59 +82,45 @@ export function FAQContactSection() {
               ["Faites-vous des travaux d’aménagement extérieur?", "Les réalisations présentées par l’entreprise comprennent notamment des patios et des terrasses. Communiquez avec nous pour discuter de votre projet."],
               ["Comment obtenir une soumission?", "Appelez au (418) 883-6242 ou écrivez à jstanguay3@hotmail.com en décrivant les travaux souhaités."],
               ["Quels secteurs desservez-vous?", "Communiquez avec nous afin de confirmer notre disponibilité dans votre municipalité."],
-            ].map(([question, answer], i, items) => (
-              <AccordionItem key={question} value={`item-${i + 1}`} className={`px-6 ${i < items.length - 1 ? "border-b border-border" : "border-b-0"}`}>
-                <AccordionTrigger className="text-left font-bold text-lg py-6 hover:no-underline hover:text-secondary">{question}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">{answer}</AccordionContent>
+            ].map(([question, answer], i) => (
+              <AccordionItem key={question} value={`item-${i + 1}`} className="border-b border-secondary/15">
+                <AccordionTrigger className="text-left font-semibold text-base sm:text-[17px] py-5 sm:py-6 text-secondary hover:no-underline hover:text-[hsl(80_91%_25%)] [&[data-state=open]]:text-[hsl(80_91%_25%)] rounded-sm">
+                  {question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6 pr-8 max-w-[60ch]">{answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
         </div>
 
-        <div>
-          <span className="section-eyebrow text-secondary font-bold tracking-widest uppercase text-sm mb-4">Coordonnées</span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-secondary">Parlons de votre projet.</h2>
-          <p className="text-muted-foreground mb-10">Vous planifiez des travaux de construction, de rénovation, de toiture ou un projet de béton estampé? Communiquez avec MZT Construction pour en discuter.</p>
+        <div className="lg:pt-0">
+          <span className="section-eyebrow text-secondary uppercase mb-5">Coordonnées</span>
+          <h2 className="text-3xl sm:text-4xl font-bold leading-[1.1] mb-5 text-secondary">Parlons de votre projet.</h2>
+          <p className="text-muted-foreground leading-relaxed mb-10 max-w-[48ch]">Vous planifiez des travaux de construction, de rénovation, de toiture ou un projet de béton estampé? Communiquez avec MZT Construction pour en discuter.</p>
 
-          <div className="bg-white border border-border p-5 sm:p-8 h-auto mb-10">
-            <ul className="space-y-6">
-              <li className="flex items-start gap-4">
-                <div className="bg-muted p-3">
-                  <Building2 className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-secondary mb-1">Entreprise</h4>
-                  <p className="text-muted-foreground">MZT Construction (2018) inc.</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <div className="bg-muted p-3">
-                  <Phone className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-secondary mb-1">Téléphone</h4>
-                  <a className="text-muted-foreground hover:text-secondary" href="tel:+14188836242">(418) 883-6242</a>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <div className="bg-muted p-3">
-                  <Mail className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-secondary mb-1">Courriel</h4>
-                  <a className="text-muted-foreground hover:text-secondary break-all" href="mailto:jstanguay3@hotmail.com">jstanguay3@hotmail.com</a>
-                </div>
-              </li>
+          <div className="rounded-lg bg-background p-2 shadow-[var(--shadow-md)] ring-1 ring-secondary/[0.06]">
+            <ul className="divide-y divide-border">
+              {contactRows.map(({ icon: Icon, label, content }) => (
+                <li key={label} className="flex items-center gap-4 p-4 sm:p-5">
+                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/10">
+                    <Icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="min-w-0">
+                    <h4 className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground mb-1">{label}</h4>
+                    {content}
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
       </div>
 
-      <div id="zone-desservie" className="w-full scroll-mt-32 xl:scroll-mt-36">
+      <div id="zone-desservie" className="w-full">
         <iframe
           title="Carte centrée sur Sainte-Claire, Québec"
           src="https://maps.google.com/maps?q=Sainte-Claire%2C%20Qu%C3%A9bec&output=embed"
-          className="block h-[320px] w-full border-0 sm:h-[400px] lg:h-[480px]"
+          className="block h-[320px] w-full border-0 grayscale-[0.35] sm:h-[400px] lg:h-[460px]"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           allowFullScreen

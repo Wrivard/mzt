@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
@@ -12,7 +12,6 @@ import {
   useLocation,
   Router as WouterRouter,
 } from 'wouter';
-import { BrandLoader } from '@/components/layout/BrandLoader';
 
 const queryClient = new QueryClient();
 
@@ -54,39 +53,18 @@ function RoutedErrorBoundary({ children }: { children: ReactNode }) {
   return <ErrorBoundary resetKey={location}>{children}</ErrorBoundary>;
 }
 
+/* Light, non-blocking reveal: no loader wait, content becomes visible even if the observer never fires. */
 function BrandedMotion() {
   const [location] = useLocation();
-  const [initialLoading, setInitialLoading] = useState(true);
-  const [routeLoading, setRouteLoading] = useState(false);
-  const firstLocation = useRef(true);
-
-  useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const timeout = window.setTimeout(() => setInitialLoading(false), reducedMotion ? 0 : 520);
-    return () => window.clearTimeout(timeout);
-  }, []);
-
-  useEffect(() => {
-    if (firstLocation.current) {
-      firstLocation.current = false;
-      return;
-    }
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setRouteLoading(false);
-      return;
-    }
-    setRouteLoading(true);
-    const timeout = window.setTimeout(() => setRouteLoading(false), 220);
-    return () => window.clearTimeout(timeout);
-  }, [location]);
 
   useEffect(() => {
     const root = document.documentElement;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+    const targets = Array.from(document.querySelectorAll<HTMLElement>("main > section:not(:first-child) > .container"));
+    const viewport = window.innerHeight;
+    const pending = targets.filter((t) => t.getBoundingClientRect().top > viewport * 0.9);
+    if (!pending.length) return;
     root.classList.add("motion-enhanced");
-    const targets = document.querySelectorAll<HTMLElement>(
-      "main > section, main section > .container, main section article, main section figure, main section form, main section .xl\\:col-span-2"
-    );
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -94,20 +72,22 @@ function BrandedMotion() {
           observer.unobserve(entry.target);
         }
       }),
-      { threshold: 0.08, rootMargin: "0px 0px -36px 0px" }
+      { threshold: 0.06, rootMargin: "0px 0px -40px 0px" }
     );
-    targets.forEach((target, index) => {
+    pending.forEach((target) => {
       target.classList.add("reveal-on-scroll");
-      target.style.setProperty("--reveal-delay", `${Math.min(index % 4, 3) * 55}ms`);
       observer.observe(target);
     });
+    const failsafe = window.setTimeout(() => pending.forEach((t) => t.classList.add("is-visible")), 4000);
     return () => {
+      window.clearTimeout(failsafe);
       observer.disconnect();
+      pending.forEach((t) => t.classList.remove("reveal-on-scroll", "is-visible"));
       root.classList.remove("motion-enhanced");
     };
   }, [location]);
 
-  return <BrandLoader active={initialLoading || routeLoading} initial={initialLoading} />;
+  return null;
 }
 
 function App() {

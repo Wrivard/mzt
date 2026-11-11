@@ -127,44 +127,47 @@ export default function Soumission() {
 
   return (
     <MainLayout>
-      <section id="soumission" className="relative isolate min-h-screen overflow-hidden bg-forest text-white">
+      <section id="soumission" className="relative isolate overflow-hidden bg-forest text-white">
         <div className="absolute inset-0" aria-hidden="true">
           <img
             src="/photos/mzt/cuisine.jpg"
             alt=""
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-center"
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_72%_35%,rgba(116,173,8,0.12),transparent_48%),linear-gradient(90deg,rgba(12,15,11,0.66)_0%,rgba(12,15,11,0.73)_54%,rgba(12,15,11,0.82)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(17,18,15,0.88)_0%,rgba(17,18,15,0.7)_48%,rgba(17,18,15,0.55)_100%)]" />
         </div>
 
-        <div className="container relative z-10 mx-auto grid w-full items-center gap-10 px-6 pb-12 pt-[156px] sm:px-8 md:gap-12 md:px-12 md:pb-16 md:pt-[176px] xl:min-h-screen xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] xl:gap-14 xl:pt-[190px]">
+        <div className="container relative z-10 mx-auto grid w-full items-center gap-10 px-6 pb-14 pt-[132px] sm:px-8 md:gap-12 md:px-12 md:pb-20 md:pt-[150px] xl:min-h-[100dvh] xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] xl:gap-20 xl:pt-[170px] xl:pb-24">
           <div className="max-w-xl">
-            <span className="mb-5 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-white/80">
-              <span aria-hidden="true" className="h-px w-6 shrink-0 bg-primary" />
+            <span className="section-eyebrow mb-6 uppercase text-white/75">
               MZT Construction
             </span>
-            <h1 id="soumission-title" className="mb-5 max-w-lg text-4xl font-extrabold leading-[1.02] tracking-tight text-white sm:text-5xl xl:text-6xl">
+            <h1 id="soumission-title" className="mb-6 max-w-lg text-4xl font-bold leading-[1.03] tracking-[-0.03em] text-white sm:text-5xl xl:text-[3.6rem]">
               Parlons de votre projet.
             </h1>
-            <p className="max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+            <p className="max-w-[34rem] text-base leading-relaxed text-white/75 sm:text-lg">
               Décrivez votre projet de construction, de rénovation, de toiture ou de béton estampé. Nous pourrons discuter des travaux souhaités.
             </p>
 
-            <div className="mt-8 sm:mt-10">
-              <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-white/60">Nos spécialités</p>
-              <div className="grid grid-cols-2 gap-3">
+            <div className="mt-10 sm:mt-12">
+              <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.18em] text-white/55">Nos spécialités</p>
+              <div className="grid grid-cols-1 gap-x-8 gap-y-5 min-[420px]:grid-cols-2">
                 {trustItems.map(({ icon: Icon, title, detail }) => (
-                  <div key={title} className="min-h-[92px] border border-white/15 bg-black/45 p-4 backdrop-blur-sm sm:p-5">
-                    <Icon className="mb-3 h-5 w-5 text-primary" aria-hidden="true" />
-                    <p className="text-xs font-bold leading-snug text-white sm:text-sm">{title}</p>
-                    <p className="mt-1 text-[11px] leading-snug text-white/65 sm:text-xs">{detail}</p>
+                  <div key={title} className="flex items-start gap-3">
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/[0.08] ring-1 ring-white/10">
+                      <Icon className="h-4 w-4 text-primary" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold leading-snug text-white">{title}</p>
+                      <p className="mt-0.5 text-xs leading-snug text-white/60">{detail}</p>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/20 pt-5 text-sm text-white/75">
+            <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/15 pt-6 text-sm text-white/80">
               <a data-testid="link-quote-phone" href="tel:+14188836242" className="inline-flex items-center gap-2 transition-colors hover:text-white">
                 <Phone className="h-4 w-4 text-primary" />
                 (418) 883-6242
@@ -176,54 +179,57 @@ export default function Soumission() {
             </div>
           </div>
 
-          <div className="min-w-0 overflow-hidden rounded-xl bg-white text-foreground shadow-[0_24px_80px_rgba(0,0,0,0.28)] sm:rounded-2xl">
+          <div className="min-w-0 overflow-hidden rounded-xl bg-background text-foreground shadow-[0_40px_100px_-30px_rgba(0,0,0,0.6)] ring-1 ring-black/5">
               {isSubmitted ? (
-                <div className="text-center py-16">
-                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle2 className="w-10 h-10 text-primary" />
+                <div className="text-center px-6 py-16 sm:px-10" role="status">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 className="w-8 h-8 text-primary" />
                   </div>
-                  <h2 className="text-3xl font-extrabold mb-4 text-secondary">Votre courriel est prêt</h2>
-                  <p className="text-lg text-muted-foreground mb-8 max-w-lg mx-auto">
+                  <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-secondary">Votre courriel est prêt</h2>
+                  <p className="text-base sm:text-lg leading-relaxed text-muted-foreground mb-8 max-w-lg mx-auto">
                     Votre messagerie devrait s’ouvrir avec les détails du projet. Ajoutez vos photos, puis envoyez le courriel. Rien n’a été transmis automatiquement par ce site. Si votre messagerie ne s’ouvre pas, écrivez directement à jstanguay3@hotmail.com.
                   </p>
-                  <Button className="uppercase tracking-wider font-bold px-8" onClick={() => window.location.href = "/"}>
+                  <Button className="h-12 rounded-md uppercase tracking-[0.12em] text-[13px] font-bold px-8" onClick={() => window.location.href = "/"}>
                     Retour à l'accueil
                   </Button>
                 </div>
               ) : (
                 <>
                   {/* Business Stepper */}
-                  <div className="grid grid-cols-3 gap-2 rounded-t-xl border-b border-border bg-muted/60 px-5 py-5 sm:gap-4 sm:rounded-t-2xl sm:px-8">
+                  <ol className="grid grid-cols-3 gap-2 border-b border-border bg-muted/70 px-5 py-5 sm:gap-4 sm:px-8" aria-label="Progression">
                     {steps.map(s => (
-                      <div key={s.num} className={`relative flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-center sm:gap-3 ${step === s.num ? 'opacity-100' : step > s.num ? 'opacity-75' : 'opacity-45'}`}>
+                      <li key={s.num} aria-current={step === s.num ? "step" : undefined} className={`relative flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-center sm:gap-3 ${step === s.num ? 'opacity-100' : step > s.num ? 'opacity-75' : 'opacity-45'}`}>
                          <div className={`flex h-8 w-8 aspect-square shrink-0 items-center justify-center rounded-full text-center font-bold text-sm leading-none ${step >= s.num ? 'bg-primary text-primary-foreground' : 'border border-border bg-white text-muted-foreground'}`}>
                           {step > s.num ? <CheckCircle2 className="w-4 h-4"/> : s.num}
                         </div>
                          <div>
                            <p className="text-[10px] font-bold uppercase leading-none tracking-wide text-secondary sm:text-xs sm:tracking-wider">{s.title}</p>
                         </div>
-                      </div>
+                      </li>
                     ))}
+                  </ol>
+                  <div className="h-0.5 bg-border" aria-hidden="true">
+                    <div className="h-full bg-primary transition-transform duration-500 origin-left" style={{ transform: `scaleX(${step / 3})` }} />
                   </div>
 
-                  <form onSubmit={handleSubmit(onSubmit)} className="p-5 sm:p-7 xl:p-8">
+                  <form onSubmit={handleSubmit(onSubmit)} className="p-5 sm:p-8 xl:p-10">
                     
                     {/* STEP 1 */}
                     {step === 1 && (
                       <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                         <div>
-                          <span className="mb-2 block text-[10px] font-bold uppercase tracking-[0.18em] text-primary">Étape 1 · Projet</span>
-                          <h2 className="text-xl font-extrabold leading-tight text-secondary sm:text-2xl">Quel type de projet avez-vous en tête&nbsp;?</h2>
+                          <span className="mb-2 block text-[11px] font-bold uppercase tracking-[0.16em] text-[hsl(80_91%_25%)]">Étape 1 · Projet</span>
+                          <h2 className="text-xl font-bold leading-tight text-secondary sm:text-[1.6rem]">Quel type de projet avez-vous en tête&nbsp;?</h2>
                           <p className="mt-2 text-sm text-muted-foreground">Choisissez la catégorie qui décrit le mieux vos besoins.</p>
                         </div>
 
                         <div className="space-y-3">
-                          <Label className="font-bold">Type de projet *</Label>
+                          <Label id="label-projectType" className="font-semibold text-secondary">Type de projet *</Label>
                           <Controller
                             name="projectType"
                             control={control}
                             render={({ field }) => (
-                              <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3">
+                              <div role="group" aria-labelledby="label-projectType" className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3">
                                 {projectTypes.map(({ id, value, label, icon: Icon }) => {
                                   const selected = field.value === value;
                                   return (
@@ -233,10 +239,10 @@ export default function Soumission() {
                                       aria-pressed={selected}
                                       data-testid={`button-project-type-${id}`}
                                       onClick={() => field.onChange(value)}
-                                      className={`flex min-h-[82px] flex-col items-center justify-center gap-2 border px-2.5 py-3 text-center text-xs font-semibold leading-tight transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:min-h-[90px] sm:text-sm ${
+                                      className={`flex min-h-[86px] flex-col items-center justify-center gap-2 rounded-lg border px-2.5 py-3 text-center text-xs font-semibold leading-tight transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:min-h-[90px] sm:text-sm ${
                                         selected
-                                          ? "border-primary bg-primary/5 text-secondary ring-1 ring-primary/25"
-                                          : "border-border bg-white text-secondary hover:border-primary/60 hover:bg-muted/50"
+                                          ? "border-primary bg-primary/[0.07] text-secondary ring-1 ring-primary"
+                                          : "border-border bg-background text-secondary hover:border-secondary/30 hover:bg-muted/60"
                                       }`}
                                     >
                                       <Icon className={`h-5 w-5 ${selected ? "text-primary" : "text-muted-foreground"}`} aria-hidden="true" />
@@ -247,18 +253,18 @@ export default function Soumission() {
                               </div>
                             )}
                           />
-                          {errors.projectType && <p className="text-destructive text-sm">{errors.projectType.message}</p>}
+                          {errors.projectType && <p role="alert" className="text-destructive text-sm font-medium">{errors.projectType.message}</p>}
                         </div>
 
                         <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
                           <div className="space-y-2.5">
-                            <Label className="font-bold">Envergure approximative *</Label>
+                            <Label htmlFor="field-budget" className="font-semibold text-secondary">Envergure approximative *</Label>
                             <Controller
                               name="budget"
                               control={control}
                               render={({ field }) => (
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <SelectTrigger data-testid="select-project-budget" className="h-12 rounded-lg border-border focus:ring-primary focus:border-primary">
+                                  <SelectTrigger id="field-budget" aria-invalid={!!errors.budget} data-testid="select-project-budget" className="h-auto min-h-14 gap-2 whitespace-normal rounded-md border-border bg-background text-left focus:ring-2 focus:ring-primary/40 focus:border-primary [&>span]:line-clamp-none [&>span]:whitespace-normal [&>svg]:shrink-0">
                                     <SelectValue placeholder="Sélectionnez l’envergure" />
                                   </SelectTrigger>
                                   <SelectContent className="rounded-lg">
@@ -270,17 +276,17 @@ export default function Soumission() {
                                 </Select>
                               )}
                             />
-                            {errors.budget && <p className="text-destructive text-sm">{errors.budget.message}</p>}
+                            {errors.budget && <p role="alert" className="text-destructive text-sm font-medium">{errors.budget.message}</p>}
                           </div>
                           
                           <div className="space-y-2.5">
-                            <Label className="font-bold">Échéancier souhaité *</Label>
+                            <Label htmlFor="field-timeline" className="font-semibold text-secondary">Échéancier souhaité *</Label>
                             <Controller
                               name="timeline"
                               control={control}
                               render={({ field }) => (
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <SelectTrigger data-testid="select-project-timeline" className="h-12 rounded-lg border-border focus:ring-primary focus:border-primary">
+                                  <SelectTrigger id="field-timeline" aria-invalid={!!errors.timeline} data-testid="select-project-timeline" className="h-auto min-h-14 gap-2 whitespace-normal rounded-md border-border bg-background text-left focus:ring-2 focus:ring-primary/40 focus:border-primary [&>span]:line-clamp-none [&>span]:whitespace-normal [&>svg]:shrink-0">
                                        <SelectValue placeholder="Quand souhaitez-vous réaliser les travaux?" />
                                   </SelectTrigger>
                                   <SelectContent className="rounded-lg">
@@ -292,7 +298,7 @@ export default function Soumission() {
                                 </Select>
                               )}
                             />
-                            {errors.timeline && <p className="text-destructive text-sm">{errors.timeline.message}</p>}
+                            {errors.timeline && <p role="alert" className="text-destructive text-sm font-medium">{errors.timeline.message}</p>}
                           </div>
                         </div>
                       </div>
@@ -302,23 +308,27 @@ export default function Soumission() {
                     {step === 2 && (
                       <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                         <div className="space-y-3">
-                          <Label className="font-bold">Description détaillée du projet *</Label>
+                          <Label htmlFor="field-description" className="font-semibold text-secondary">Description détaillée du projet *</Label>
                           <Textarea 
-                            {...register("description")} 
+                            id="field-description"
+                              aria-invalid={!!errors.description}
+                              {...register("description")}
                               placeholder="Décrivez les travaux que vous souhaitez réaliser..."
-                             className="min-h-[180px] rounded-none border-border focus:ring-primary focus:border-primary resize-y"
+                             className="min-h-[180px] rounded-md border-border bg-background text-base focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:border-primary resize-y"
                           />
-                          {errors.description && <p className="text-destructive text-sm">{errors.description.message}</p>}
+                          {errors.description && <p role="alert" className="text-destructive text-sm font-medium">{errors.description.message}</p>}
                         </div>
                         
                         <div className="space-y-3">
-                            <Label className="font-bold">Ville du projet *</Label>
+                            <Label htmlFor="field-city" className="font-semibold text-secondary">Ville du projet *</Label>
                           <Input 
+                              id="field-city"
+                              aria-invalid={!!errors.city}
                               {...register("city")}
                               placeholder="Ville où se situe le projet"
-                            className="h-12 rounded-none border-border focus:ring-primary focus:border-primary"
+                            className="h-12 rounded-md border-border bg-background text-base focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:border-primary"
                           />
-                            {errors.city && <p className="text-destructive text-sm">{errors.city.message}</p>}
+                            {errors.city && <p role="alert" className="text-destructive text-sm font-medium">{errors.city.message}</p>}
                         </div>
                         <p className="text-sm text-muted-foreground">
                           Vous pourrez joindre des photos au courriel préparé à la dernière étape. Aucun fichier n’est téléversé sur ce site.
@@ -331,60 +341,68 @@ export default function Soumission() {
                       <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                         <div className="grid md:grid-cols-2 gap-6">
                           <div className="space-y-3">
-                            <Label className="font-bold">Prénom *</Label>
+                            <Label htmlFor="field-firstName" className="font-semibold text-secondary">Prénom *</Label>
                             <Input 
+                              id="field-firstName"
+                              aria-invalid={!!errors.firstName}
                               {...register("firstName")} 
-                            className="h-12 rounded-none border-border focus:ring-primary focus:border-primary"
+                            className="h-12 rounded-md border-border bg-background text-base focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:border-primary"
                             />
-                            {errors.firstName && <p className="text-destructive text-sm">{errors.firstName.message}</p>}
+                            {errors.firstName && <p role="alert" className="text-destructive text-sm font-medium">{errors.firstName.message}</p>}
                           </div>
                           <div className="space-y-3">
-                            <Label className="font-bold">Nom *</Label>
+                            <Label htmlFor="field-lastName" className="font-semibold text-secondary">Nom *</Label>
                             <Input 
+                              id="field-lastName"
+                              aria-invalid={!!errors.lastName}
                               {...register("lastName")} 
-                              className="h-12 rounded-none border-border focus:ring-primary focus:border-primary"
+                              className="h-12 rounded-md border-border bg-background text-base focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:border-primary"
                             />
-                            {errors.lastName && <p className="text-destructive text-sm">{errors.lastName.message}</p>}
+                            {errors.lastName && <p role="alert" className="text-destructive text-sm font-medium">{errors.lastName.message}</p>}
                           </div>
                         </div>
                         
                         <div className="grid md:grid-cols-2 gap-6">
                           <div className="space-y-3">
-                            <Label className="font-bold">Courriel *</Label>
+                            <Label htmlFor="field-email" className="font-semibold text-secondary">Courriel *</Label>
                             <Input 
                               type="email"
+                              id="field-email"
+                              aria-invalid={!!errors.email}
                               {...register("email")} 
-                              className="h-12 rounded-none border-border focus:ring-primary focus:border-primary"
+                              className="h-12 rounded-md border-border bg-background text-base focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:border-primary"
                             />
-                            {errors.email && <p className="text-destructive text-sm">{errors.email.message}</p>}
+                            {errors.email && <p role="alert" className="text-destructive text-sm font-medium">{errors.email.message}</p>}
                           </div>
                           <div className="space-y-3">
-                            <Label className="font-bold">Téléphone *</Label>
+                            <Label htmlFor="field-phone" className="font-semibold text-secondary">Téléphone *</Label>
                             <Input 
                               type="tel"
+                              id="field-phone"
+                              aria-invalid={!!errors.phone}
                               {...register("phone")} 
-                              className="h-12 rounded-none border-border focus:ring-primary focus:border-primary"
+                              className="h-12 rounded-md border-border bg-background text-base focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:border-primary"
                             />
-                            {errors.phone && <p className="text-destructive text-sm">{errors.phone.message}</p>}
+                            {errors.phone && <p role="alert" className="text-destructive text-sm font-medium">{errors.phone.message}</p>}
                           </div>
                         </div>
                       </div>
                     )}
 
                     {/* Navigation Buttons */}
-                    <div className="mt-7 flex items-center justify-between border-t border-border pt-6 sm:mt-8">
+                    <div className="mt-8 flex flex-col-reverse gap-3 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
                       {step > 1 ? (
-                        <Button data-testid="button-form-back" type="button" variant="outline" onClick={prevStep} className="h-11 w-full rounded-lg px-6 font-bold uppercase tracking-wider sm:w-auto">
+                        <Button data-testid="button-form-back" type="button" variant="outline" onClick={prevStep} className="h-12 w-full rounded-md px-6 text-[13px] font-bold uppercase tracking-[0.12em] sm:w-auto">
                           <ArrowLeft className="mr-2 w-4 h-4" /> Retour
                         </Button>
-                      ) : <div></div>}
+                      ) : <div className="hidden sm:block"></div>}
                       
                       {step < 3 ? (
-                        <Button data-testid="button-form-next" type="button" onClick={nextStep} className="mt-4 h-11 w-full rounded-lg px-8 font-bold uppercase tracking-wider sm:mt-0 sm:w-auto">
+                        <Button data-testid="button-form-next" type="button" onClick={nextStep} className="h-12 w-full rounded-md px-8 text-[13px] font-bold uppercase tracking-[0.12em] hover:bg-[hsl(80_91%_40%)] sm:w-auto">
                           Suivant <ChevronRight className="ml-2 w-4 h-4" />
                         </Button>
                       ) : (
-                        <Button data-testid="button-form-submit" type="submit" className="mt-4 h-11 w-full rounded-lg bg-forest px-8 font-bold uppercase tracking-wider text-white hover:bg-forest/90 sm:mt-0 sm:w-auto">
+                        <Button data-testid="button-form-submit" type="submit" className="h-12 w-full rounded-md bg-forest px-8 text-[13px] font-bold uppercase tracking-[0.12em] text-white hover:bg-forest/90 sm:w-auto">
                            Envoyer ma demande
                         </Button>
                       )}
