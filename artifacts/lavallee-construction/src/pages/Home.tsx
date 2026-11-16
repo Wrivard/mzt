@@ -5,6 +5,8 @@ import { pageCopy } from "@/data/site";
 import { TestimonialsSection, FAQContactSection } from "@/components/SharedSections";
 import { ArrowRight, HardHat, CheckCircle, Building2, Layers, ChevronRight, Home as HomeIcon, Snowflake } from "lucide-react";
 
+const SHOW_TESTIMONIALS = false;
+
 const serviceCards = [
   {
     category: "Construction résidentielle",
@@ -230,7 +232,6 @@ export default function Home() {
             <div className="text-center lg:text-left">
               <span className="section-eyebrow text-white/70 uppercase mb-5">Certifications</span>
               <h2 className="text-3xl sm:text-4xl font-bold leading-[1.1]">Assurance et certifications</h2>
-              <p className="text-white/65 mt-4 leading-relaxed">Les organismes et programmes présentés par MZT Construction.</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
@@ -276,7 +277,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <TestimonialsSection />
+      {SHOW_TESTIMONIALS && <TestimonialsSection />}
 
       {/* Final CTA */}
       <section id="cta" className="relative py-24 md:py-32 xl:py-36 bg-forest text-white overflow-hidden">

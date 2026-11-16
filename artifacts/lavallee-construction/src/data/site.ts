@@ -10,7 +10,7 @@ export const pageCopy = {
   home: {
     heading: "Construction, rénovation et toiture.",
     intro: "Construction résidentielle et commerciale, rénovation résidentielle, réfection et déneigement de toiture, revêtement extérieur : MZT Construction met plus de 15 ans d’expérience au service de vos projets.",
-    servicesHeading: "Construction et rénovation : nos six services.",
+    servicesHeading: "Construction et rénovation pour vos projets.",
   },
   quote: {
     heading: "Demandez votre soumission.",
