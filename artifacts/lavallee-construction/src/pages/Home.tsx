@@ -35,7 +35,6 @@ const serviceCards = [
     desc: "Une intervention hivernale adaptée à l’accumulation de neige, à l’accès et aux caractéristiques du bâtiment.",
     img: "/photos/mzt/illustrations/deneigement-toiture.webp",
     alt: "Illustration générée d’un intervenant déneigeant une toiture au râteau depuis le sol",
-    illustration: true,
     icon: <Snowflake className="w-5 h-5" />,
   },
   {
@@ -207,11 +206,6 @@ export default function Home() {
                     <div className="absolute top-4 left-4 grid h-10 w-10 place-items-center rounded-full bg-background/95 text-primary backdrop-blur">
                       {srv.icon}
                     </div>
-                  )}
-                  {srv.illustration && (
-                    <span className="absolute bottom-3 right-3 rounded bg-secondary/85 px-2 py-1 text-[10px] font-medium text-white">
-                      Illustration générée
-                    </span>
                   )}
                 </div>
                 <div className="flex flex-1 flex-col p-6 xl:p-7">
