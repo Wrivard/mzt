@@ -6,6 +6,9 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import Home from '@/pages/Home';
 import Soumission from '@/pages/Soumission';
+import Privacy from '@/pages/Privacy';
+import { PageMetadata } from '@/components/PageMetadata';
+import { PRIVACY_PATH } from '@/data/site';
 import {
   Route,
   Switch,
@@ -42,6 +45,7 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/soumission" component={Soumission} />
+        <Route path={PRIVACY_PATH} component={Privacy} />
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>
@@ -95,6 +99,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+          <PageMetadata />
           <RouteScrollReset />
           <BrandedMotion />
           <Router />

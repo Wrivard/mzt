@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { PRIVACY_PATH } from "@/data/site";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { TestimonialsSection, FAQContactSection } from "@/components/SharedSections";
 import { Button } from "@/components/ui/button";
@@ -40,24 +41,6 @@ type FormValues = z.infer<typeof formSchema>;
 export default function Soumission() {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  useEffect(() => {
-    const title = "Soumission | MZT Construction";
-    const description = "Présentez votre projet résidentiel ou commercial, de rénovation, de toiture ou de revêtement extérieur à MZT Construction.";
-    const previousTitle = document.title;
-    const tags = ['meta[name="description"]', 'meta[property="og:title"]', 'meta[property="og:description"]', 'meta[name="twitter:title"]', 'meta[name="twitter:description"]'];
-    const previous = tags.map((selector) => {
-      const element = document.querySelector<HTMLMetaElement>(selector);
-      const value = element?.content;
-      if (element) element.content = selector.includes("title") ? title : description;
-      return { element, value };
-    });
-    document.title = title;
-    return () => {
-      document.title = previousTitle;
-      previous.forEach(({ element, value }) => { if (element && value !== undefined) element.content = value; });
-    };
-  }, []);
 
   const { register, control, handleSubmit, trigger, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -221,6 +204,12 @@ export default function Soumission() {
                   </div>
 
                   <form onSubmit={handleSubmit(onSubmit)} className="p-5 sm:p-8 xl:p-10">
+                    <p className="mb-7 text-xs leading-relaxed text-muted-foreground">
+                      Ce formulaire prépare un courriel dans votre messagerie. Rien n’est envoyé automatiquement.{" "}
+                      <a href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}${PRIVACY_PATH}`} target="_blank" rel="noopener noreferrer" className="font-medium text-secondary underline underline-offset-4">
+                        Politique de confidentialité<span className="sr-only"> — nouvelle fenêtre</span>
+                      </a>
+                    </p>
                     
                     {/* STEP 1 */}
                     {step === 1 && (

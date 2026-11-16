@@ -59,3 +59,9 @@ _Populate as you build — sharp edges, "always run X before Y" rules._
 - See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
 - Questionnaire métier validé : `attached_assets/Pasted-Questionnaire-d-onboarding-Cr-ation-de-site-web-Confirm_1794852449802.txt`
 - Archive de photos fournie par le client : `attached_assets/Photos-20261116T180636Z-1-001_1794852962371.zip`. Ne publier ni les noms de clients ni les adresses présents dans les noms de dossiers.
+
+## Confidentialité et pages publiques
+
+- Les points que MZT doit valider avant publication sont consignés dans `artifacts/lavallee-construction/docs/confidentialite-validation.md`. Une politique en ligne ne vaut pas validation juridique de toutes les pratiques de l’entreprise.
+- L’utilisateur a confirmé le courriel actuel de MZT (`mztconstruction2018@hotmail.com`) pour les demandes de confidentialité. Ne pas nommer arbitrairement l’un des contacts commerciaux responsable; le titre fonctionnel est affiché sans lui attribuer une identité non confirmée.
+- Toute modification des services tiers, de l’envoi du formulaire ou de la conservation des données exige de revoir la politique de confidentialité.

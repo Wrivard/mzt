@@ -1,7 +1,7 @@
 kind = "web"
 previewPath = "/"
 title = "MZT Construction"
-description = "Site vitrine en français pour MZT Construction (2018) inc., présentant ses services de construction, rénovation, toiture et béton estampé, ses coordonnées et son formulaire de soumission."
+description = "Site vitrine en français pour MZT Construction (2018) inc. : construction résidentielle et commerciale, réfection et déneigement de toiture, revêtement extérieur, rénovation résidentielle et demande de soumission."
 version = "1.0.0"
 id = "artifacts/lavallee-construction"
 router = "path"
@@ -20,8 +20,20 @@ serve = "static"
 publicDir = "artifacts/lavallee-construction/dist/public"
 
 [[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
+from = "/soumission"
+to = "/soumission/index.html"
+
+[[services.production.rewrites]]
+from = "/soumission/"
+to = "/soumission/index.html"
+
+[[services.production.rewrites]]
+from = "/politique-de-confidentialite"
+to = "/politique-de-confidentialite/index.html"
+
+[[services.production.rewrites]]
+from = "/politique-de-confidentialite/"
+to = "/politique-de-confidentialite/index.html"
 
 [services.env]
 PORT = "20943"

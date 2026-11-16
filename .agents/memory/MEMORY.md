@@ -2,3 +2,4 @@
 - [Local build environment](local-build-environment.md) — direct shell builds lack the managed workflow's PORT and BASE_PATH; supply both when verifying production bundles.
 - [Gestion Jagster palette](gestion-jagster-palette.md) — keep black navigation, footer, and text while using green as a separate accent beside gold.
 - [Contenu approuvé](approved-content-visual-scope.md) — le rehaussement visuel MZT conserve les textes, fonctionnalités et SEO; signaler les incohérences sans les réécrire.
+- [Hébergement et confidentialité](hosting-privacy-controls.md) — vérifier les scripts du site publié; le consentement local ne contrôle pas les outils ajoutés par l’hébergeur.

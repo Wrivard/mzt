@@ -1,4 +1,5 @@
 import { Building2, Phone, Mail } from "lucide-react";
+import { GoogleMap } from "@/components/GoogleMap";
 import {
   Accordion,
   AccordionContent,
@@ -118,14 +119,7 @@ export function FAQContactSection() {
       </div>
 
       <div id="zone-desservie" className="w-full">
-        <iframe
-          title="Carte centrée sur Sainte-Claire, Québec"
-          src="https://maps.google.com/maps?q=Sainte-Claire%2C%20Qu%C3%A9bec&output=embed"
-          className="block h-[320px] w-full border-0 grayscale-[0.35] sm:h-[400px] lg:h-[460px]"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          allowFullScreen
-        />
+        <GoogleMap />
       </div>
     </section>
   );

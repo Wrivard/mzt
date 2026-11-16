@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { PRIVACY_PATH } from "@/data/site";
 
 export function Footer() {
   const linkCls = "text-white/65 hover:text-white transition-colors text-sm font-medium";
@@ -66,6 +67,7 @@ export function Footer() {
         <div className="border-t border-white/[0.08] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left text-xs text-white/55">
           <p>© {new Date().getFullYear()} MZT Construction (2018) inc. Tous droits réservés.</p>
           <div className="flex flex-wrap justify-center gap-6">
+            <Link href={PRIVACY_PATH} className="hover:text-white transition-colors">Politique de confidentialité</Link>
             <a href="mailto:mztconstruction2018@hotmail.com?subject=Confidentialit%C3%A9" className="hover:text-white transition-colors">Questions sur la confidentialité</a>
             <a href="mailto:mztconstruction2018@hotmail.com" className="hover:text-white transition-colors">Nous écrire</a>
           </div>
