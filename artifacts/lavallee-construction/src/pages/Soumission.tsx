@@ -130,7 +130,7 @@ export default function Soumission() {
             <span className="section-eyebrow mb-6 uppercase text-white/75">
               MZT Construction
             </span>
-            <h1 id="soumission-title" className="mb-6 max-w-lg text-4xl font-bold leading-[1.03] tracking-[-0.03em] text-white sm:text-5xl xl:text-[3.6rem]">
+            <h1 id="soumission-title" className="mb-6 max-w-lg text-[clamp(2rem,9vw,2.25rem)] font-bold leading-[1.03] tracking-[-0.03em] text-white sm:text-5xl xl:text-[3.6rem]">
               {pageCopy.quote.heading}
             </h1>
             <p className="max-w-[34rem] text-base leading-relaxed text-white/75 sm:text-lg">
@@ -155,13 +155,13 @@ export default function Soumission() {
             </div>
 
             <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/15 pt-6 text-sm text-white/80">
-              <a data-testid="link-quote-phone" href="tel:+14188836242" className="inline-flex items-center gap-2 transition-colors hover:text-white">
-                <Phone className="h-4 w-4 text-primary" />
-                Jean-Sébastien Tanguay : (418) 883-6242
+              <a data-testid="link-quote-phone" href="tel:+14188836242" className="inline-flex min-w-0 max-w-full items-start gap-2 transition-colors hover:text-white">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <span className="min-w-0 break-words">Jean-Sébastien Tanguay : (418) 883-6242</span>
               </a>
-              <a data-testid="link-quote-phone-secondary" href="tel:+14185706620" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+              <a data-testid="link-quote-phone-secondary" href="tel:+14185706620" className="inline-flex min-w-0 max-w-full items-start gap-2 transition-colors hover:text-white">
                 <Phone className="h-4 w-4 shrink-0 text-primary" />
-                Sébastien Morin : (418) 570-6620
+                <span className="min-w-0 break-words">Sébastien Morin : (418) 570-6620</span>
               </a>
               <a data-testid="link-quote-email" href="mailto:mztconstruction2018@hotmail.com" className="inline-flex min-w-0 items-center gap-2 transition-colors hover:text-white">
                 <Mail className="h-4 w-4 shrink-0 text-primary" />
