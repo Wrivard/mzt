@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { PRIVACY_PATH } from "@/data/site";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { TestimonialsSection, FAQContactSection } from "@/components/SharedSections";
 import { Button } from "@/components/ui/button";
@@ -204,12 +203,6 @@ export default function Soumission() {
                   </div>
 
                   <form onSubmit={handleSubmit(onSubmit)} className="p-5 sm:p-8 xl:p-10">
-                    <p className="mb-7 text-xs leading-relaxed text-muted-foreground">
-                      Ce formulaire prépare un courriel dans votre messagerie. Rien n’est envoyé automatiquement.{" "}
-                      <a href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}${PRIVACY_PATH}`} target="_blank" rel="noopener noreferrer" className="font-medium text-secondary underline underline-offset-4">
-                        Politique de confidentialité<span className="sr-only"> — nouvelle fenêtre</span>
-                      </a>
-                    </p>
                     
                     {/* STEP 1 */}
                     {step === 1 && (

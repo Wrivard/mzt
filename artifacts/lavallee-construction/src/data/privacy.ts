@@ -67,9 +67,9 @@ export const privacySections: PrivacySection[] = [
     title: "5. Carte Google Maps et témoins",
     paragraphs: [
       "Les polices de caractères sont hébergées avec le site. Le code applicatif n’installe pas de témoin publicitaire et n’enregistre pas les champs du formulaire dans le stockage persistant de votre navigateur.",
-      "L’hébergement peut ajouter ses propres outils de statistiques et de rétroaction. Le choix concernant la carte ne commande pas ces outils. La présente politique ne signifie donc pas qu’aucun renseignement technique n’est traité avant l’activation de la carte.",
-      "La carte Google Maps reste désactivée jusqu’à ce que vous choisissiez « Afficher la carte ». Son activation établit une connexion avec Google, qui peut recevoir votre adresse IP et des renseignements sur votre navigateur et utiliser ses propres témoins, selon votre configuration et ses politiques. Le site ne demande pas l’accès à la localisation de votre appareil.",
-      "Vous pouvez masquer la carte pour interrompre son chargement. Cela n’efface pas les témoins déjà déposés par Google; leur gestion se fait dans votre navigateur ou votre compte Google. Vous pouvez utiliser le reste du site sans activer la carte.",
+      "L’hébergement peut ajouter ses propres outils de statistiques et de rétroaction, distincts de la carte. La présente politique ne signifie donc pas qu’aucun renseignement technique n’est traité lors de votre visite.",
+      "La carte Google Maps se charge automatiquement sur les pages d’accueil et de soumission. Dès son chargement, une connexion est établie avec Google, qui peut recevoir votre adresse IP et des renseignements sur votre navigateur et utiliser ses propres témoins, selon votre configuration et ses politiques. Le site ne demande pas l’accès à la localisation de votre appareil.",
+      "La gestion des témoins de Google se fait dans votre navigateur ou votre compte Google. Les réglages de protection contre les contenus tiers de votre navigateur peuvent limiter le chargement de la carte ou ses fonctionnalités.",
     ],
     links: [
       { label: "Politique de confidentialité de Google", href: "https://policies.google.com/privacy?hl=fr-CA" },
@@ -80,7 +80,7 @@ export const privacySections: PrivacySection[] = [
     title: "6. Fournisseurs et traitement hors du Québec",
     paragraphs: [
       "Le site est hébergé sur Replit. L’hébergement du site publié comprend des outils de statistiques de fréquentation et de rétroaction : pages consultées, provenance des visites, pays approximatif, navigateur et appareil, ainsi que les commentaires ou pièces que vous choisissez de transmettre. Ces outils sont distincts du formulaire de soumission.",
-      "Les courriels envoyés à notre adresse Hotmail sont acheminés par les services de messagerie de Microsoft. Google intervient si vous activez la carte. Ces fournisseurs peuvent traiter des renseignements techniques ou le contenu qui leur est confié selon leurs services et leurs propres politiques.",
+      "Les courriels envoyés à notre adresse Hotmail sont acheminés par les services de messagerie de Microsoft. Google intervient lors du chargement automatique de la carte. Ces fournisseurs peuvent traiter des renseignements techniques ou le contenu qui leur est confié selon leurs services et leurs propres politiques.",
       "Le recours à ces services peut entraîner un traitement ou un hébergement de renseignements à l’extérieur du Québec. Vous pouvez demander à notre responsable des précisions sur les fournisseurs et les communications applicables à votre dossier.",
       "Les courriels destinés à l’entreprise s’adressent aux personnes chargées de répondre aux demandes et de suivre les projets. Toute autre utilisation ou communication doit reposer sur votre consentement ou sur une disposition de la loi.",
     ],

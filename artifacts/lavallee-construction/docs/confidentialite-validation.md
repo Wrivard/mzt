@@ -15,14 +15,14 @@ La page décrit le fonctionnement du site vérifié le 16 novembre 2026. Elle a 
 
 La consultation du HTML public et de la documentation officielle a confirmé la présence d’un outil de statistiques (`i.replit.com/script.js`) et du widget de rétroaction de Replit. Ils sont ajoutés par l’hébergement, pas par le formulaire ni par le composant de carte.
 
-Le bouton de la carte ne pilote pas ces outils. La politique ne promet donc ni zéro collecte technique ni l’absence de statistiques. Aucun suivi personnalisé n’a été ajouté dans cette intervention.
+La carte et ces outils sont indépendants. La politique ne promet donc ni zéro collecte technique ni l’absence de statistiques. Aucun suivi personnalisé n’a été ajouté dans cette intervention.
 
 Avant de republier, vérifier les options **Enable analytics** et **Enable Feedback** dans la publication. Si ces services ne sont pas nécessaires, les désactiver lors de la prochaine publication. S’ils sont conservés, valider leurs conditions, les données traitées et les exigences de consentement applicables. Ne pas prétendre qu’une bannière locale bloque des scripts injectés indépendamment par l’hébergeur.
 
 ## Fonctionnement du site
 
-- Le formulaire prépare un `mailto:`; il ne transmet pas automatiquement la demande. Lire la politique depuis le formulaire ouvre un nouvel onglet afin de ne pas perdre les champs saisis.
-- Google Maps ne crée aucun iframe avant un clic explicite. Masquer la carte supprime l’iframe, mais n’efface pas les témoins déjà déposés par Google.
+- Le formulaire prépare un `mailto:`; il ne transmet pas automatiquement la demande. À la demande de l’utilisateur, l’avis explicatif et son lien ont été retirés du formulaire. La politique reste accessible dans le pied de page.
+- À la demande de l’utilisateur, Google Maps se charge automatiquement sur l’accueil et la page de soumission, sans écran d’activation. La politique indique la connexion à Google dès le chargement. Ne pas présenter ce fonctionnement comme une activation après consentement; les exigences applicables au chargement automatique doivent être validées par l’entreprise.
 - La police est auto-hébergée; aucun appel à Google Fonts n’est nécessaire.
 - Le domaine canonique est centralisé dans `src/data/site.ts`. Il a été obtenu des métadonnées de publication. En cas de changement de domaine, modifier cette valeur et reconstruire le site pour mettre à jour sitemap, robots, fichiers LLM et métadonnées.
 - La compilation génère les fichiers publics et les pages HTML à partir des mêmes données que l’interface. Ne pas maintenir une seconde copie indépendante de la politique.

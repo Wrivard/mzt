@@ -65,3 +65,4 @@ _Populate as you build — sharp edges, "always run X before Y" rules._
 - Les points que MZT doit valider avant publication sont consignés dans `artifacts/lavallee-construction/docs/confidentialite-validation.md`. Une politique en ligne ne vaut pas validation juridique de toutes les pratiques de l’entreprise.
 - L’utilisateur a confirmé le courriel actuel de MZT (`mztconstruction2018@hotmail.com`) pour les demandes de confidentialité. Ne pas nommer arbitrairement l’un des contacts commerciaux responsable; le titre fonctionnel est affiché sans lui attribuer une identité non confirmée.
 - Toute modification des services tiers, de l’envoi du formulaire ou de la conservation des données exige de revoir la politique de confidentialité.
+- L’utilisateur demande que la carte s’affiche automatiquement sur les deux pages, sans écran d’activation, et que l’avis « Ce formulaire prépare un courriel… » et son lien de confidentialité soient retirés du formulaire.
