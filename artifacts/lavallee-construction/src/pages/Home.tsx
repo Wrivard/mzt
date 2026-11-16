@@ -9,24 +9,24 @@ const serviceCards = [
     category: "Construction résidentielle",
     title: "Construction résidentielle",
     desc: "Des travaux de construction résidentielle et de transformation adaptés aux caractéristiques de votre propriété.",
-    img: "/photos/mzt/construction-card.jpg",
-    alt: "Chantier résidentiel avec levage d’une structure",
+    img: "/photos/mzt/client/construction-residentielle.webp",
+    alt: "Maison résidentielle avec garage et toiture foncée",
     icon: <Building2 className="w-5 h-5" />,
   },
   {
     category: "Construction commerciale",
     title: "Construction commerciale",
     desc: "Des projets de construction commerciale adaptés aux besoins de votre entreprise et aux caractéristiques du bâtiment.",
-    img: null,
-    alt: "",
+    img: "/photos/mzt/client/construction-commerciale.webp",
+    alt: "Bâtiment à deux étages avec façades claires et foncées",
     icon: <Building2 className="w-5 h-5" />,
   },
   {
     category: "Réfection de toiture",
     title: "Réfection de toiture",
     desc: "Des travaux évalués selon l’état de la toiture, les besoins du bâtiment et les conditions du projet.",
-    img: null,
-    alt: "",
+    img: "/photos/mzt/client/toiture-metallique.webp",
+    alt: "Vue aérienne d’une toiture métallique noire",
     icon: <HardHat className="w-5 h-5" />,
   },
   {
@@ -41,31 +41,31 @@ const serviceCards = [
     category: "Revêtement extérieur",
     title: "Revêtement extérieur",
     desc: "Des travaux de revêtement extérieur adaptés aux caractéristiques de votre bâtiment et à votre projet.",
-    img: "/photos/mzt/projet-agrandissement.jpg",
-    alt: "Façade résidentielle avec revêtement en bois et panneaux foncés",
+    img: "/photos/mzt/client/revetement-exterieur.webp",
+    alt: "Façades d’une maison avec revêtement clair et accents foncés",
     icon: <Layers className="w-5 h-5" />,
   },
   {
     category: "Rénovation résidentielle",
     title: "Rénovation résidentielle",
     desc: "Des projets de rénovation pour faire évoluer vos espaces selon vos besoins et votre propriété.",
-    img: "/photos/mzt/interieur-ouvert.jpg",
-    alt: "Espace de vie ouvert et lumineux",
+    img: "/photos/mzt/client/renovation-interieure.webp",
+    alt: "Salon lumineux avec escalier en bois",
     icon: <HomeIcon className="w-5 h-5" />,
   },
 ];
 
 const projectPhotos = [
-  { src: "/photos/mzt/projet-cuisine.jpg", alt: "Cuisine rénovée avec armoires en bois clair", layout: "sm:col-span-2 sm:row-span-2" },
-  { src: "/photos/mzt/renovation-generale.jpg", alt: "Espace de vie rénové avec cuisine ouverte", layout: "" },
-  { src: "/photos/mzt/projet-salle-de-bain.jpg", alt: "Salle de bain rénovée avec douche vitrée", layout: "" },
-  { src: "/photos/mzt/salle-de-bain.jpg", alt: "Vanité et douche dans une salle de bain rénovée", layout: "" },
-  { src: "/photos/mzt/sous-sol.jpg", alt: "Sous-sol aménagé avec espace de vie", layout: "" },
+  { src: "/photos/mzt/client/realisation-maison.webp", alt: "Maison résidentielle avec garage et éclairage extérieur", layout: "sm:col-span-2 sm:row-span-2" },
+  { src: "/photos/mzt/client/realisation-cuisine.webp", alt: "Cuisine ouverte avec îlot blanc et luminaires suspendus", layout: "" },
+  { src: "/photos/mzt/client/realisation-salle-de-bain.webp", alt: "Salle de bain avec baignoire autoportante et douche vitrée", layout: "" },
+  { src: "/photos/mzt/client/realisation-structure.webp", alt: "Vue aérienne d’un chantier avec plancher et structure en bois", layout: "" },
+  { src: "/photos/mzt/client/realisation-contemporaine.webp", alt: "Maison contemporaine à deux étages avec revêtement foncé et maçonnerie", layout: "" },
 ];
 
 function ProjectImage({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
-    <img src={src} alt={alt} className={`h-full w-full object-cover ${className}`} loading="lazy" />
+    <img src={src} alt={alt} className={`h-full w-full object-cover ${className}`} loading="lazy" decoding="async" />
   );
 }
 
@@ -137,7 +137,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 xl:gap-24 items-center">
             <figure className="relative w-full max-w-xl lg:max-w-none mx-auto">
               <div className="aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] overflow-hidden rounded-lg bg-muted">
-                <img src="/photos/mzt/aggrandissement.jpg" alt="Agrandissement résidentiel avec façade contemporaine" className="h-full w-full object-cover" loading="lazy" />
+                <img src="/photos/mzt/client/maison-blanche.webp" alt="Maison à deux étages avec revêtement blanc et fenêtres noires" className="h-full w-full object-cover object-[45%_center]" loading="lazy" decoding="async" />
               </div>
               <div className="absolute bottom-5 left-5 right-5 sm:right-auto sm:max-w-[16rem] rounded-md bg-[#1B1B1B]/90 backdrop-blur-md text-white p-5 flex items-start gap-3">
                 <HardHat className="w-6 h-6 text-primary shrink-0 mt-0.5" />
@@ -262,7 +262,7 @@ export default function Home() {
               <h2 className={h2Cls}>Nos réalisations</h2>
             </div>
             <p className="text-muted-foreground max-w-md md:justify-self-end leading-relaxed">
-              Les photos des réalisations de MZT Construction n’ont pas été fournies. Les emplacements ci-dessous seront remplacés par des photos vérifiées.
+              Découvrez une sélection de projets de construction, de rénovation et de travaux spécialisés de MZT Construction.
             </p>
           </div>
           <div className="grid auto-rows-[260px] grid-cols-1 gap-3 sm:auto-rows-[220px] sm:grid-cols-2 md:gap-4 lg:auto-rows-[250px] xl:grid-cols-4 xl:auto-rows-[260px]">
@@ -282,7 +282,7 @@ export default function Home() {
       <section id="cta" className="relative py-24 md:py-32 xl:py-36 bg-forest text-white overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/photos/mzt/patio.jpg"
+            src="/photos/mzt/client/terrasse-couverte.webp"
             alt=""
             className="h-full w-full object-cover opacity-50"
             loading="lazy"

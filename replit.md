@@ -58,3 +58,4 @@ _Populate as you build — sharp edges, "always run X before Y" rules._
 
 - See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
 - Questionnaire métier validé : `attached_assets/Pasted-Questionnaire-d-onboarding-Cr-ation-de-site-web-Confirm_1794852449802.txt`
+- Archive de photos fournie par le client : `attached_assets/Photos-20261116T180636Z-1-001_1794852962371.zip`. Ne publier ni les noms de clients ni les adresses présents dans les noms de dossiers.
