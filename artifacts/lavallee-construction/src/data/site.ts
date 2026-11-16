@@ -6,6 +6,18 @@ export const SITE_NAME = "MZT Construction";
 export const SITE_EMAIL = "mztconstruction2018@hotmail.com";
 export const SITE_IMAGE = "/og-mzt-construction.jpg";
 
+export const pageCopy = {
+  home: {
+    heading: "Construction, rénovation et toiture.",
+    intro: "Construction résidentielle et commerciale, rénovation résidentielle, réfection et déneigement de toiture, revêtement extérieur : MZT Construction met plus de 15 ans d’expérience au service de vos projets.",
+    servicesHeading: "Construction et rénovation : nos six services.",
+  },
+  quote: {
+    heading: "Demandez votre soumission.",
+    intro: "Décrivez vos travaux de construction résidentielle ou commerciale, de rénovation, de toiture ou de revêtement extérieur. Nous pourrons discuter de votre projet.",
+  },
+};
+
 export const services = [
   "Construction résidentielle",
   "Construction commerciale",
@@ -24,13 +36,13 @@ export interface PageInfo {
 export const pages: PageInfo[] = [
   {
     path: "/",
-    title: "MZT Construction | Construction, rénovation et toiture",
-    description: "Fondée en 2018, MZT Construction réalise vos projets résidentiels et commerciaux : construction, rénovation, toiture et revêtement extérieur. Plus de 15 ans d’expérience.",
+    title: "Construction, rénovation et toiture | MZT Construction",
+    description: "Construction résidentielle et commerciale, rénovation, toiture et revêtement extérieur : découvrez MZT Construction et demandez une soumission pour vos travaux.",
   },
   {
     path: "/soumission",
-    title: "Demande de soumission | MZT Construction",
-    description: "Présentez votre projet de construction, de rénovation, de toiture ou de revêtement extérieur à MZT Construction. Préparez votre demande de soumission par courriel.",
+    title: "Soumission construction et rénovation | MZT Construction",
+    description: "Demandez une soumission à MZT Construction pour vos travaux de construction, rénovation résidentielle, toiture ou revêtement extérieur. Présentez votre projet.",
   },
   {
     path: PRIVACY_PATH,

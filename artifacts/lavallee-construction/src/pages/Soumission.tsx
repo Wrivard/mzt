@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { pageCopy } from "@/data/site";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { TestimonialsSection, FAQContactSection } from "@/components/SharedSections";
 import { Button } from "@/components/ui/button";
@@ -130,10 +131,10 @@ export default function Soumission() {
               MZT Construction
             </span>
             <h1 id="soumission-title" className="mb-6 max-w-lg text-4xl font-bold leading-[1.03] tracking-[-0.03em] text-white sm:text-5xl xl:text-[3.6rem]">
-              Parlons de votre projet.
+              {pageCopy.quote.heading}
             </h1>
             <p className="max-w-[34rem] text-base leading-relaxed text-white/75 sm:text-lg">
-              Décrivez votre projet résidentiel ou commercial, de rénovation, de toiture ou de revêtement extérieur. Nous pourrons discuter des travaux souhaités.
+              {pageCopy.quote.intro}
             </p>
 
             <div className="mt-10 sm:mt-12">

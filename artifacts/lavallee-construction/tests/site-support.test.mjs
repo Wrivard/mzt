@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { crawlFiles } from "../build/crawl-files.ts";
 import { pageHtml } from "../build/page-html.ts";
 import { siteSupport } from "../build/site-support.ts";
-import { pages, PRIVACY_PATH, SITE_URL } from "../src/data/site.ts";
+import { pageCopy, pages, PRIVACY_PATH, SITE_URL } from "../src/data/site.ts";
 import { privacyContact, privacySections } from "../src/data/privacy.ts";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -34,7 +34,9 @@ test("each public HTML page has unique metadata, canonical, schema, and useful t
     assert.ok(html.includes(page.title));
     assert.ok(html.includes(new URL(page.path, SITE_URL).href));
     assert.match(html, /id="site-structured-data"/);
-    assert.match(html, /<h1>/);
+    assert.equal((html.match(/<h1>/g) ?? []).length, 1);
+    if (page.path === "/") assert.ok(html.includes(`<h1>${pageCopy.home.heading}</h1>`));
+    if (page.path === "/soumission") assert.ok(html.includes(`<h1>${pageCopy.quote.heading}</h1>`));
     assert.match(html, /<script src="\/assets\/app.js">/);
     assert.ok(!html.includes("Old title"));
     const graph = JSON.parse(html.match(/type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);

@@ -1,6 +1,7 @@
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { pageCopy } from "@/data/site";
 import { TestimonialsSection, FAQContactSection } from "@/components/SharedSections";
 import { ArrowRight, HardHat, CheckCircle, Building2, Layers, ChevronRight, Home as HomeIcon, Snowflake } from "lucide-react";
 
@@ -24,7 +25,7 @@ const serviceCards = [
   {
     category: "Réfection de toiture",
     title: "Réfection de toiture",
-    desc: "Des travaux évalués selon l’état de la toiture, les besoins du bâtiment et les conditions du projet.",
+    desc: "Réfection de toiture selon l’état de votre toit, les caractéristiques du bâtiment et les travaux à réaliser.",
     img: "/photos/mzt/client/toiture-metallique.webp",
     alt: "Vue aérienne d’une toiture métallique noire",
     icon: <HardHat className="w-5 h-5" />,
@@ -32,7 +33,7 @@ const serviceCards = [
   {
     category: "Déneigement de toiture",
     title: "Déneigement de toiture",
-    desc: "Une intervention hivernale adaptée à l’accumulation de neige, à l’accès et aux caractéristiques du bâtiment.",
+    desc: "Déneigement de toiture adapté à l’accumulation de neige, à l’accès et aux caractéristiques du bâtiment.",
     img: "/photos/mzt/illustrations/deneigement-toiture.webp",
     alt: "Illustration générée d’un intervenant déneigeant une toiture au râteau depuis le sol",
     icon: <Snowflake className="w-5 h-5" />,
@@ -48,7 +49,7 @@ const serviceCards = [
   {
     category: "Rénovation résidentielle",
     title: "Rénovation résidentielle",
-    desc: "Des projets de rénovation pour faire évoluer vos espaces selon vos besoins et votre propriété.",
+    desc: "Des travaux de rénovation résidentielle pour améliorer vos espaces de vie et les adapter à vos besoins.",
     img: "/photos/mzt/client/renovation-interieure.webp",
     alt: "Salon lumineux avec escalier en bois",
     icon: <HomeIcon className="w-5 h-5" />,
@@ -95,11 +96,11 @@ export default function Home() {
             <span className="section-eyebrow text-white/80 uppercase mb-7">Construction · Rénovation · Toiture</span>
 
             <h1 className="text-[clamp(2.4rem,5.2vw,4.9rem)] font-bold text-white leading-[1.03] mb-6 tracking-[-0.03em]">
-              Construire, rénover et donner vie à vos projets.
+              {pageCopy.home.heading}
             </h1>
 
             <p className="text-base sm:text-lg xl:text-[1.2rem] text-white/80 mb-9 sm:mb-10 max-w-[38rem] leading-relaxed">
-              Construction résidentielle et commerciale, rénovation, réfection et déneigement de toiture, revêtement extérieur. MZT Construction met plus de 15 ans d’expérience au service de vos projets.
+              {pageCopy.home.intro}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mb-12 sm:mb-16">
@@ -183,7 +184,7 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
             <span className={eyebrowDark}>Nos services</span>
-            <h2 className={`${h2Cls} mb-6`}>Six services pour vos projets.</h2>
+            <h2 className={`${h2Cls} mb-6`}>{pageCopy.home.servicesHeading}</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Construction résidentielle et commerciale, réfection et déneigement de toiture, revêtement extérieur et rénovation résidentielle : MZT Construction accompagne vos projets.
             </p>
