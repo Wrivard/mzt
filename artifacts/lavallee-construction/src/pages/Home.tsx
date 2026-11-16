@@ -100,7 +100,7 @@ export default function Home() {
             </h1>
 
             <p className="text-base sm:text-lg xl:text-[1.2rem] text-white/80 mb-9 sm:mb-10 max-w-[38rem] leading-relaxed">
-              Construction, rénovation, réfection et déneigement de toiture, béton estampé. MZT Construction met son savoir-faire au service de vos projets résidentiels.
+              Construction résidentielle et commerciale, rénovation, réfection et déneigement de toiture, revêtement extérieur. MZT Construction met plus de 15 ans d’expérience au service de vos projets.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mb-12 sm:mb-16">
@@ -114,12 +114,12 @@ export default function Home() {
               </Button>
             </div>
 
-            {/* Preserve the template statistics exactly as supplied. */}
+            {/* Business figures confirmed in the client onboarding questionnaire. */}
             <dl className="grid grid-cols-3 max-w-xl divide-x divide-white/15 border-t border-white/15 pt-6">
               {[
                 ["15", "+", "Années d'expérience"],
-                ["250", "+", "Projets livrés"],
-                ["100", "%", "Garantie qualité"],
+                ["400", "+", "Projets réalisés"],
+                ["2018", "", "Année de fondation"],
               ].map(([value, suffix, label], i) => (
                 <div key={label} className={i === 0 ? "pr-3 sm:pr-6" : "px-3 sm:px-6"}>
                   <dd className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{value}<span className="text-primary">{suffix}</span></dd>
@@ -149,18 +149,20 @@ export default function Home() {
               <span className={eyebrowDark}>À propos de MZT Construction</span>
               <h2 className={`${h2Cls} mb-7`}>Votre projet mérite un travail bien fait.</h2>
               <p className="text-lg text-muted-foreground mb-5 leading-relaxed">
-                Chez MZT Construction, nous accompagnons les propriétaires dans leurs projets de construction, de rénovation et d’amélioration de leur propriété.
+                Fondée en 2018, M.Z.T. Construction (2018) inc. s’appuie sur plus de 15 ans d’expérience dans le domaine de la construction. Nous réalisons des projets résidentiels et commerciaux, ainsi que des travaux de rénovation et des travaux spécialisés.
               </p>
               <p className="text-base sm:text-lg text-muted-foreground mb-9 leading-relaxed">
-                Que vous planifiiez des travaux de rénovation, une réfection de toiture, un aménagement extérieur ou un projet de béton estampé, notre entreprise propose des services adaptés à vos besoins. Chaque projet tient compte des caractéristiques du bâtiment et des attentes du client.
+                Notre approche repose sur la rigueur, la qualité d’exécution et le souci du détail. Nous privilégions une communication honnête, le respect des échéanciers et des engagements, ainsi qu’une relation de confiance fondée sur le respect, la transparence, la fiabilité et le professionnalisme.
               </p>
 
               <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-4 mb-10 border-t border-border pt-8">
                 {[
-                  "Construction et rénovation résidentielle",
+                  "Construction résidentielle",
+                  "Construction commerciale",
                   "Réfection de toiture",
                   "Déneigement de toiture",
-                  "Béton estampé et aménagements extérieurs",
+                  "Revêtement extérieur",
+                  "Rénovation résidentielle",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 font-medium text-secondary leading-snug">
                     <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
@@ -292,7 +294,7 @@ export default function Home() {
           <span className="section-eyebrow text-white/75 uppercase mb-6">Parlons de votre projet</span>
           <h2 className="text-4xl sm:text-5xl xl:text-6xl font-bold mb-7 leading-[1.05] tracking-[-0.03em]">Un projet en tête? Parlons-en.</h2>
           <p className="text-lg md:text-xl text-white/75 mb-10 leading-relaxed max-w-2xl mx-auto">
-            Construction, rénovation, réfection de toiture ou béton estampé : MZT Construction est disponible pour discuter de votre projet. Appelez au <a href="tel:+14188836242" className="text-white underline decoration-primary decoration-2 underline-offset-4 hover:text-primary">(418) 883-6242</a>.
+            Construction résidentielle ou commerciale, rénovation, toiture ou revêtement extérieur : MZT Construction est disponible pour discuter de votre projet. Appelez au <a href="tel:+14188836242" className="text-white underline decoration-primary decoration-2 underline-offset-4 hover:text-primary">(418) 883-6242</a>.
           </p>
           <Button asChild size="lg" className="h-14 md:h-16 rounded-md px-8 md:px-10 text-sm sm:text-[15px] font-bold uppercase tracking-[0.12em] hover:bg-[hsl(80_91%_40%)]">
             <Link href="/soumission">Demander une soumission</Link>

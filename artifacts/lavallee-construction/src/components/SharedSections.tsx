@@ -62,8 +62,9 @@ export function TestimonialsSection() {
 export function FAQContactSection() {
   const contactRows = [
     { icon: Building2, label: "Entreprise", content: <p className="text-secondary font-medium">MZT Construction (2018) inc.</p> },
-    { icon: Phone, label: "Téléphone", content: <a className="text-secondary font-medium hover:text-primary" href="tel:+14188836242">(418) 883-6242</a> },
-    { icon: Mail, label: "Courriel", content: <a className="text-secondary font-medium hover:text-primary break-all" href="mailto:jstanguay3@hotmail.com">jstanguay3@hotmail.com</a> },
+    { icon: Phone, label: "Jean-Sébastien Tanguay", content: <a className="text-secondary font-medium hover:text-primary" href="tel:+14188836242">(418) 883-6242</a> },
+    { icon: Phone, label: "Sébastien Morin", content: <a className="text-secondary font-medium hover:text-primary" href="tel:+14185706620">(418) 570-6620</a> },
+    { icon: Mail, label: "Courriel", content: <a className="text-secondary font-medium hover:text-primary break-all" href="mailto:mztconstruction2018@hotmail.com">mztconstruction2018@hotmail.com</a> },
   ];
 
   return (
@@ -75,12 +76,12 @@ export function FAQContactSection() {
 
           <Accordion type="single" collapsible className="w-full border-t border-secondary/15">
             {[
-              ["Quels services offrez-vous?", "MZT Construction offre des services de construction, de rénovation, de réfection de toiture, de déneigement de toiture et de béton estampé."],
+              ["Quels services offrez-vous?", "MZT Construction offre six services : construction résidentielle, construction commerciale, réfection de toiture, déneigement de toiture, revêtement extérieur et rénovation résidentielle."],
               ["Réalisez-vous des rénovations résidentielles?", "Oui. Nous réalisons différents projets de rénovation selon les besoins de votre propriété."],
               ["Faites-vous du déneigement de toiture?", "Oui. Chaque situation est évaluée selon l’accumulation de neige, l’accès et les caractéristiques du bâtiment."],
-              ["Faites-vous du béton estampé?", "Oui. Le béton estampé fait partie des spécialités de MZT Construction."],
-              ["Faites-vous des travaux d’aménagement extérieur?", "Les réalisations présentées par l’entreprise comprennent notamment des patios et des terrasses. Communiquez avec nous pour discuter de votre projet."],
-              ["Comment obtenir une soumission?", "Appelez au (418) 883-6242 ou écrivez à jstanguay3@hotmail.com en décrivant les travaux souhaités."],
+              ["Réalisez-vous des projets commerciaux?", "Oui. Nous réalisons des projets de construction commerciale adaptés aux besoins de votre entreprise."],
+              ["Faites-vous des travaux de revêtement extérieur?", "Oui. Le revêtement extérieur fait partie de nos spécialités. Communiquez avec nous pour discuter de votre bâtiment et des travaux souhaités."],
+              ["Comment obtenir une soumission?", "Appelez Jean-Sébastien Tanguay au (418) 883-6242 ou Sébastien Morin au (418) 570-6620, ou écrivez à mztconstruction2018@hotmail.com en décrivant les travaux souhaités."],
               ["Quels secteurs desservez-vous?", "Communiquez avec nous afin de confirmer notre disponibilité dans votre municipalité."],
             ].map(([question, answer], i) => (
               <AccordionItem key={question} value={`item-${i + 1}`} className="border-b border-secondary/15">
@@ -96,7 +97,7 @@ export function FAQContactSection() {
         <div className="lg:pt-0">
           <span className="section-eyebrow text-secondary uppercase mb-5">Coordonnées</span>
           <h2 className="text-3xl sm:text-4xl font-bold leading-[1.1] mb-5 text-secondary">Parlons de votre projet.</h2>
-          <p className="text-muted-foreground leading-relaxed mb-10 max-w-[48ch]">Vous planifiez des travaux de construction, de rénovation, de toiture ou un projet de béton estampé? Communiquez avec MZT Construction pour en discuter.</p>
+          <p className="text-muted-foreground leading-relaxed mb-10 max-w-[48ch]">Vous planifiez un projet résidentiel ou commercial, une rénovation, des travaux de toiture ou de revêtement extérieur? Communiquez avec MZT Construction pour en discuter.</p>
 
           <div className="rounded-lg bg-background p-2 shadow-[var(--shadow-md)] ring-1 ring-secondary/[0.06]">
             <ul className="divide-y divide-border">

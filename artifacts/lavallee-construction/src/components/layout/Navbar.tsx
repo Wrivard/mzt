@@ -40,10 +40,12 @@ export function Navbar() {
   }, [mobileMenuOpen]);
 
   const servicesLinks = [
-    { name: "Construction et rénovation", href: "/#services" },
+    { name: "Construction résidentielle", href: "/#services" },
+    { name: "Construction commerciale", href: "/#services" },
     { name: "Réfection de toiture", href: "/#services" },
     { name: "Déneigement de toiture", href: "/#services" },
-    { name: "Béton estampé", href: "/#services" },
+    { name: "Revêtement extérieur", href: "/#services" },
+    { name: "Rénovation résidentielle", href: "/#services" },
   ];
 
   const linkCls = "nav-link text-[13px] font-semibold tracking-wide text-white/85 hover:text-white transition-colors";

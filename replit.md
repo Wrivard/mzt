@@ -1,6 +1,6 @@
 # MZT Construction
 
-Site vitrine en français canadien pour MZT Construction (2018) inc., entrepreneur en construction et rénovation résidentielle, réfection et déneigement de toiture et béton estampé.
+Site vitrine en français canadien pour MZT Construction (2018) inc., entrepreneur en construction résidentielle et commerciale, rénovation résidentielle, réfection et déneigement de toiture et revêtement extérieur.
 
 ## Run & Operate
 
@@ -35,19 +35,20 @@ _Populate as you build — non-obvious choices a reader couldn't infer from the 
 ## Product
 
 - Site vitrine en français canadien pour MZT Construction (2018) inc.
-- Services confirmés : construction, rénovation, réfection de toiture, déneigement de toiture et béton estampé; les réalisations montrent aussi des patios, terrasses et structures extérieures.
-- Contact confirmé : (418) 883-6242 et jstanguay3@hotmail.com
+- Services confirmés, dans l’ordre demandé : construction résidentielle, construction commerciale, réfection de toiture, déneigement de toiture, revêtement extérieur, rénovation résidentielle.
+- Le questionnaire d’onboarding fourni fait foi pour les renseignements métier : appliquer ses corrections de coordonnées plutôt que le numéro prérempli.
+- Fondation en 2018; plus de 15 ans d’expérience dans le domaine (pas 15 ans d’existence de l’entreprise); plus de 400 projets réalisés.
 - Demande de soumission en trois étapes qui prépare un courriel dans la messagerie du visiteur; aucune transmission automatique ni téléversement de fichiers
 
 ## User preferences
 
 - Garder la structure du site et le noir `#1B1B1B` de la navigation, du pied de page et du texte; utiliser le vert du logo MZT comme accent, assombri d’environ 20 %.
-- Ne pas inventer de réalisations, adresse, territoire desservi, années d’expérience ou garanties; afficher uniquement les logos ACQ, GCR et RBQ fournis.
-- Conserver les statistiques du gabarit à l’identique.
+- Ne pas inventer de réalisations, adresse, territoire desservi, années d’expérience ou garanties.
+- Le questionnaire indique APCHQ, GCR et RBQ. Le logo fourni est celui de l’ACQ, pas de l’APCHQ : conserver temporairement ce logo comme annoncé à l’utilisateur, jusqu’à réception du bon visuel.
+- Utiliser les chiffres confirmés par le questionnaire plutôt que les statistiques du gabarit; ne pas réintroduire une garantie non confirmée.
 - Garder la section témoignages comme témoignages et ne publier que des avis vérifiés; conserver les espaces réservés jusqu’à réception d’avis authentiques.
 - Utiliser les photos de réalisations fournies par MZT Construction; ne pas réattribuer les photos d’autres clients.
 - Ne pas réutiliser la même photo à plusieurs endroits du site; choisir des visuels distincts et adaptés au contenu.
-- Conserver inchangés les compteurs et statistiques du gabarit; utiliser uniquement des témoignages vérifiés.
 
 ## Gotchas
 
@@ -56,3 +57,4 @@ _Populate as you build — sharp edges, "always run X before Y" rules._
 ## Pointers
 
 - See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- Questionnaire métier validé : `attached_assets/Pasted-Questionnaire-d-onboarding-Cr-ation-de-site-web-Confirm_1794852449802.txt`

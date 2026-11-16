@@ -14,7 +14,7 @@ export function Footer() {
               loading="lazy"
             />
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
-              MZT Construction propose des services de construction et de rénovation, de réfection et de déneigement de toiture ainsi que de béton estampé.
+              Fondée en 2018, MZT Construction réalise des projets de construction résidentielle et commerciale, de rénovation, de toiture et de revêtement extérieur.
             </p>
           </div>
 
@@ -33,11 +33,21 @@ export function Footer() {
             <ul className="flex flex-col gap-3.5 text-sm text-white/65">
               <li className="flex items-start gap-3">
                 <span className="font-bold text-primary w-4">T.</span>
-                <a href="tel:+14188836242" className="hover:text-white">(418) 883-6242</a>
+                <div className="min-w-0">
+                  <p className="text-xs text-white/60 mb-1">Jean-Sébastien Tanguay</p>
+                  <a href="tel:+14188836242" className="hover:text-white">(418) 883-6242</a>
+                </div>
               </li>
               <li className="flex items-start gap-3">
-                <span className="font-bold text-primary w-4">C.</span>
-                <a href="mailto:jstanguay3@hotmail.com" className="hover:text-white break-all">jstanguay3@hotmail.com</a>
+                <span className="font-bold text-primary w-4 shrink-0">T.</span>
+                <div className="min-w-0">
+                  <p className="text-xs text-white/60 mb-1">Sébastien Morin</p>
+                  <a href="tel:+14185706620" className="hover:text-white">(418) 570-6620</a>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="font-bold text-primary w-4 shrink-0">C.</span>
+                <a href="mailto:mztconstruction2018@hotmail.com" className="min-w-0 hover:text-white break-all">mztconstruction2018@hotmail.com</a>
               </li>
             </ul>
           </div>
@@ -56,8 +66,8 @@ export function Footer() {
         <div className="border-t border-white/[0.08] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left text-xs text-white/55">
           <p>© {new Date().getFullYear()} MZT Construction (2018) inc. Tous droits réservés.</p>
           <div className="flex flex-wrap justify-center gap-6">
-            <a href="mailto:jstanguay3@hotmail.com?subject=Confidentialit%C3%A9" className="hover:text-white transition-colors">Questions sur la confidentialité</a>
-            <a href="mailto:jstanguay3@hotmail.com" className="hover:text-white transition-colors">Nous écrire</a>
+            <a href="mailto:mztconstruction2018@hotmail.com?subject=Confidentialit%C3%A9" className="hover:text-white transition-colors">Questions sur la confidentialité</a>
+            <a href="mailto:mztconstruction2018@hotmail.com" className="hover:text-white transition-colors">Nous écrire</a>
           </div>
         </div>
       </div>

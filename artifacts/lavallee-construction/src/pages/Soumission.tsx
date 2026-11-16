@@ -19,7 +19,7 @@ import {
   Home,
   Mail,
   Phone,
-  Ruler,
+  Layers,
   Snowflake,
 } from "lucide-react";
 
@@ -43,7 +43,7 @@ export default function Soumission() {
 
   useEffect(() => {
     const title = "Soumission | MZT Construction";
-    const description = "Présentez votre projet de construction, de rénovation, de toiture ou de béton estampé à MZT Construction.";
+    const description = "Présentez votre projet résidentiel ou commercial, de rénovation, de toiture ou de revêtement extérieur à MZT Construction.";
     const previousTitle = document.title;
     const tags = ['meta[name="description"]', 'meta[property="og:title"]', 'meta[property="og:description"]', 'meta[name="twitter:title"]', 'meta[name="twitter:description"]'];
     const previous = tags.map((selector) => {
@@ -100,7 +100,7 @@ export default function Soumission() {
       "",
        "Vous pouvez joindre des photos directement à ce courriel avant de l'envoyer."
     ].join("\n");
-     window.location.href = `mailto:jstanguay3@hotmail.com?subject=${encodeURIComponent(`Demande de soumission — ${data.firstName} ${data.lastName}`)}&body=${encodeURIComponent(body)}`;
+     window.location.href = `mailto:mztconstruction2018@hotmail.com?subject=${encodeURIComponent(`Demande de soumission — ${data.firstName} ${data.lastName}`)}&body=${encodeURIComponent(body)}`;
     setIsSubmitted(true);
   };
 
@@ -111,18 +111,22 @@ export default function Soumission() {
   ];
 
   const projectTypes = [
-    { id: "construction-renovation", value: "Construction et rénovation", label: "Construction et rénovation", icon: Building2 },
+    { id: "construction-residentielle", value: "Construction résidentielle", label: "Construction résidentielle", icon: Home },
+    { id: "construction-commerciale", value: "Construction commerciale", label: "Construction commerciale", icon: Building2 },
     { id: "refection-toiture", value: "Réfection de toiture", label: "Réfection de toiture", icon: HardHat },
     { id: "deneigement-toiture", value: "Déneigement de toiture", label: "Déneigement de toiture", icon: Snowflake },
-    { id: "beton-estampe", value: "Béton estampé", label: "Béton estampé", icon: Ruler },
+    { id: "revetement-exterieur", value: "Revêtement extérieur", label: "Revêtement extérieur", icon: Layers },
+    { id: "renovation-residentielle", value: "Rénovation résidentielle", label: "Rénovation résidentielle", icon: Home },
     { id: "autre", value: "Autre", label: "Autre projet", icon: CircleHelp },
   ];
 
   const trustItems = [
-    { icon: Building2, title: "Construction et rénovation", detail: "Projets résidentiels" },
+    { icon: Home, title: "Construction résidentielle", detail: "Projets résidentiels" },
+    { icon: Building2, title: "Construction commerciale", detail: "Projets commerciaux" },
     { icon: HardHat, title: "Réfection de toiture", detail: "Travaux selon le bâtiment" },
     { icon: Snowflake, title: "Déneigement de toiture", detail: "Interventions hivernales" },
-    { icon: Ruler, title: "Béton estampé", detail: "Aménagement extérieur" },
+    { icon: Layers, title: "Revêtement extérieur", detail: "Travaux selon le bâtiment" },
+    { icon: Home, title: "Rénovation résidentielle", detail: "Transformation de votre propriété" },
   ];
 
   return (
@@ -147,7 +151,7 @@ export default function Soumission() {
               Parlons de votre projet.
             </h1>
             <p className="max-w-[34rem] text-base leading-relaxed text-white/75 sm:text-lg">
-              Décrivez votre projet de construction, de rénovation, de toiture ou de béton estampé. Nous pourrons discuter des travaux souhaités.
+              Décrivez votre projet résidentiel ou commercial, de rénovation, de toiture ou de revêtement extérieur. Nous pourrons discuter des travaux souhaités.
             </p>
 
             <div className="mt-10 sm:mt-12">
@@ -170,11 +174,15 @@ export default function Soumission() {
             <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/15 pt-6 text-sm text-white/80">
               <a data-testid="link-quote-phone" href="tel:+14188836242" className="inline-flex items-center gap-2 transition-colors hover:text-white">
                 <Phone className="h-4 w-4 text-primary" />
-                (418) 883-6242
+                Jean-Sébastien Tanguay : (418) 883-6242
               </a>
-              <a data-testid="link-quote-email" href="mailto:jstanguay3@hotmail.com" className="inline-flex items-center gap-2 transition-colors hover:text-white">
-                <Mail className="h-4 w-4 text-primary" />
-                jstanguay3@hotmail.com
+              <a data-testid="link-quote-phone-secondary" href="tel:+14185706620" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+                <Phone className="h-4 w-4 shrink-0 text-primary" />
+                Sébastien Morin : (418) 570-6620
+              </a>
+              <a data-testid="link-quote-email" href="mailto:mztconstruction2018@hotmail.com" className="inline-flex min-w-0 items-center gap-2 transition-colors hover:text-white">
+                <Mail className="h-4 w-4 shrink-0 text-primary" />
+                <span className="min-w-0 break-all">mztconstruction2018@hotmail.com</span>
               </a>
             </div>
           </div>
@@ -187,7 +195,7 @@ export default function Soumission() {
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-secondary">Votre courriel est prêt</h2>
                   <p className="text-base sm:text-lg leading-relaxed text-muted-foreground mb-8 max-w-lg mx-auto">
-                    Votre messagerie devrait s’ouvrir avec les détails du projet. Ajoutez vos photos, puis envoyez le courriel. Rien n’a été transmis automatiquement par ce site. Si votre messagerie ne s’ouvre pas, écrivez directement à jstanguay3@hotmail.com.
+                    Votre messagerie devrait s’ouvrir avec les détails du projet. Ajoutez vos photos, puis envoyez le courriel. Rien n’a été transmis automatiquement par ce site. Si votre messagerie ne s’ouvre pas, écrivez directement à <a className="break-all underline underline-offset-4" href="mailto:mztconstruction2018@hotmail.com">mztconstruction2018@hotmail.com</a>.
                   </p>
                   <Button className="h-12 rounded-md uppercase tracking-[0.12em] text-[13px] font-bold px-8" onClick={() => window.location.href = "/"}>
                     Retour à l'accueil
