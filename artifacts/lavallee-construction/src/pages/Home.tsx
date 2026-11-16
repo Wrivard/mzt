@@ -2,24 +2,24 @@ import { MainLayout } from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { TestimonialsSection, FAQContactSection } from "@/components/SharedSections";
-import { ArrowRight, HardHat, CheckCircle, Building2, Ruler, ChevronRight, Home as HomeIcon, Snowflake } from "lucide-react";
+import { ArrowRight, HardHat, CheckCircle, Building2, Layers, ChevronRight, Home as HomeIcon, Snowflake } from "lucide-react";
 
 const serviceCards = [
   {
-    category: "Construction et rénovation",
-    title: "Construction générale",
+    category: "Construction résidentielle",
+    title: "Construction résidentielle",
     desc: "Des travaux de construction résidentielle et de transformation adaptés aux caractéristiques de votre propriété.",
     img: "/photos/mzt/construction-card.jpg",
     alt: "Chantier résidentiel avec levage d’une structure",
     icon: <Building2 className="w-5 h-5" />,
   },
   {
-    category: "Construction et rénovation",
-    title: "Rénovation résidentielle",
-    desc: "Des projets de rénovation pour faire évoluer vos espaces selon vos besoins et votre propriété.",
-    img: "/photos/mzt/interieur-ouvert.jpg",
-    alt: "Espace de vie ouvert et lumineux",
-    icon: <HomeIcon className="w-5 h-5" />,
+    category: "Construction commerciale",
+    title: "Construction commerciale",
+    desc: "Des projets de construction commerciale adaptés aux besoins de votre entreprise et aux caractéristiques du bâtiment.",
+    img: null,
+    alt: "",
+    icon: <Building2 className="w-5 h-5" />,
   },
   {
     category: "Réfection de toiture",
@@ -38,20 +38,20 @@ const serviceCards = [
     icon: <Snowflake className="w-5 h-5" />,
   },
   {
-    category: "Béton estampé",
-    title: "Béton estampé",
-    desc: "Des surfaces décoratives en béton estampé pour différents projets d’aménagement extérieur.",
-    img: null,
-    alt: "",
-    icon: <Ruler className="w-5 h-5" />,
+    category: "Revêtement extérieur",
+    title: "Revêtement extérieur",
+    desc: "Des travaux de revêtement extérieur adaptés aux caractéristiques de votre bâtiment et à votre projet.",
+    img: "/photos/mzt/projet-agrandissement.jpg",
+    alt: "Façade résidentielle avec revêtement en bois et panneaux foncés",
+    icon: <Layers className="w-5 h-5" />,
   },
   {
-    category: "Construction et rénovation",
-    title: "Patios et terrasses",
-    desc: "Des structures et aménagements extérieurs résidentiels, selon les besoins de votre projet.",
-    img: "/photos/mzt/projet-patio.jpg",
-    alt: "Patio et terrasse aménagés autour d’une résidence",
-    icon: <Building2 className="w-5 h-5" />,
+    category: "Rénovation résidentielle",
+    title: "Rénovation résidentielle",
+    desc: "Des projets de rénovation pour faire évoluer vos espaces selon vos besoins et votre propriété.",
+    img: "/photos/mzt/interieur-ouvert.jpg",
+    alt: "Espace de vie ouvert et lumineux",
+    icon: <HomeIcon className="w-5 h-5" />,
   },
 ];
 
@@ -182,9 +182,9 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
             <span className={eyebrowDark}>Nos services</span>
-            <h2 className={`${h2Cls} mb-6`}>Quatre domaines pour vos projets.</h2>
+            <h2 className={`${h2Cls} mb-6`}>Six services pour vos projets.</h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Construction et rénovation, réfection de toiture, déneigement de toiture et béton estampé : MZT Construction accompagne vos projets résidentiels et extérieurs.
+              Construction résidentielle et commerciale, réfection et déneigement de toiture, revêtement extérieur et rénovation résidentielle : MZT Construction accompagne vos projets.
             </p>
           </div>
 
