@@ -26,7 +26,7 @@ Site vitrine en français canadien pour MZT Construction (2018) inc., entreprene
 - `artifacts/lavallee-construction/src/` — pages, reusable sections, and site interactions
 - `artifacts/lavallee-construction/src/index.css` — global palette and visual tokens
 - `artifacts/lavallee-construction/public/` — client-supplied logo and media assets
-- Use only photos provided for MZT Construction; do not add stock or generated imagery.
+- Utiliser les photos fournies pour les réalisations et le fond d’accueil. Seule exception autorisée : une image générée pour illustrer le déneigement de toiture, clairement identifiée et jamais présentée comme une réalisation photographiée de MZT.
 
 ## Architecture decisions
 

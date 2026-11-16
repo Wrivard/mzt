@@ -1,0 +1,16 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "0-7XEY9RZ5Y5RAhhb8Mx1"
+uri = "file://artifacts/lavallee-construction/public/photos/mzt/illustrations/deneigement-toiture.webp"
+type = "image"
+title = "Illustration de déneigement de toiture"
+description = "Visuel généré pour illustrer le service, intégré à la carte Déneigement de toiture."
+logical_id = "fa74b6eb-2d9a-4e1d-92dc-60fb0d08f571"
+content_hash = "sha256:9661ab045f6478027a3654b23382a0bec099cd543f35afcdde36aa9b477f242a"
+size = 105368
+mtime_ms = 1794853670795
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:14f5986d-f3ea-4146-b35a-e68608522a9f/fa74b6eb-2d9a-4e1d-92dc-60fb0d08f571/e15ac028-9aff-4d00-aa88-50acea2219f7"
+storage_version_token = "1794853794195468"
+content_type = "image/webp"

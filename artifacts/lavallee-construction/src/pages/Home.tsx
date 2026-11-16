@@ -33,8 +33,9 @@ const serviceCards = [
     category: "Déneigement de toiture",
     title: "Déneigement de toiture",
     desc: "Une intervention hivernale adaptée à l’accumulation de neige, à l’accès et aux caractéristiques du bâtiment.",
-    img: null,
-    alt: "",
+    img: "/photos/mzt/illustrations/deneigement-toiture.webp",
+    alt: "Illustration générée d’un intervenant déneigeant une toiture au râteau depuis le sol",
+    illustration: true,
     icon: <Snowflake className="w-5 h-5" />,
   },
   {
@@ -77,16 +78,15 @@ export default function Home() {
     <MainLayout>
       {/* Hero Section */}
       <section className="relative min-h-[100dvh] flex flex-col overflow-hidden bg-[#1B1B1B]">
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          src="/photos/mzt/construction-hero.mp4"
-          poster="/photos/mzt/construction-hero-poster.jpg"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
+        <img
+          className="absolute inset-0 h-full w-full object-cover object-[65%_center]"
+          src="/photos/mzt/client/hero-construction.webp"
+          alt=""
+          width={2200}
+          height={1650}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(17,18,15,0.9)_0%,rgba(17,18,15,0.7)_45%,rgba(17,18,15,0.25)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-[linear-gradient(0deg,rgba(17,18,15,0.75),transparent)]" />
@@ -207,6 +207,11 @@ export default function Home() {
                     <div className="absolute top-4 left-4 grid h-10 w-10 place-items-center rounded-full bg-background/95 text-primary backdrop-blur">
                       {srv.icon}
                     </div>
+                  )}
+                  {srv.illustration && (
+                    <span className="absolute bottom-3 right-3 rounded bg-secondary/85 px-2 py-1 text-[10px] font-medium text-white">
+                      Illustration générée
+                    </span>
                   )}
                 </div>
                 <div className="flex flex-1 flex-col p-6 xl:p-7">
