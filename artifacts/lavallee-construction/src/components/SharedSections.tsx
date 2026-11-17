@@ -62,7 +62,7 @@ export function TestimonialsSection() {
 
 export function FAQContactSection() {
   const contactRows = [
-    { icon: Building2, label: "Entreprise", content: <p className="text-secondary font-medium">MZT Construction (2018) inc.</p> },
+    { icon: Building2, label: "Entreprise", content: <p className="text-secondary font-medium">MZT Construction inc.</p> },
     { icon: Phone, label: "Jean-Sébastien Tanguay", content: <a className="text-secondary font-medium hover:text-primary" href="tel:+14188836242">(418) 883-6242</a> },
     { icon: Phone, label: "Sébastien Morin", content: <a className="text-secondary font-medium hover:text-primary" href="tel:+14185706620">(418) 570-6620</a> },
     { icon: Mail, label: "Courriel", content: <a className="text-secondary font-medium hover:text-primary break-all" href="mailto:mztconstruction2018@hotmail.com">mztconstruction2018@hotmail.com</a> },

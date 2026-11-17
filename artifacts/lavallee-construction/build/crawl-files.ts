@@ -4,7 +4,7 @@ import { privacyContact, privacyIntro, privacySections, privacyUpdated } from ".
 export function crawlFiles(): Record<string, { type: string; content: string }> {
   const summary = `# ${SITE_NAME}
 
-> Site officiel de MZT Construction (2018) inc., entreprise de construction résidentielle et commerciale au Québec.
+> Site officiel de MZT Construction inc., entreprise de construction résidentielle et commerciale au Québec.
 
 ## Pages
 
@@ -14,7 +14,7 @@ export function crawlFiles(): Record<string, { type: string; content: string }> 
 
 ## Entreprise
 
-- Nom légal : MZT Construction (2018) inc.
+- Nom : MZT Construction inc.
 - Fondation : 2018.
 - Expérience annoncée en construction : plus de 15 ans, à ne pas confondre avec l’âge de l’entreprise.
 - Plus de 400 projets réalisés, selon les renseignements fournis par l’entreprise.

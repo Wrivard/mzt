@@ -151,7 +151,7 @@ export default function Home() {
               <span className={eyebrowDark}>À propos de MZT Construction</span>
               <h2 className={`${h2Cls} mb-7`}>Votre projet mérite un travail bien fait.</h2>
               <p className="text-lg text-muted-foreground mb-5 leading-relaxed">
-                Fondée en 2018, M.Z.T. Construction (2018) inc. s’appuie sur plus de 15 ans d’expérience dans le domaine de la construction. Nous réalisons des projets résidentiels et commerciaux, ainsi que des travaux de rénovation et des travaux spécialisés.
+                Fondée en 2018, MZT Construction inc. s’appuie sur plus de 15 ans d’expérience dans le domaine de la construction. Nous réalisons des projets résidentiels et commerciaux, ainsi que des travaux de rénovation et des travaux spécialisés.
               </p>
               <p className="text-base sm:text-lg text-muted-foreground mb-9 leading-relaxed">
                 Notre approche repose sur la rigueur, la qualité d’exécution et le souci du détail. Nous privilégions une communication honnête, le respect des échéanciers et des engagements, ainsi qu’une relation de confiance fondée sur le respect, la transparence, la fiabilité et le professionnalisme.

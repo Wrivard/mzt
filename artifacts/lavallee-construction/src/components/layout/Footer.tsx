@@ -65,7 +65,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/[0.08] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left text-xs text-white/55">
-          <p>© {new Date().getFullYear()} MZT Construction (2018) inc. Tous droits réservés.</p>
+          <p>© {new Date().getFullYear()} MZT Construction inc. Tous droits réservés.</p>
           <div className="flex flex-wrap justify-center gap-6">
             <Link href={PRIVACY_PATH} className="hover:text-white transition-colors">Politique de confidentialité</Link>
             <a href="mailto:mztconstruction2018@hotmail.com?subject=Confidentialit%C3%A9" className="hover:text-white transition-colors">Questions sur la confidentialité</a>

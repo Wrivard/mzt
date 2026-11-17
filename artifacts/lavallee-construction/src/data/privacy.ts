@@ -12,7 +12,7 @@ export const privacyUpdated = {
 };
 
 export const privacyIntro =
-  "MZT Construction (2018) inc. explique ici comment les renseignements personnels sont traités dans le cadre de son site et des demandes qui lui sont adressées. Cette politique tient compte de la Loi sur la protection des renseignements personnels dans le secteur privé du Québec, telle que modifiée par la Loi 25.";
+  "MZT Construction inc. explique ici comment les renseignements personnels sont traités dans le cadre de son site et des demandes qui lui sont adressées. Cette politique tient compte de la Loi sur la protection des renseignements personnels dans le secteur privé du Québec, telle que modifiée par la Loi 25.";
 
 export interface PrivacySection {
   id: string;

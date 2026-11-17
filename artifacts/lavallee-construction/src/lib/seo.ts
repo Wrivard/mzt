@@ -31,7 +31,7 @@ export function seoForPath(pathname: string) {
         "@type": "GeneralContractor",
         "@id": `${SITE_URL}/#entreprise`,
         name: SITE_NAME,
-        legalName: "MZT Construction (2018) inc.",
+        legalName: "MZT Construction inc.",
         url: `${SITE_URL}/`,
         foundingDate: "2018",
         email: SITE_EMAIL,
