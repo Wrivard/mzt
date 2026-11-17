@@ -43,7 +43,7 @@ _Populate as you build — non-obvious choices a reader couldn't infer from the 
 ## User preferences
 
 - Garder la structure du site et le noir `#1B1B1B` de la navigation, du pied de page et du texte; utiliser le vert du logo MZT comme accent, assombri d’environ 20 %.
-- Ne pas inventer de réalisations, adresse, territoire desservi, années d’expérience ou garanties.
+- Territoire confirmé : Bellechasse, la Beauce, Lévis et toute la région de Chaudière-Appalaches. Ne pas inventer d’adresse ni d’autres municipalités desservies précises, de réalisations, d’années d’expérience ou de garanties.
 - Le questionnaire indique APCHQ, GCR et RBQ. Le logo fourni est celui de l’ACQ, pas de l’APCHQ : conserver temporairement ce logo comme annoncé à l’utilisateur, jusqu’à réception du bon visuel.
 - Utiliser les chiffres confirmés par le questionnaire plutôt que les statistiques du gabarit; ne pas réintroduire une garantie non confirmée.
 - Garder la section témoignages comme témoignages et ne publier que des avis vérifiés; conserver les espaces réservés jusqu’à réception d’avis authentiques.

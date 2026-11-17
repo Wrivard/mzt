@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { pageCopy } from "@/data/site";
+import { certificationLogos, pageCopy } from "@/data/site";
 import { MainLayout } from "@/components/layout/MainLayout";
-import { TestimonialsSection, FAQContactSection } from "@/components/SharedSections";
+import { FAQContactSection } from "@/components/SharedSections";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -26,7 +26,6 @@ import {
 
 const formSchema = z.object({
   projectType: z.string().min(1, "Veuillez sélectionner un type de projet"),
-  budget: z.string().min(1, "Veuillez sélectionner l’envergure approximative"),
   timeline: z.string().min(1, "Veuillez sélectionner un délai"),
   description: z.string().min(10, "La description doit contenir au moins 10 caractères"),
   city: z.string().min(2, "Veuillez entrer la ville du projet"),
@@ -46,7 +45,6 @@ export default function Soumission() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       projectType: "",
-      budget: "",
       timeline: "",
       description: "",
       city: "",
@@ -60,7 +58,7 @@ export default function Soumission() {
 
   const nextStep = async () => {
     let fieldsToValidate: (keyof FormValues)[] = [];
-    if (step === 1) fieldsToValidate = ["projectType", "budget", "timeline"];
+    if (step === 1) fieldsToValidate = ["projectType", "timeline"];
     if (step === 2) fieldsToValidate = ["description", "city"];
 
     const isStepValid = await trigger(fieldsToValidate);
@@ -76,7 +74,6 @@ export default function Soumission() {
       `Courriel : ${data.email}`,
       `Ville du projet : ${data.city}`,
       `Type de projet : ${data.projectType}`,
-      `Envergure approximative : ${data.budget}`,
       `Échéancier souhaité : ${data.timeline}`,
       "",
       `Description du projet : ${data.description}`,
@@ -168,6 +165,24 @@ export default function Soumission() {
                 <span className="min-w-0 break-all">mztconstruction2018@hotmail.com</span>
               </a>
             </div>
+
+            <section aria-labelledby="quote-certifications-title" className="mt-8 border-t border-white/15 pt-5">
+              <h2 id="quote-certifications-title" className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white/55">
+                Assurance et certifications
+              </h2>
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                {certificationLogos.map((logo) => (
+                  <figure key={logo.src} className="flex h-12 items-center justify-center">
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className="block max-h-9 w-full max-w-[160px] object-contain brightness-0 invert opacity-90"
+                      loading="lazy"
+                    />
+                  </figure>
+                ))}
+              </div>
+            </section>
           </div>
 
           <div className="min-w-0 overflow-hidden rounded-xl bg-background text-foreground shadow-[0_40px_100px_-30px_rgba(0,0,0,0.6)] ring-1 ring-black/5">
@@ -247,30 +262,7 @@ export default function Soumission() {
                           {errors.projectType && <p role="alert" className="text-destructive text-sm font-medium">{errors.projectType.message}</p>}
                         </div>
 
-                        <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
-                          <div className="space-y-2.5">
-                            <Label htmlFor="field-budget" className="font-semibold text-secondary">Envergure approximative *</Label>
-                            <Controller
-                              name="budget"
-                              control={control}
-                              render={({ field }) => (
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <SelectTrigger id="field-budget" aria-invalid={!!errors.budget} data-testid="select-project-budget" className="h-auto min-h-14 gap-2 whitespace-normal rounded-md border-border bg-background text-left focus:ring-2 focus:ring-primary/40 focus:border-primary [&>span]:line-clamp-none [&>span]:whitespace-normal [&>svg]:shrink-0">
-                                    <SelectValue placeholder="Sélectionnez l’envergure" />
-                                  </SelectTrigger>
-                                  <SelectContent className="rounded-lg">
-                                      <SelectItem value="petit-projet">Petit projet</SelectItem>
-                                      <SelectItem value="projet-moyen">Projet de taille moyenne</SelectItem>
-                                      <SelectItem value="grand-projet">Projet de grande envergure</SelectItem>
-                                     <SelectItem value="a-evaluer">À évaluer</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                              )}
-                            />
-                            {errors.budget && <p role="alert" className="text-destructive text-sm font-medium">{errors.budget.message}</p>}
-                          </div>
-                          
-                          <div className="space-y-2.5">
+                        <div className="space-y-2.5">
                             <Label htmlFor="field-timeline" className="font-semibold text-secondary">Échéancier souhaité *</Label>
                             <Controller
                               name="timeline"
@@ -290,7 +282,6 @@ export default function Soumission() {
                               )}
                             />
                             {errors.timeline && <p role="alert" className="text-destructive text-sm font-medium">{errors.timeline.message}</p>}
-                          </div>
                         </div>
                       </div>
                     )}
@@ -405,9 +396,6 @@ export default function Soumission() {
             </div>
         </div>
       </section>
-
-      {/* Testimonials */}
-      <TestimonialsSection />
 
       {/* FAQ & Contact */}
       <FAQContactSection />

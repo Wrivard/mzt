@@ -9,7 +9,7 @@ export const SITE_IMAGE = "/og-mzt-construction.jpg";
 export const pageCopy = {
   home: {
     heading: "Construction, rénovation et toiture.",
-    intro: "Construction résidentielle et commerciale, rénovation résidentielle, réfection et déneigement de toiture, revêtement extérieur : MZT Construction met plus de 15 ans d’expérience au service de vos projets.",
+    intro: "Construction résidentielle et commerciale, rénovation résidentielle, réfection et déneigement de toiture, revêtement extérieur : MZT Construction met plus de 15 ans d’expérience au service de vos projets dans Chaudière-Appalaches.",
     servicesHeading: "Construction et rénovation pour vos projets.",
   },
   quote: {
@@ -17,6 +17,12 @@ export const pageCopy = {
     intro: "Décrivez vos travaux de construction résidentielle ou commerciale, de rénovation, de toiture ou de revêtement extérieur. Nous pourrons discuter de votre projet.",
   },
 };
+
+export const certificationLogos = [
+  { src: "/certifications/mzt-acq.png", alt: "Association de la construction du Québec — ACQ" },
+  { src: "/certifications/mzt-gcr.png", alt: "Garantie de construction résidentielle — GCR" },
+  { src: "/certifications/mzt-rbq.png", alt: "Régie du bâtiment du Québec — RBQ" },
+];
 
 export const services = [
   "Construction résidentielle",

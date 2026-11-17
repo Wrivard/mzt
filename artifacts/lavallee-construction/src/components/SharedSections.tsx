@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+import { Link } from "wouter";
 import { Building2, Phone, Mail } from "lucide-react";
 import { GoogleMap } from "@/components/GoogleMap";
 import {
@@ -61,6 +63,46 @@ export function TestimonialsSection() {
 }
 
 export function FAQContactSection() {
+  const faqItems: { question: string; answer: ReactNode }[] = [
+    {
+      question: "Quels services offrez-vous?",
+      answer: "MZT Construction offre six services : construction résidentielle, construction commerciale, réfection de toiture, déneigement de toiture, revêtement extérieur et rénovation résidentielle.",
+    },
+    {
+      question: "Réalisez-vous des rénovations résidentielles?",
+      answer: "Oui. Nous réalisons différents projets de rénovation selon les besoins de votre propriété.",
+    },
+    {
+      question: "Faites-vous du déneigement de toiture?",
+      answer: "Oui. Chaque situation est évaluée selon l’accumulation de neige, l’accès et les caractéristiques du bâtiment.",
+    },
+    {
+      question: "Réalisez-vous des projets commerciaux?",
+      answer: "Oui. Nous réalisons des projets de construction commerciale adaptés aux besoins de votre entreprise.",
+    },
+    {
+      question: "Faites-vous des travaux de revêtement extérieur?",
+      answer: "Oui. Le revêtement extérieur fait partie de nos spécialités. Communiquez avec nous pour discuter de votre bâtiment et des travaux souhaités.",
+    },
+    {
+      question: "Comment obtenir une soumission?",
+      answer: (
+        <>
+          Appelez Jean-Sébastien Tanguay au{" "}
+          <a className="font-medium text-secondary underline decoration-primary underline-offset-4 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" href="tel:+14188836242">(418) 883-6242</a>
+          {" "}ou Sébastien Morin au{" "}
+          <a className="font-medium text-secondary underline decoration-primary underline-offset-4 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" href="tel:+14185706620">(418) 570-6620</a>
+          , ou écrivez à mztconstruction2018@hotmail.com en décrivant les travaux souhaités. Vous pouvez aussi remplir le{" "}
+          <Link className="font-medium text-secondary underline decoration-primary underline-offset-4 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" href="/soumission">formulaire de soumission</Link>.
+        </>
+      ),
+    },
+    {
+      question: "Quels secteurs desservez-vous?",
+      answer: "Nous desservons Bellechasse, la Beauce, Lévis et toute la région de Chaudière-Appalaches.",
+    },
+  ];
+
   const contactRows = [
     { icon: Building2, label: "Entreprise", content: <p className="text-secondary font-medium">MZT Construction inc.</p> },
     { icon: Phone, label: "Jean-Sébastien Tanguay", content: <a className="text-secondary font-medium hover:text-primary" href="tel:+14188836242">(418) 883-6242</a> },
@@ -76,15 +118,7 @@ export function FAQContactSection() {
           <h2 className="text-3xl sm:text-4xl font-bold leading-[1.1] mb-8 lg:mb-10 text-secondary">Ce qu’il faut savoir</h2>
 
           <Accordion type="single" collapsible className="w-full border-t border-secondary/15">
-            {[
-              ["Quels services offrez-vous?", "MZT Construction offre six services : construction résidentielle, construction commerciale, réfection de toiture, déneigement de toiture, revêtement extérieur et rénovation résidentielle."],
-              ["Réalisez-vous des rénovations résidentielles?", "Oui. Nous réalisons différents projets de rénovation selon les besoins de votre propriété."],
-              ["Faites-vous du déneigement de toiture?", "Oui. Chaque situation est évaluée selon l’accumulation de neige, l’accès et les caractéristiques du bâtiment."],
-              ["Réalisez-vous des projets commerciaux?", "Oui. Nous réalisons des projets de construction commerciale adaptés aux besoins de votre entreprise."],
-              ["Faites-vous des travaux de revêtement extérieur?", "Oui. Le revêtement extérieur fait partie de nos spécialités. Communiquez avec nous pour discuter de votre bâtiment et des travaux souhaités."],
-              ["Comment obtenir une soumission?", "Appelez Jean-Sébastien Tanguay au (418) 883-6242 ou Sébastien Morin au (418) 570-6620, ou écrivez à mztconstruction2018@hotmail.com en décrivant les travaux souhaités."],
-              ["Quels secteurs desservez-vous?", "Communiquez avec nous afin de confirmer notre disponibilité dans votre municipalité."],
-            ].map(([question, answer], i) => (
+            {faqItems.map(({ question, answer }, i) => (
               <AccordionItem key={question} value={`item-${i + 1}`} className="border-b border-secondary/15">
                 <AccordionTrigger className="text-left font-semibold text-base sm:text-[17px] py-5 sm:py-6 text-secondary hover:no-underline hover:text-[hsl(80_91%_25%)] [&[data-state=open]]:text-[hsl(80_91%_25%)] rounded-sm">
                   {question}

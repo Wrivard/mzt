@@ -1,7 +1,7 @@
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { pageCopy } from "@/data/site";
+import { certificationLogos, pageCopy } from "@/data/site";
 import { TestimonialsSection, FAQContactSection } from "@/components/SharedSections";
 import { ArrowRight, HardHat, CheckCircle, Building2, Layers, ChevronRight, Home as HomeIcon, Snowflake } from "lucide-react";
 
@@ -11,7 +11,7 @@ const serviceCards = [
   {
     category: "Construction résidentielle",
     title: "Construction résidentielle",
-    desc: "Des travaux de construction résidentielle et de transformation adaptés aux caractéristiques de votre propriété.",
+    desc: "Faites construire votre maison, pensée pour votre mode de vie, avec des finitions soignées jusque dans les détails.",
     img: "/photos/mzt/client/construction-residentielle.webp",
     alt: "Maison résidentielle avec garage et toiture foncée",
     icon: <Building2 className="w-5 h-5" />,
@@ -35,7 +35,7 @@ const serviceCards = [
   {
     category: "Déneigement de toiture",
     title: "Déneigement de toiture",
-    desc: "Déneigement de toiture adapté à l’accumulation de neige, à l’accès et aux caractéristiques du bâtiment.",
+    desc: "On retire l’excès de neige sur votre toit pour alléger le poids qui s’accumule après les grosses bordées.",
     img: "/photos/mzt/illustrations/deneigement-toiture.webp",
     alt: "Illustration générée d’un intervenant déneigeant une toiture au râteau depuis le sol",
     icon: <Snowflake className="w-5 h-5" />,
@@ -43,7 +43,7 @@ const serviceCards = [
   {
     category: "Revêtement extérieur",
     title: "Revêtement extérieur",
-    desc: "Des travaux de revêtement extérieur adaptés aux caractéristiques de votre bâtiment et à votre projet.",
+    desc: "Un nouveau revêtement extérieur pour rafraîchir la façade et protéger votre bâtiment contre les intempéries.",
     img: "/photos/mzt/client/revetement-exterieur.webp",
     alt: "Façades d’une maison avec revêtement clair et accents foncés",
     icon: <Layers className="w-5 h-5" />,
@@ -51,7 +51,7 @@ const serviceCards = [
   {
     category: "Rénovation résidentielle",
     title: "Rénovation résidentielle",
-    desc: "Des travaux de rénovation résidentielle pour améliorer vos espaces de vie et les adapter à vos besoins.",
+    desc: "Rénovez les pièces que vous utilisez chaque jour pour gagner en confort et mieux profiter de votre espace.",
     img: "/photos/mzt/client/renovation-interieure.webp",
     alt: "Salon lumineux avec escalier en bois",
     icon: <HomeIcon className="w-5 h-5" />,
@@ -149,7 +149,7 @@ export default function Home() {
 
             <div className="max-w-xl">
               <span className={eyebrowDark}>À propos de MZT Construction</span>
-              <h2 className={`${h2Cls} mb-7`}>Votre projet mérite un travail bien fait.</h2>
+              <h2 className={`${h2Cls} mb-7`}>Des travaux faits avec soin.</h2>
               <p className="text-lg text-muted-foreground mb-5 leading-relaxed">
                 Fondée en 2018, MZT Construction inc. s’appuie sur plus de 15 ans d’expérience dans le domaine de la construction. Nous réalisons des projets résidentiels et commerciaux, ainsi que des travaux de rénovation et des travaux spécialisés.
               </p>
@@ -235,11 +235,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
-              {[
-                { src: "/certifications/mzt-acq.png", alt: "Association de la construction du Québec — ACQ" },
-                { src: "/certifications/mzt-gcr.png", alt: "Garantie de construction résidentielle — GCR" },
-                { src: "/certifications/mzt-rbq.png", alt: "Régie du bâtiment du Québec — RBQ" },
-              ].map((logo) => (
+              {certificationLogos.map((logo) => (
                 <figure key={logo.src} className="flex h-32 sm:h-36 items-center justify-center px-6 sm:px-8">
                   <img
                     src={logo.src}
