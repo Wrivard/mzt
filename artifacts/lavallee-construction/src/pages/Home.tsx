@@ -121,10 +121,12 @@ export default function Home() {
               {[
                 ["15", "+", "Années d'expérience"],
                 ["400", "+", "Projets réalisés"],
-                ["2018", "", "Année de fondation"],
+                ["5753-3283-01", "", "Licence RBQ"],
               ].map(([value, suffix, label], i) => (
                 <div key={label} className={i === 0 ? "pr-3 sm:pr-6" : "px-3 sm:px-6"}>
-                  <dd className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{value}<span className="text-primary">{suffix}</span></dd>
+                  <dd className={`${label === "Licence RBQ" ? "text-[clamp(0.625rem,3vw,1.25rem)] sm:text-xl whitespace-nowrap" : "text-2xl sm:text-3xl"} font-bold text-white tracking-tight`}>
+                    {value}<span className="text-primary">{suffix}</span>
+                  </dd>
                   <dt className="mt-1 text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-white/65 font-semibold leading-snug">{label}</dt>
                 </div>
               ))}
