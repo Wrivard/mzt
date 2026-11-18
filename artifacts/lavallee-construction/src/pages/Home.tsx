@@ -291,11 +291,17 @@ export default function Home() {
           <span className="section-eyebrow text-white/75 uppercase mb-6">Parlons de votre projet</span>
           <h2 className="text-4xl sm:text-5xl xl:text-6xl font-bold mb-7 leading-[1.05] tracking-[-0.03em]">Un projet en tête? Parlons-en.</h2>
           <p className="text-lg md:text-xl text-white/75 mb-10 leading-relaxed max-w-2xl mx-auto">
-            Construction résidentielle ou commerciale, rénovation, toiture ou revêtement extérieur : MZT Construction est disponible pour discuter de votre projet. Appelez au <a href="tel:+14188836242" className="text-white underline decoration-primary decoration-2 underline-offset-4 hover:text-primary">(418) 883-6242</a>.
+            Construction résidentielle ou commerciale, rénovation, toiture ou revêtement extérieur : MZT Construction est disponible pour discuter de votre projet.
           </p>
           <Button asChild size="lg" className="h-14 md:h-16 rounded-md px-8 md:px-10 text-sm sm:text-[15px] font-bold uppercase tracking-[0.12em] hover:bg-[hsl(80_91%_40%)]">
             <Link href="/soumission">Demander une soumission</Link>
           </Button>
+          <a
+            href="tel:+14188836242"
+            className="mx-auto mt-5 block w-fit text-base font-semibold text-white/85 underline decoration-primary decoration-2 underline-offset-4 transition-colors hover:text-primary"
+          >
+            Appelez au (418) 883-6242
+          </a>
         </div>
       </section>
 
