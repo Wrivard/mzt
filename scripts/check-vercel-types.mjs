@@ -39,7 +39,12 @@ while (pending.length) {
     undefined,
     configPath,
   );
-  const program = ts.createProgram([file], parsed.options);
+  // Also exercise Node's conditional fetch types with a web-compatible global.
+  // This catches missing Response members that a plain tsc check can miss.
+  const program = ts.createProgram(
+    [file, path.resolve("scripts/fixtures/vercel-web-global.d.ts")],
+    parsed.options,
+  );
   const diagnostics = [...parsed.errors, ...ts.getPreEmitDiagnostics(program)];
   if (diagnostics.length) {
     failures += diagnostics.length;

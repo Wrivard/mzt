@@ -20,3 +20,9 @@ Vercel's Node TypeScript builder applies its default module mode to raw configur
 **Why:** Adding Node types fixed the entrypoint error but exposed NodeNext import-resolution failures in shared packages despite passing normal local checks. The builder's configuration order was confirmed in its source and reproduced locally.
 
 **How to apply:** Preserve the workspace's intended ESNext/Bundler mode explicitly on server packages and run the Vercel-style source check. Do not rely on locally generated declarations masking shared-source diagnostics.
+
+Native Node fetch typings can lose Response members in mixed Web-global compilation contexts. Include complete Web API declarations on server packages using fetch instead of casting responses or suppressing diagnostics.
+
+**Why:** Deployment continued to report missing Response members even after the ordinary source check passed. A regression fixture exercising Node's conditional Web-global branch reproduced those exact diagnostics.
+
+**How to apply:** Retain explicit ES2022/DOM libraries on fetch consumers and the mixed-global regression fixture. A successful local configuration check is not proof of a successful hosted Vercel build.
