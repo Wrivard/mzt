@@ -1,7 +1,7 @@
 # Cookiebot et Google Tag Manager
 
 - Groupe Cookiebot : `4631a8e3-a162-4134-8659-a678be5f061f`.
-- Conteneur GTM : `GTM-MLGVF778`.
+- Conteneur GTM : `GTM-5HLMKNHG`.
 - Les scripts sont insérés uniquement lors du build de production, dans chaque page HTML pré-rendue, y compris la 404. Le serveur de développement Replit ne les charge pas.
 - L’état de consentement Google est initialisé à `denied` avant Cookiebot et GTM. Cookiebot est synchrone, en mode de blocage automatique et en français. Il communique ensuite les choix à Google Consent Mode.
 - Les scripts nécessaires au démarrage de React et au fonctionnement du formulaire sont exclus du blocage. La carte n’est pas exemptée du consentement : Cookiebot peut la bloquer selon sa classification.

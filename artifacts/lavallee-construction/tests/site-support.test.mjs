@@ -209,7 +209,7 @@ test("build generates page HTML, custom 404, and crawler files from the same dat
   assert.match(emitted.get("politique-de-confidentialite/index.html"), /Lo[i] 25/);
   for (const html of [bundle["index.html"].source, ...[...emitted.values()].filter((value) => value.includes("<html"))]) {
     assert.equal((html.match(/id="Cookiebot"/g) ?? []).length, 1);
-    assert.match(html, /GTM-MLGVF778/);
+    assert.match(html, /GTM-5HLMKNHG/);
   }
 });
 
