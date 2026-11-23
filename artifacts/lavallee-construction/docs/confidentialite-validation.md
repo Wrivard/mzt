@@ -21,7 +21,7 @@ Avant de republier, vérifier les options **Enable analytics** et **Enable Feedb
 
 ## Fonctionnement du site
 
-- Le formulaire prépare un `mailto:`; il ne transmet pas automatiquement la demande. À la demande de l’utilisateur, l’avis explicatif et son lien ont été retirés du formulaire. La politique reste accessible dans le pied de page.
+- Le formulaire prépare un `mailto:`; il ne transmet pas automatiquement la demande. Les photos choisies sont compressées localement et les PDF conservés tels quels, puis une archive ZIP est téléchargée pour ajout manuel au courriel. Aucun fichier n’est envoyé au serveur par le formulaire. À la demande de l’utilisateur, l’avis explicatif et son lien ont été retirés du formulaire. La politique reste accessible dans le pied de page.
 - À la demande de l’utilisateur, Google Maps se charge automatiquement sur l’accueil et la page de soumission, sans écran d’activation. La politique indique la connexion à Google dès le chargement. Ne pas présenter ce fonctionnement comme une activation après consentement; les exigences applicables au chargement automatique doivent être validées par l’entreprise.
 - La police est auto-hébergée; aucun appel à Google Fonts n’est nécessaire.
 - Le domaine canonique est centralisé dans `src/data/site.ts`. Il a été obtenu des métadonnées de publication. En cas de changement de domaine, modifier cette valeur et reconstruire le site pour mettre à jour sitemap, robots, fichiers LLM et métadonnées.

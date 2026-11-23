@@ -7,8 +7,8 @@ export const privacyContact = {
 };
 
 export const privacyUpdated = {
-  iso: "2026-11-16",
-  label: "16 novembre 2026",
+  iso: "2026-11-23",
+  label: "23 novembre 2026",
 };
 
 export const privacyIntro =
@@ -40,7 +40,7 @@ export const privacySections: PrivacySection[] = [
     items: [
       "Prénom, nom, adresse courriel et numéro de téléphone.",
       "Municipalité du projet, type de travaux, envergure approximative, échéancier et description du projet.",
-      "Photos, documents et autres précisions uniquement si vous décidez de les joindre vous-même à un courriel.",
+      "Photos et fichiers PDF que vous choisissez dans le formulaire. Les photos sont compressées dans votre navigateur; les fichiers ne sont pas téléversés ni enregistrés par le site. Une archive ZIP est téléchargée sur votre appareil pour que vous puissiez l’ajouter au courriel.",
       "Renseignements techniques pouvant être traités par l’hébergeur lors d’une connexion : adresse IP, date et heure, ressource demandée et informations sur le navigateur, notamment pour acheminer les pages et assurer la sécurité du service.",
       "Commentaires, captures d’écran ou fichiers que vous choisissez de transmettre avec l’outil de rétroaction de Replit, lorsque cet outil est affiché.",
     ],
@@ -49,8 +49,8 @@ export const privacySections: PrivacySection[] = [
     id: "formulaire",
     title: "3. Ce que fait réellement le formulaire",
     paragraphs: [
-      "Les champs sont traités dans votre navigateur. Le bouton final prépare un courriel dans votre application de messagerie avec les détails saisis. Vous devez ensuite envoyer ce courriel vous-même.",
-      "Le site n’envoie pas automatiquement votre demande, ne téléverse aucune pièce jointe et ne possède pas de base de données enregistrant les champs du formulaire. Les renseignements parviennent à MZT lorsque vous envoyez effectivement le courriel. Votre fournisseur de messagerie intervient alors aussi dans cet envoi.",
+      "Les champs du formulaire et les pièces jointes sont traités dans votre navigateur. Les photos sélectionnées y sont compressées; les PDF restent inchangés. Le site crée ensuite une archive ZIP et la télécharge sur votre appareil. Vous devez joindre cette archive au courriel préparé, puis envoyer le courriel vous-même.",
+      "Le site n’envoie pas automatiquement votre demande, ne téléverse pas les fichiers vers un serveur et ne possède pas de base de données enregistrant les champs du formulaire. Les renseignements et fichiers ne parviennent à MZT que lorsque vous envoyez effectivement le courriel. Votre fournisseur de messagerie intervient alors aussi dans cet envoi.",
       "Vous pouvez quitter le formulaire sans envoyer de courriel, communiquer par téléphone ou écrire directement à l’entreprise. Ne pas fournir les renseignements nécessaires peut limiter notre capacité à évaluer le projet ou à vous répondre.",
     ],
   },
@@ -128,7 +128,7 @@ export const privacySections: PrivacySection[] = [
     id: "modifications",
     title: "10. Mise à jour de cette politique",
     paragraphs: [
-      "Cette politique entre en vigueur le 16 novembre 2026. Toute modification sera publiée sur cette page avec une nouvelle date de mise à jour. Un avis supplémentaire sera diffusé lorsque la loi l’exige. Consultez cette page lorsque vous utilisez le site ou communiquez de nouveaux renseignements.",
+      "Cette politique entre en vigueur le 23 novembre 2026. Toute modification sera publiée sur cette page avec une nouvelle date de mise à jour. Un avis supplémentaire sera diffusé lorsque la loi l’exige. Consultez cette page lorsque vous utilisez le site ou communiquez de nouveaux renseignements.",
     ],
     links: [
       { label: "Loi sur la protection des renseignements personnels dans le secteur privé", href: "https://www.legisquebec.gouv.qc.ca/fr/document/lc/P-39.1" },

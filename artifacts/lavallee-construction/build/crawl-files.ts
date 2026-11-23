@@ -9,7 +9,7 @@ export function crawlFiles(): Record<string, { type: string; content: string }> 
 ## Pages
 
 - [Accueil](${absoluteUrl("/")}): Présentation de l’entreprise et de ses six services.
-- [Demande de soumission](${absoluteUrl("/soumission")}): Formulaire qui prépare un courriel dans la messagerie du visiteur; aucun envoi automatique.
+- [Demande de soumission](${absoluteUrl("/soumission")}): Formulaire qui prépare un courriel; les photos choisies sont compressées dans le navigateur et les pièces sont téléchargées en ZIP pour être jointes manuellement.
 - [Politique de confidentialité](${absoluteUrl(PRIVACY_PATH)}): Renseignements personnels, fournisseurs, carte Google Maps, droits et contact.
 
 ## Entreprise
@@ -31,7 +31,7 @@ ${services.map((service) => `- ${service}`).join("\n")}
 
 ## Précisions importantes
 
-- Le formulaire ne sauvegarde pas les demandes dans une base de données et ne les envoie pas automatiquement. Le visiteur doit envoyer le courriel préparé.
+- Le formulaire ne téléverse pas les fichiers sur un serveur, ne sauvegarde pas les demandes dans une base de données et ne les envoie pas automatiquement. Le visiteur joint l’archive ZIP téléchargée, puis envoie le courriel préparé.
 - La carte est centrée sur Sainte-Claire, Québec. Ce repère n’est ni une adresse postale confirmée ni une délimitation du territoire desservi.
 - Confirmer directement la disponibilité, les prix et les conditions du projet avec MZT Construction.
 - Ne pas inventer d’avis clients, de note moyenne, de numéro de licence, de garantie ou de zone de service.

@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { QuoteAttachments } from "@/components/QuoteAttachments";
 import {
   ArrowLeft,
   CheckCircle2,
@@ -37,9 +38,22 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+function downloadArchive(archive: File) {
+  const url = URL.createObjectURL(archive);
+  const downloadLink = document.createElement("a");
+  downloadLink.href = url;
+  downloadLink.download = archive.name;
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  downloadLink.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 60_000);
+}
+
 export default function Soumission() {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [attachmentArchive, setAttachmentArchive] = useState<File | null>(null);
+  const [isPreparingAttachments, setIsPreparingAttachments] = useState(false);
 
   const { register, control, handleSubmit, trigger, formState: { errors } } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -78,9 +92,16 @@ export default function Soumission() {
       "",
       `Description du projet : ${data.description}`,
       "",
-       "Vous pouvez joindre des photos directement à ce courriel avant de l'envoyer."
+      attachmentArchive
+        ? "Une archive ZIP a été téléchargée. Ajoutez-la à ce courriel avant de l'envoyer."
+        : "Vous pouvez joindre des photos ou des documents directement à ce courriel avant de l'envoyer.",
     ].join("\n");
-     window.location.href = `mailto:mztconstruction2018@hotmail.com?subject=${encodeURIComponent(`Demande de soumission — ${data.firstName} ${data.lastName}`)}&body=${encodeURIComponent(body)}`;
+
+    if (attachmentArchive) {
+      downloadArchive(attachmentArchive);
+    }
+
+    window.location.href = `mailto:mztconstruction2018@hotmail.com?subject=${encodeURIComponent(`Demande de soumission — ${data.firstName} ${data.lastName}`)}&body=${encodeURIComponent(body)}`;
     setIsSubmitted(true);
   };
 
@@ -193,8 +214,18 @@ export default function Soumission() {
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-secondary">Votre courriel est prêt</h2>
                   <p className="text-base sm:text-lg leading-relaxed text-muted-foreground mb-8 max-w-lg mx-auto">
-                    Votre messagerie devrait s’ouvrir avec les détails du projet. Ajoutez vos photos, puis envoyez le courriel. Rien n’a été transmis automatiquement par ce site. Si votre messagerie ne s’ouvre pas, écrivez directement à <a className="break-all underline underline-offset-4" href="mailto:mztconstruction2018@hotmail.com">mztconstruction2018@hotmail.com</a>.
+                    Votre messagerie devrait s’ouvrir avec les détails du projet. {attachmentArchive ? "Ajoutez le fichier ZIP téléchargé au courriel avant de l’envoyer." : "Vous pouvez y joindre des photos ou des documents."} Rien n’a été envoyé automatiquement par le site. Si votre messagerie ne s’ouvre pas, écrivez directement à <a className="break-all underline underline-offset-4" href="mailto:mztconstruction2018@hotmail.com">mztconstruction2018@hotmail.com</a>.
                   </p>
+                  {attachmentArchive && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="mb-3 h-12 rounded-md px-6 text-[13px] font-bold"
+                      onClick={() => downloadArchive(attachmentArchive)}
+                    >
+                      Télécharger à nouveau l’archive ZIP
+                    </Button>
+                  )}
                   <Button className="h-12 rounded-md uppercase tracking-[0.12em] text-[13px] font-bold px-8" onClick={() => window.location.href = "/"}>
                     Retour à l'accueil
                   </Button>
@@ -312,9 +343,10 @@ export default function Soumission() {
                           />
                             {errors.city && <p role="alert" className="text-destructive text-sm font-medium">{errors.city.message}</p>}
                         </div>
-                        <p className="text-sm text-muted-foreground">
-                          Vous pourrez joindre des photos au courriel préparé à la dernière étape. Aucun fichier n’est téléversé sur ce site.
-                        </p>
+                        <QuoteAttachments
+                          onArchiveChange={setAttachmentArchive}
+                          onBusyChange={setIsPreparingAttachments}
+                        />
                       </div>
                     )}
 
@@ -384,8 +416,8 @@ export default function Soumission() {
                           Suivant <ChevronRight className="ml-2 w-4 h-4" />
                         </Button>
                       ) : (
-                        <Button data-testid="button-form-submit" type="submit" className="h-12 w-full rounded-md bg-forest px-8 text-[13px] font-bold uppercase tracking-[0.12em] text-white hover:bg-forest/90 sm:w-auto">
-                           Envoyer ma demande
+                         <Button data-testid="button-form-submit" type="submit" disabled={isPreparingAttachments} className="h-12 w-full rounded-md bg-forest px-8 text-[13px] font-bold uppercase tracking-[0.12em] text-white hover:bg-forest/90 disabled:cursor-wait disabled:opacity-60 sm:w-auto">
+                           {isPreparingAttachments ? "Préparation des fichiers…" : "Envoyer ma demande"}
                         </Button>
                       )}
                     </div>
