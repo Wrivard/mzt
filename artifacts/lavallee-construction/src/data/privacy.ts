@@ -60,17 +60,17 @@ export const privacySections: PrivacySection[] = [
     title: "4. Pourquoi utiliser ces renseignements",
     paragraphs: [
       "Les renseignements communiqués servent à comprendre votre besoin, évaluer les travaux, répondre à vos questions, préparer une soumission et assurer le suivi demandé. Si vous nous confiez des travaux, les renseignements nécessaires servent aussi à gérer cette relation et à respecter les obligations légales applicables.",
-      "Le formulaire n’entraîne aucun abonnement à une infolettre ni aucune inscription à des messages promotionnels. Le site ne prend pas de décision automatisée à votre sujet et n’effectue pas de profilage publicitaire.",
+      "Le formulaire n’entraîne aucun abonnement à une infolettre ni aucune inscription à des messages promotionnels. Le site ne prend pas de décision automatisée à votre sujet. Les outils de mesure et de marketing éventuellement configurés dans Google Tag Manager sont soumis aux choix de consentement applicables.",
     ],
   },
   {
     id: "carte-et-temoins",
     title: "5. Carte Google Maps et témoins",
     paragraphs: [
-      "Les polices de caractères sont hébergées avec le site. Le code applicatif n’installe pas de témoin publicitaire et n’enregistre pas les champs du formulaire dans le stockage persistant de votre navigateur.",
+      "Les polices de caractères sont hébergées avec le site. Les champs du formulaire ne sont pas enregistrés dans le stockage persistant de votre navigateur. Sur le site publié, Cookiebot gère les préférences relatives aux témoins; Google Tag Manager charge les balises configurées par l’administrateur. Les autorisations Google de statistiques et de publicité sont refusées par défaut.",
       "L’hébergement peut ajouter ses propres outils de statistiques et de rétroaction, distincts de la carte. La présente politique ne signifie donc pas qu’aucun renseignement technique n’est traité lors de votre visite.",
-      "La carte Google Maps se charge automatiquement sur les pages d’accueil et de soumission. Dès son chargement, une connexion est établie avec Google, qui peut recevoir votre adresse IP et des renseignements sur votre navigateur et utiliser ses propres témoins, selon votre configuration et ses politiques. Le site ne demande pas l’accès à la localisation de votre appareil.",
-      "La gestion des témoins de Google se fait dans votre navigateur ou votre compte Google. Les réglages de protection contre les contenus tiers de votre navigateur peuvent limiter le chargement de la carte ou ses fonctionnalités.",
+      "La carte Google Maps est intégrée aux pages d’accueil et de soumission. Son chargement peut être limité par Cookiebot selon sa classification et vos choix de consentement. Lorsqu’elle se charge, Google peut recevoir votre adresse IP et des renseignements sur votre navigateur et utiliser ses propres témoins, selon votre configuration et ses politiques. Le site ne demande pas l’accès à la localisation de votre appareil.",
+      "La déclaration des témoins ci-dessous présente les renseignements fournis par Cookiebot et permet de gérer votre consentement. Vous pouvez aussi utiliser les paramètres de votre navigateur ou de votre compte Google. Les réglages de protection contre les contenus tiers peuvent limiter la carte ou ses fonctionnalités.",
     ],
     links: [
       { label: "Politique de confidentialité de Google", href: "https://policies.google.com/privacy?hl=fr-CA" },

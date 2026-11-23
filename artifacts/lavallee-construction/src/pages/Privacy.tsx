@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { ArrowUpRight, Mail, Phone, ShieldCheck } from "lucide-react";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { privacyContact, privacyIntro, privacySections, privacyUpdated } from "@/data/privacy";
+import { CookieDeclaration } from "@/components/CookieDeclaration";
 
 function ContactCard({ id }: { id: string }) {
   return (
@@ -88,6 +89,7 @@ export default function Privacy() {
                 )}
               </section>
             ))}
+            <CookieDeclaration />
             <div className="mt-14 border-t border-border pt-8 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
               <p className="text-sm text-muted-foreground">Mise à jour : <time dateTime={privacyUpdated.iso} className="font-semibold text-secondary">{privacyUpdated.label}</time></p>
               <Link href="/" data-testid="link-privacy-home" className="text-xs font-bold uppercase tracking-[0.12em] text-secondary hover:text-[hsl(80_91%_25%)]">Retour à l’accueil</Link>

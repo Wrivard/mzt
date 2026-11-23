@@ -5,6 +5,7 @@ import { getPageInfo, pages } from "../src/data/site.ts";
 import { crawlFiles } from "./crawl-files.ts";
 import { pageHtml } from "./page-html.ts";
 import { createPageRenderer } from "./render-pages.ts";
+import { withProductionConsent } from "./consent.ts";
 
 /** Static crawl files, per-route HTML, and a real 404 instead of a blanket SPA rewrite. */
 export function siteSupport(): Plugin {
@@ -67,7 +68,7 @@ export function siteSupport(): Plugin {
       async handler(_options, bundle) {
         const index = bundle["index.html"];
         if (!index || index.type !== "asset") throw new Error("Missing built index.html for public site pages.");
-        const shell = String(index.source);
+        const shell = withProductionConsent(String(index.source));
         const renderer = await createPageRenderer(root, base);
         try {
           const renderPage = (route: string) => renderer.render(`${base.replace(/\/$/, "")}${route}`);

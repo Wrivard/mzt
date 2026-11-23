@@ -8,12 +8,13 @@ import { crawlFiles } from "../build/crawl-files.ts";
 import { pageHtml as buildPageHtml } from "../build/page-html.ts";
 import { createPageRenderer } from "../build/render-pages.ts";
 import { siteSupport } from "../build/site-support.ts";
+import { withProductionConsent } from "../build/consent.ts";
 import { pageCopy, pages, PRIVACY_PATH, SITE_URL } from "../src/data/site.ts";
 import { privacyContact, privacySections } from "../src/data/privacy.ts";
 import { seoForPath } from "../src/lib/seo.ts";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const shell = '<html lang="fr"><head><title>Old title</title><meta name="description" content="Old description"><meta name="robots" content="index, follow"><meta property="og:title" content="Old title"></head><body><div id="root"></div><script src="/assets/app.js"></script></body></html>';
+const shell = '<html lang="fr"><head><meta charset="UTF-8"><title>Old title</title><meta name="description" content="Old description"><meta name="robots" content="index, follow"><meta property="og:title" content="Old title"></head><body><div id="root"></div><script src="/assets/app.js"></script></body></html>';
 const renderer = await createPageRenderer(root, "/");
 const render = renderer.render;
 const rendered = new Map([...pages.map((page) => page.path), "/404"].map((route) => [route, render(route)]));
@@ -51,7 +52,7 @@ test("Vercel normalizes HTML aliases, excludes the API from indexing and caches 
 test("startup preserves full no-JS HTML and has bounded recovery if hydration fails", () => {
   const source = readFileSync(path.join(root, "index.html"), "utf8");
   const html = pageHtml(source, "/soumission");
-  const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
+  const script = html.match(/<script data-cookieconsent="ignore">([\s\S]*?)<\/script>/)[1];
   const attributes = new Set();
   let recover;
   runInNewContext(script, {
@@ -154,6 +155,8 @@ test("development returns 200 for public routes and correct content types for cr
     assert.equal(result.status, 200);
     assert.match(result.headers["content-type"], /text\/html/);
     assert.ok(result.body.includes(page.title));
+    assert.ok(!result.body.includes('id="Cookiebot"'), "Do not load the CMP in development");
+    assert.ok(!result.body.includes("gtm.js?id="), "Do not track development visits");
   }
   for (const [name, file] of Object.entries(crawlFiles())) {
     const result = await request(`/${name}`);
@@ -204,6 +207,27 @@ test("build generates page HTML, custom 404, and crawler files from the same dat
   assert.match(bundle["index.html"].source, /fetchpriority="high"/);
   assert.match(emitted.get("404.html"), /noindex, follow/);
   assert.match(emitted.get("politique-de-confidentialite/index.html"), /Lo[i] 25/);
+  for (const html of [bundle["index.html"].source, ...[...emitted.values()].filter((value) => value.includes("<html"))]) {
+    assert.equal((html.match(/id="Cookiebot"/g) ?? []).length, 1);
+    assert.match(html, /GTM-MLGVF778/);
+  }
+});
+
+test("production consent defaults precede Cookiebot, GTM and application scripts", () => {
+  const html = withProductionConsent(shell);
+  assert.ok(html.indexOf("gtag('consent', 'default'") < html.indexOf('id="Cookiebot"'));
+  assert.ok(html.indexOf('id="Cookiebot"') < html.indexOf("gtm.js?id="));
+  assert.ok(html.indexOf("gtm.js?id=") < html.indexOf("/assets/app.js"));
+  assert.match(html, /data-blockingmode="auto"/);
+  assert.match(withProductionConsent(shell.replace('<script src="/assets/app.js"', '<script type="module" src="/assets/app.js"')),
+    /<script data-cookieconsent="ignore" type="module" src="\/assets\/app.js"/);
+  const script = html.match(/<script data-cookieconsent="ignore">([\s\S]*?)<\/script>/)[1];
+  const window = {};
+  runInNewContext(script, { window, get dataLayer() { return window.dataLayer; } });
+  const defaults = window.dataLayer.find((entry) => entry[0] === "consent")[2];
+  for (const key of ["ad_storage", "analytics_storage", "ad_user_data", "ad_personalization"]) {
+    assert.equal(defaults[key], "denied");
+  }
 });
 
 test("initial HTML contains full services, projects, certifications, FAQ answers, map and footer", () => {
