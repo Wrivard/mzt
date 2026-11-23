@@ -38,6 +38,13 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+const timelineOptions = [
+  { value: "des-que-possible", label: "Dès que possible" },
+  { value: "prochaines-semaines", label: "Dans les prochaines semaines" },
+  { value: "prochains-mois", label: "Dans les prochains mois" },
+  { value: "a-determiner", label: "À déterminer" },
+];
+
 function downloadArchive(archive: File) {
   const url = URL.createObjectURL(archive);
   const downloadLink = document.createElement("a");
@@ -299,26 +306,36 @@ export default function Soumission() {
                               name="timeline"
                               control={control}
                               render={({ field }) => (
-                                <div className="relative">
-                                  <select
+                                <details className="group rounded-md border border-border bg-background">
+                                  <summary
                                     id="field-timeline"
-                                    name={field.name}
                                     ref={field.ref}
-                                    value={field.value}
-                                    onChange={field.onChange}
                                     onBlur={field.onBlur}
                                     aria-invalid={!!errors.timeline}
                                     data-testid="select-project-timeline"
-                                    className="h-auto min-h-14 w-full cursor-pointer appearance-none rounded-md border border-border bg-background py-3 pl-4 pr-11 text-left text-base text-secondary focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+                                    className="flex min-h-14 w-full cursor-pointer list-none items-center justify-between gap-3 rounded-md px-4 py-3 text-left text-base text-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden"
                                   >
-                                    <option value="" disabled>Quand souhaitez-vous réaliser les travaux?</option>
-                                    <option value="des-que-possible">Dès que possible</option>
-                                    <option value="prochaines-semaines">Dans les prochaines semaines</option>
-                                    <option value="prochains-mois">Dans les prochains mois</option>
-                                    <option value="a-determiner">À déterminer</option>
-                                  </select>
-                                  <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
-                                </div>
+                                    <span>{timelineOptions.find((option) => option.value === field.value)?.label ?? "Quand souhaitez-vous réaliser les travaux?"}</span>
+                                    <ChevronDown className="pointer-events-none h-4 w-4 shrink-0 text-muted-foreground group-open:rotate-180" aria-hidden="true" />
+                                  </summary>
+                                  <fieldset className="space-y-1 border-t border-border p-2">
+                                    <legend className="sr-only">Échéancier souhaité</legend>
+                                    {timelineOptions.map((option) => (
+                                      <label key={option.value} className="flex min-h-12 cursor-pointer items-center gap-3 rounded px-3 py-2 text-sm text-secondary hover:bg-muted focus-within:ring-2 focus-within:ring-primary">
+                                        <input
+                                          type="radio"
+                                          name={field.name}
+                                          value={option.value}
+                                          checked={field.value === option.value}
+                                          onChange={field.onChange}
+                                          onBlur={field.onBlur}
+                                          className="h-4 w-4 shrink-0 accent-primary"
+                                        />
+                                        {option.label}
+                                      </label>
+                                    ))}
+                                  </fieldset>
+                                </details>
                               )}
                             />
                             {errors.timeline && <p role="alert" className="text-destructive text-sm font-medium">{errors.timeline.message}</p>}
