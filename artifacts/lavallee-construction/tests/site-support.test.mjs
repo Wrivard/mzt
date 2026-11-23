@@ -2,6 +2,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { readFileSync } from "node:fs";
+import { runInNewContext } from "node:vm";
 import { crawlFiles } from "../build/crawl-files.ts";
 import { pageHtml } from "../build/page-html.ts";
 import { siteSupport } from "../build/site-support.ts";
@@ -10,6 +12,30 @@ import { privacyContact, privacySections } from "../src/data/privacy.ts";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const shell = '<html lang="fr"><head><title>Old title</title><meta name="description" content="Old description"><meta name="robots" content="index, follow"><meta property="og:title" content="Old title"></head><body><div id="root"></div><script src="/assets/app.js"></script></body></html>';
+
+test("startup hides the simplified fallback only while JavaScript boots, with a failure timeout", () => {
+  const source = readFileSync(path.join(root, "index.html"), "utf8");
+  const html = pageHtml(source, "/soumission");
+  const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
+  const attributes = new Set();
+  let recover;
+  runInNewContext(script, {
+    document: { documentElement: {
+      setAttribute: (name) => attributes.add(name),
+      removeAttribute: (name) => attributes.delete(name),
+    } },
+    window: { setTimeout: (callback, delay) => {
+      assert.equal(delay, 8000);
+      recover = callback;
+    } },
+  });
+  assert.ok(attributes.has("data-app-loading"));
+  assert.match(html, /html\[data-app-loading\] #root > \.mzt-static-page \{ display: none; \}/);
+  assert.match(html, /#app-startup \{ display: none; \}/);
+  assert.ok(html.includes(`<h1>${pageCopy.quote.heading}</h1>`), "No-JS content is retained");
+  recover();
+  assert.equal(attributes.has("data-app-loading"), false, "Failure reveals the fallback instead of leaving a permanent loader");
+});
 
 test("crawl resources use the verified published domain and only canonical pages", () => {
   const files = crawlFiles();
