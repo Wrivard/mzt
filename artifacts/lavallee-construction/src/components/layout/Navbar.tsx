@@ -156,21 +156,9 @@ export function Navbar() {
             <a href="/#a-propos" className="border-b border-white/[0.08] py-5" onClick={() => setMobileMenuOpen(false)}>
               À propos
             </a>
-            <div className="border-b border-white/[0.08] py-5">
-              <span className="text-white/50 mb-3 block text-xs font-bold uppercase tracking-[0.18em]">Nos Services</span>
-              <div className="flex flex-col">
-                {servicesLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="py-2 text-lg font-medium text-white/85 hover:text-white"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </a>
-                ))}
-              </div>
-            </div>
+            <a href="/#services" className="border-b border-white/[0.08] py-5" onClick={() => setMobileMenuOpen(false)}>
+              Services
+            </a>
             <a href="/#contact" className="border-b border-white/[0.08] py-5" onClick={() => setMobileMenuOpen(false)}>
               Contact
             </a>

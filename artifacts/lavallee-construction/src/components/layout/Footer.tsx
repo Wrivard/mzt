@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="bg-[#1B1B1B] text-white pt-16 md:pt-20 pb-10">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1fr_1.1fr] gap-10 xl:gap-12 mb-12 md:mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.4fr_0.8fr_1fr_minmax(17.5rem,1.2fr)] gap-10 xl:gap-12 mb-12 md:mb-16">
           <div className="flex flex-col items-start">
             <img
               src="/logo-mzt-2018.png"
@@ -57,7 +57,7 @@ export function Footer() {
             <h3 className="text-xs font-bold mb-6 uppercase tracking-[0.18em] text-white/60">Votre projet</h3>
             <Link
               href="/soumission"
-              className="flex h-12 w-full items-center justify-center rounded-md bg-primary px-6 text-xs font-bold uppercase tracking-[0.12em] text-primary-foreground hover:bg-[hsl(80_91%_40%)] transition-colors"
+              className="flex h-12 w-full items-center justify-center rounded-md bg-primary px-6 text-xs font-bold uppercase tracking-[0.12em] lg:whitespace-nowrap text-primary-foreground hover:bg-[hsl(80_91%_40%)] transition-colors"
             >
               Demander une soumission
             </Link>
