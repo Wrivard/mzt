@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -14,6 +13,7 @@ import { QuoteAttachments } from "@/components/QuoteAttachments";
 import {
   ArrowLeft,
   CheckCircle2,
+  ChevronDown,
   ChevronRight,
   CircleHelp,
   Building2,
@@ -299,17 +299,26 @@ export default function Soumission() {
                               name="timeline"
                               control={control}
                               render={({ field }) => (
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <SelectTrigger id="field-timeline" aria-invalid={!!errors.timeline} data-testid="select-project-timeline" className="h-auto min-h-14 gap-2 whitespace-normal rounded-md border-border bg-background text-left focus:ring-2 focus:ring-primary/40 focus:border-primary [&>span]:line-clamp-none [&>span]:whitespace-normal [&>svg]:shrink-0">
-                                       <SelectValue placeholder="Quand souhaitez-vous réaliser les travaux?" />
-                                  </SelectTrigger>
-                                  <SelectContent className="rounded-lg">
-                                    <SelectItem value="des-que-possible">Dès que possible</SelectItem>
-                                    <SelectItem value="prochaines-semaines">Dans les prochaines semaines</SelectItem>
-                                    <SelectItem value="prochains-mois">Dans les prochains mois</SelectItem>
-                                    <SelectItem value="a-determiner">À déterminer</SelectItem>
-                                  </SelectContent>
-                                </Select>
+                                <div className="relative">
+                                  <select
+                                    id="field-timeline"
+                                    name={field.name}
+                                    ref={field.ref}
+                                    value={field.value}
+                                    onChange={field.onChange}
+                                    onBlur={field.onBlur}
+                                    aria-invalid={!!errors.timeline}
+                                    data-testid="select-project-timeline"
+                                    className="h-auto min-h-14 w-full cursor-pointer appearance-none rounded-md border border-border bg-background py-3 pl-4 pr-11 text-left text-base text-secondary focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+                                  >
+                                    <option value="" disabled>Quand souhaitez-vous réaliser les travaux?</option>
+                                    <option value="des-que-possible">Dès que possible</option>
+                                    <option value="prochaines-semaines">Dans les prochaines semaines</option>
+                                    <option value="prochains-mois">Dans les prochains mois</option>
+                                    <option value="a-determiner">À déterminer</option>
+                                  </select>
+                                  <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
+                                </div>
                               )}
                             />
                             {errors.timeline && <p role="alert" className="text-destructive text-sm font-medium">{errors.timeline.message}</p>}
