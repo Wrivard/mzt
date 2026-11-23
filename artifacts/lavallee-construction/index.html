@@ -20,6 +20,22 @@
       }
       #app-startup img { display: block; width: 160px; height: auto; }
       #app-startup p { margin: 0; }
+      .startup-progress {
+        width: min(200px, 65vw); height: 4px; overflow: hidden;
+        border-radius: 999px; background: #ffffff26;
+      }
+      .startup-progress::after {
+        content: ""; display: block; width: 45%; height: 100%;
+        border-radius: inherit; background: #80a800;
+        animation: startup-progress-slide 1.3s ease-in-out infinite;
+      }
+      @keyframes startup-progress-slide {
+        from { transform: translateX(-110%); }
+        to { transform: translateX(325%); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .startup-progress::after { animation: none; width: 100%; }
+      }
     </style>
     <title>Construction, rénovation et toiture | MZT Construction</title>
     <meta name="description" content="Construction résidentielle et commerciale, rénovation, toiture et revêtement extérieur : découvrez MZT Construction et demandez une soumission pour vos travaux." />
@@ -38,6 +54,7 @@
   <body>
     <div id="app-startup" role="status" aria-live="polite">
       <img src="/logo-mzt-2018.png" alt="MZT Construction" width="160" />
+      <div class="startup-progress" role="progressbar" aria-label="Chargement du site"></div>
       <p>Chargement du site…</p>
     </div>
     <div id="root"></div>
