@@ -66,6 +66,7 @@ test("startup hides the simplified fallback only while JavaScript boots, with a 
 });
 
 test("crawl resources use the verified published domain and only canonical pages", () => {
+  assert.equal(SITE_URL, "https://mztconstruction.ca");
   const files = crawlFiles();
   assert.deepEqual(Object.keys(files).sort(), ["llms-full.txt", "llms.txt", "robots.txt", "sitemap.xml"]);
   assert.match(files["robots.txt"].content, /User-agent: \*\nAllow: \//);

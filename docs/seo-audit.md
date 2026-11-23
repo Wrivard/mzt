@@ -4,11 +4,11 @@
 
 Technical audit of the source, generated production HTML, local routes, crawler resources and Vercel configuration. Visible copy, layout, CSS, photography, form behaviour and the always-loaded map were left unchanged. No ranking score or measured Core Web Vitals is claimed.
 
-## Priority finding: canonical domain needs confirmation
+## Canonical domain corrected
 
-Canonical URLs, Open Graph URLs, sitemap links, entity identifiers and AI-readable files currently share the existing `SITE_URL`, `https://mzr-const.replit.app`. The final public domain for the Vercel deployment has not yet been confirmed. If Vercel is replacing that address, all of these signals must use the final domain instead. Do not substitute a development or temporary preview hostname.
+The site owner confirmed `https://mztconstruction.ca` as the final public domain. Canonical URLs, Open Graph URLs, sitemap links, entity identifiers and AI-readable files now share that domain through the centralized `SITE_URL`.
 
-Once the final domain is confirmed, update the centralized value, rebuild and verify the live output. If the old site remains publicly accessible, redirect it to the final domain where hosting access permits.
+The generated files have been updated; publishing these changes is still required. Verify the live output after deployment. If the old site remains publicly accessible, redirect it to the final domain where hosting access permits.
 
 ## Implemented without visual or copy changes
 
@@ -39,7 +39,7 @@ Vercel redirects and response headers require a new deployment; local Vite does 
 
 ## Remaining checks on the final published site
 
-1. Confirm final domain and HTTPS/www redirect policy.
+1. Verify that the confirmed domain is attached in Vercel and that HTTPS/www redirects resolve to `https://mztconstruction.ca`.
 2. Verify canonical tags, sitemap host, actual content types, clean-URL redirects, API noindex headers, cache headers and an unknown URL returning HTTP 404.
 3. Submit the final-domain sitemap to Google Search Console and use URL Inspection for the homepage and quotation page.
 4. Validate structured data with Google's Rich Results Test or Schema.org Validator. A real postal address was not invented to satisfy local-business rich-result requirements.

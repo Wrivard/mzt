@@ -1,6 +1,6 @@
-// Production URL verified using deployment metadata, not the development preview.
+// Canonical production domain confirmed by the site owner.
 // Update this one value if the primary published domain changes, then rebuild.
-export const SITE_URL = "https://mzr-const.replit.app";
+export const SITE_URL = "https://mztconstruction.ca";
 export const PRIVACY_PATH = "/politique-de-confidentialite";
 export const SITE_NAME = "MZT Construction";
 export const SITE_EMAIL = "mztconstruction2018@hotmail.com";
