@@ -1,6 +1,5 @@
 {
-  "extends": "./tsconfig.base.json",
-  "compilerOptions": { "types": ["node"], "noEmit": true },
+  "extends": "./api/tsconfig.json",
   "include": ["api/**/*.ts"],
   "references": [{ "path": "./lib/quote-mail" }]
 }
