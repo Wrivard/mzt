@@ -13,7 +13,6 @@ import { QuoteAttachments } from "@/components/QuoteAttachments";
 import {
   ArrowLeft,
   CheckCircle2,
-  ChevronDown,
   ChevronRight,
   CircleHelp,
   Building2,
@@ -306,39 +305,28 @@ export default function Soumission() {
                               name="timeline"
                               control={control}
                               render={({ field }) => (
-                                <details className="group rounded-md border border-border bg-background">
-                                  <summary
+                                  <select
                                     id="field-timeline"
+                                    name={field.name}
                                     ref={field.ref}
+                                    value={field.value}
+                                    onChange={field.onChange}
                                     onBlur={field.onBlur}
                                     aria-invalid={!!errors.timeline}
+                                    aria-describedby={errors.timeline ? "timeline-error" : undefined}
                                     data-testid="select-project-timeline"
-                                    className="flex min-h-14 w-full cursor-pointer list-none items-center justify-between gap-3 rounded-md px-4 py-3 text-left text-base text-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary [&::-webkit-details-marker]:hidden"
+                                    className="min-h-14 w-full min-w-0 cursor-pointer rounded-md border border-border bg-background px-3 py-3 text-base text-secondary focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
                                   >
-                                    <span>{timelineOptions.find((option) => option.value === field.value)?.label ?? "Quand souhaitez-vous réaliser les travaux?"}</span>
-                                    <ChevronDown className="pointer-events-none h-4 w-4 shrink-0 text-muted-foreground group-open:rotate-180" aria-hidden="true" />
-                                  </summary>
-                                  <fieldset className="space-y-1 border-t border-border p-2">
-                                    <legend className="sr-only">Échéancier souhaité</legend>
+                                    <option value="" disabled>Sélectionnez un échéancier</option>
                                     {timelineOptions.map((option) => (
-                                      <label key={option.value} className="flex min-h-12 cursor-pointer items-center gap-3 rounded px-3 py-2 text-sm text-secondary hover:bg-muted focus-within:ring-2 focus-within:ring-primary">
-                                        <input
-                                          type="radio"
-                                          name={field.name}
-                                          value={option.value}
-                                          checked={field.value === option.value}
-                                          onChange={field.onChange}
-                                          onBlur={field.onBlur}
-                                          className="h-4 w-4 shrink-0 accent-primary"
-                                        />
+                                      <option key={option.value} value={option.value}>
                                         {option.label}
-                                      </label>
+                                      </option>
                                     ))}
-                                  </fieldset>
-                                </details>
+                                  </select>
                               )}
                             />
-                            {errors.timeline && <p role="alert" className="text-destructive text-sm font-medium">{errors.timeline.message}</p>}
+                            {errors.timeline && <p id="timeline-error" role="alert" className="text-destructive text-sm font-medium">{errors.timeline.message}</p>}
                         </div>
                       </div>
                     )}

@@ -4,4 +4,4 @@
 - [Contenu approuvé](approved-content-visual-scope.md) — le rehaussement visuel MZT conserve les textes, fonctionnalités et SEO; signaler les incohérences sans les réécrire.
 - [Hébergement et confidentialité](hosting-privacy-controls.md) — vérifier les scripts du site publié; le consentement local ne contrôle pas les outils ajoutés par l’hébergeur.
 - [Initial HTML flash](initial-html-flash.md) — plain content on refresh can be the pre-JavaScript fallback, not missing CSS; retain no-JS access and bounded recovery.
-- [Quote dropdown checks](quote-dropdown-verification.md) — verify pointer-only option selection; prefer in-page choices for the repeatedly reported timeline issue.
+- [Quote dropdown checks](quote-dropdown-verification.md) — use a normal dropdown, not expandable radio choices; verify pointer-only selection.
