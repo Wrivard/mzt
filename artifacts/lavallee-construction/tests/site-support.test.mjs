@@ -9,9 +9,37 @@ import { pageHtml } from "../build/page-html.ts";
 import { siteSupport } from "../build/site-support.ts";
 import { pageCopy, pages, PRIVACY_PATH, SITE_URL } from "../src/data/site.ts";
 import { privacyContact, privacySections } from "../src/data/privacy.ts";
+import { seoForPath } from "../src/lib/seo.ts";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const shell = '<html lang="fr"><head><title>Old title</title><meta name="description" content="Old description"><meta name="robots" content="index, follow"><meta property="og:title" content="Old title"></head><body><div id="root"></div><script src="/assets/app.js"></script></body></html>';
+
+test("technical SEO describes only established services, territory and business contacts", () => {
+  const seo = seoForPath("/");
+  const graph = seo.structuredData["@graph"];
+  const business = graph.find((entity) => entity["@type"] === "GeneralContractor");
+  assert.equal(business.identifier.value, "5753-3283-01");
+  assert.deepEqual(business.areaServed.map((area) => area.name), ["Bellechasse", "Beauce", "Lévis", "Chaudière-Appalaches"]);
+  assert.equal(business.hasOfferCatalog.itemListElement.length, 6);
+  assert.equal(business.contactPoint.length, 2);
+  assert.equal(business.logo, `${SITE_URL}/logo-mzt-2018.png`);
+  assert.equal(business.address, undefined, "Do not invent a street address");
+  assert.equal(business.aggregateRating, undefined, "Do not invent review ratings");
+  assert.ok(seo.meta.some((tag) => tag.key === "robots" && tag.content.includes("max-image-preview:large")));
+  assert.equal(seoForPath("/soumission").structuredData["@graph"].find((entity) => entity["@id"].endsWith("#page"))["@type"], "ContactPage");
+  const source = readFileSync(path.join(root, "index.html"), "utf8");
+  assert.match(source, /rel="preload" as="image" href="\/logo-mzt-2018.png"/);
+});
+
+test("Vercel normalizes HTML aliases, excludes the API from indexing and caches fingerprinted assets", () => {
+  const config = JSON.parse(readFileSync(path.resolve(root, "../../vercel.json"), "utf8"));
+  for (const page of pages) {
+    const alias = page.path === "/" ? "/index.html" : `${page.path}/index.html`;
+    assert.ok(config.redirects.some((redirect) => redirect.source === alias && redirect.destination === page.path && redirect.permanent));
+  }
+  assert.ok(config.headers.find((entry) => entry.source === "/api/(.*)").headers.some((header) => header.key === "X-Robots-Tag" && header.value.includes("noindex")));
+  assert.ok(config.headers.find((entry) => entry.source === "/assets/(.*)").headers.some((header) => header.value.includes("immutable")));
+});
 
 test("startup hides the simplified fallback only while JavaScript boots, with a failure timeout", () => {
   const source = readFileSync(path.join(root, "index.html"), "utf8");
