@@ -11,6 +11,39 @@ tags:
   - name: health
     description: Health operations
 paths:
+  /quotes:
+    post:
+      operationId: submitQuote
+      summary: Send a quote request and its confirmation through Resend
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuoteInput"
+      responses:
+        "200":
+          description: The owner's message was accepted by Resend
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuoteReceipt"
+        "400":
+          description: Invalid request
+        "403":
+          description: Invalid origin
+        "405":
+          description: Method not allowed
+        "413":
+          description: Attachments too large
+        "415":
+          description: JSON content type required
+        "429":
+          description: Too many requests
+        "502":
+          description: Email service failed
+        "503":
+          description: Email service is not configured
   /healthz:
     get:
       operationId: healthCheck
@@ -26,6 +59,65 @@ paths:
                 $ref: "#/components/schemas/HealthStatus"
 components:
   schemas:
+    QuoteInput:
+      type: object
+      required: [requestId, projectType, timeline, description, city, firstName, lastName, email, phone]
+      properties:
+        requestId:
+          type: string
+          format: uuid
+        projectType:
+          type: string
+          enum: [Construction résidentielle, Construction commerciale, Réfection de toiture, Déneigement de toiture, Revêtement extérieur, Rénovation résidentielle, Autre]
+        timeline:
+          type: string
+          enum: [des-que-possible, prochaines-semaines, prochains-mois, a-determiner]
+        description:
+          type: string
+          minLength: 10
+          maxLength: 6000
+        city:
+          type: string
+          minLength: 2
+          maxLength: 120
+        firstName:
+          type: string
+          minLength: 2
+          maxLength: 80
+        lastName:
+          type: string
+          minLength: 2
+          maxLength: 80
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        phone:
+          type: string
+          minLength: 10
+          maxLength: 40
+        website:
+          type: string
+          maxLength: 200
+        attachment:
+          $ref: "#/components/schemas/QuoteAttachment"
+    QuoteAttachment:
+      type: object
+      required: [content]
+      properties:
+        content:
+          type: string
+          minLength: 4
+          maxLength: 3733336
+          description: Base64-encoded ZIP, at most 2800000 decoded bytes
+    QuoteReceipt:
+      type: object
+      required: [requestId, confirmationSent]
+      properties:
+        requestId:
+          type: string
+        confirmationSent:
+          type: boolean
     HealthStatus:
       type: object
       properties:

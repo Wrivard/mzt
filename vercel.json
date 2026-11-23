@@ -1,0 +1,22 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "PORT=20943 BASE_PATH=/ pnpm --filter @workspace/lavallee-construction run build",
+  "outputDirectory": "artifacts/lavallee-construction/dist/public",
+  "functions": {
+    "api/quotes.ts": { "maxDuration": 45 }
+  },
+  "rewrites": [
+    { "source": "/soumission", "destination": "/soumission/index.html" },
+    { "source": "/soumission/", "destination": "/soumission/index.html" },
+    { "source": "/politique-de-confidentialite", "destination": "/politique-de-confidentialite/index.html" },
+    { "source": "/politique-de-confidentialite/", "destination": "/politique-de-confidentialite/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
+    }
+  ]
+}

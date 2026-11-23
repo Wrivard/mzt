@@ -14,3 +14,31 @@ mtime_ms = 1794853670795
 storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:14f5986d-f3ea-4146-b35a-e68608522a9f/fa74b6eb-2d9a-4e1d-92dc-60fb0d08f571/e15ac028-9aff-4d00-aa88-50acea2219f7"
 storage_version_token = "1794853794195468"
 content_type = "image/webp"
+
+[[outputs]]
+id = "e75iCVUt0MMBqkEx84Wit"
+uri = "file://generated-artifacts/email-previews/confirmation-client.html"
+type = "html"
+title = "Courriel MZT — Confirmation client"
+description = "Aperçu du modèle HTML avec un exemple fictif de demande."
+logical_id = "85cf4a1f-4c26-49a3-98ad-0a2505091f82"
+content_hash = "sha256:9dce3df0226c83db8309955ed9dc9d341c6c5fdcb717cf45ab1de4394cf418ff"
+size = 5621
+mtime_ms = 1795453969591
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:14f5986d-f3ea-4146-b35a-e68608522a9f/85cf4a1f-4c26-49a3-98ad-0a2505091f82/bbfd8d3a-6946-431c-ada3-17135d9a04f4"
+storage_version_token = "1795454073053071"
+content_type = "text/html"
+
+[[outputs]]
+id = "43wsttpeFwKN7x965fInB"
+uri = "file://generated-artifacts/email-previews/demande-proprietaire.html"
+type = "html"
+title = "Courriel MZT — Nouvelle soumission"
+description = "Aperçu du récapitulatif destiné au propriétaire, avec coordonnées et indication des pièces jointes."
+logical_id = "bd3f119a-f59e-4aa0-81fa-bc2f8ad620e5"
+content_hash = "sha256:46588519b17c89792b874fdfab501700eb306a6a8bb9d17efca29ac74fe84dd4"
+size = 5537
+mtime_ms = 1795453969591
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:14f5986d-f3ea-4146-b35a-e68608522a9f/bd3f119a-f59e-4aa0-81fa-bc2f8ad620e5/bd0cf642-4002-4692-8941-259d8d3f091e"
+storage_version_token = "1795454073527805"
+content_type = "text/html"

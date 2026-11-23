@@ -72,7 +72,8 @@ test("each public HTML page has unique metadata, canonical, schema, and useful t
   const privacy = pageHtml(shell, PRIVACY_PATH);
   for (const section of privacySections) assert.ok(privacy.includes(`id="${section.id}"`));
   assert.match(privacy, /30 jours/);
-  assert.match(privacy, /rien n’est envoyé automatiquement|n’envoie pas automatiquement/);
+  assert.match(privacy, /service Resend/);
+  assert.match(privacy, /courriel de confirmation/);
 });
 
 test("404 metadata is noindex, has no canonical/schema, and does not reflect unsafe URLs", () => {

@@ -38,7 +38,8 @@ _Populate as you build — non-obvious choices a reader couldn't infer from the 
 - Services confirmés, dans l’ordre demandé : construction résidentielle, construction commerciale, réfection de toiture, déneigement de toiture, revêtement extérieur, rénovation résidentielle.
 - Le questionnaire d’onboarding fourni fait foi pour les renseignements métier : appliquer ses corrections de coordonnées plutôt que le numéro prérempli.
 - Fondation en 2018; plus de 15 ans d’expérience dans le domaine (pas 15 ans d’existence de l’entreprise); plus de 400 projets réalisés.
-- Demande de soumission en trois étapes qui prépare un courriel dans la messagerie du visiteur; aucune transmission automatique ni téléversement de fichiers
+- Demande de soumission en trois étapes avec envoi serveur par Resend et confirmation client. Production prévue sur Vercel; configuration dans `docs/vercel-resend.md`.
+- L’adresse d’envoi est toujours `bonjour@kua.quebec`; `RECIPIENT_EMAIL` définit le destinataire des demandes. Ne jamais exposer `RESEND_API_KEY` au navigateur.
 
 ## User preferences
 

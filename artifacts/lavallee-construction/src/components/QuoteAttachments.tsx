@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const MAX_FILES = 12;
 const MAX_FILE_SIZE = 20 * 1024 * 1024;
-const MAX_ARCHIVE_SIZE = 16 * 1024 * 1024;
+const MAX_ARCHIVE_SIZE = 2_800_000;
 const ACCEPTED_TYPES = new Set([
   "image/jpeg",
   "image/png",
@@ -65,7 +65,7 @@ async function createArchive(attachments: PreparedAttachment[]) {
   });
 
   if (blob.size > MAX_ARCHIVE_SIZE) {
-    throw new Error("L’archive dépasse 16 Mo. Retirez un fichier ou choisissez des fichiers plus légers.");
+    throw new Error("Les fichiers compressés dépassent 2,8 Mo au total. Retirez un fichier ou choisissez un PDF plus léger.");
   }
 
   return new File([blob], "pieces-jointes-soumission.zip", {
@@ -142,8 +142,8 @@ export function QuoteAttachments({
             : new File([file], file.name, { type: imageType, lastModified: file.lastModified });
           const outputType = imageType === "image/png" ? "image/png" : "image/jpeg";
           const compressed = await imageCompression(compressionInput, {
-            maxSizeMB: 1.2,
-            maxWidthOrHeight: 1920,
+            maxSizeMB: 0.2,
+            maxWidthOrHeight: 1600,
             initialQuality: 0.78,
             maxIteration: 8,
             useWebWorker: false,
@@ -225,7 +225,7 @@ export function QuoteAttachments({
         {isPreparing ? "Préparation des fichiers…" : "Ajouter des fichiers"}
       </Button>
       <p id="quote-attachments-help" className="text-xs leading-relaxed text-muted-foreground">
-        Une archive ZIP de 16 Mo maximum sera téléchargée à la dernière étape pour être jointe au courriel.
+        JPG, PNG, WebP et PDF. Maximum de 2,8 Mo au total après compression. Les pièces jointes sont transmises avec votre demande; aucun téléchargement manuel n’est nécessaire.
       </p>
 
       {attachments.length > 0 && (

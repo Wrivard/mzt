@@ -47,6 +47,7 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+/generated-artifacts/
 
 # Client source archive; optimized website photos are tracked separately.
 /attached_assets/Photos-20261116T180636Z-1-001_1794852962371.zip

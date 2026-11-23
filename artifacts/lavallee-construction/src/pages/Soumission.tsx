@@ -27,12 +27,12 @@ import {
 const formSchema = z.object({
   projectType: z.string().min(1, "Veuillez sélectionner un type de projet"),
   timeline: z.string().min(1, "Veuillez sélectionner un délai"),
-  description: z.string().min(10, "La description doit contenir au moins 10 caractères"),
-  city: z.string().min(2, "Veuillez entrer la ville du projet"),
-  firstName: z.string().min(2, "Prénom requis"),
-  lastName: z.string().min(2, "Nom requis"),
-  email: z.string().email("Adresse courriel invalide"),
-  phone: z.string().min(10, "Numéro de téléphone invalide"),
+  description: z.string().trim().min(10, "La description doit contenir au moins 10 caractères").max(6000, "Maximum de 6 000 caractères"),
+  city: z.string().trim().min(2, "Veuillez entrer la ville du projet").max(120),
+  firstName: z.string().trim().min(2, "Prénom requis").max(80),
+  lastName: z.string().trim().min(2, "Nom requis").max(80),
+  email: z.string().trim().email("Adresse courriel invalide").max(254),
+  phone: z.string().trim().min(10, "Numéro de téléphone invalide").max(40),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -44,15 +44,13 @@ const timelineOptions = [
   { value: "a-determiner", label: "À déterminer" },
 ];
 
-function downloadArchive(archive: File) {
-  const url = URL.createObjectURL(archive);
-  const downloadLink = document.createElement("a");
-  downloadLink.href = url;
-  downloadLink.download = archive.name;
-  document.body.appendChild(downloadLink);
-  downloadLink.click();
-  downloadLink.remove();
-  window.setTimeout(() => URL.revokeObjectURL(url), 60_000);
+function encodeArchive(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error("Impossible de lire les pièces jointes. Veuillez les sélectionner à nouveau."));
+    reader.onload = () => resolve(String(reader.result).split(",")[1]);
+    reader.readAsDataURL(file);
+  });
 }
 
 export default function Soumission() {
@@ -60,8 +58,12 @@ export default function Soumission() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [attachmentArchive, setAttachmentArchive] = useState<File | null>(null);
   const [isPreparingAttachments, setIsPreparingAttachments] = useState(false);
+  const [requestId] = useState(() => crypto.randomUUID());
+  const [submitError, setSubmitError] = useState("");
+  const [confirmationSent, setConfirmationSent] = useState(false);
+  const [website, setWebsite] = useState("");
 
-  const { register, control, handleSubmit, trigger, formState: { errors } } = useForm<FormValues>({
+  const { register, control, handleSubmit, trigger, formState: { errors, isSubmitting } } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       projectType: "",
@@ -87,28 +89,35 @@ export default function Soumission() {
 
   const prevStep = () => setStep(step - 1);
 
-  const onSubmit = (data: FormValues) => {
-    const body = [
-      `Nom : ${data.firstName} ${data.lastName}`,
-      `Téléphone : ${data.phone}`,
-      `Courriel : ${data.email}`,
-      `Ville du projet : ${data.city}`,
-      `Type de projet : ${data.projectType}`,
-      `Échéancier souhaité : ${data.timeline}`,
-      "",
-      `Description du projet : ${data.description}`,
-      "",
-      attachmentArchive
-        ? "Une archive ZIP a été téléchargée. Ajoutez-la à ce courriel avant de l'envoyer."
-        : "Vous pouvez joindre des photos ou des documents directement à ce courriel avant de l'envoyer.",
-    ].join("\n");
-
-    if (attachmentArchive) {
-      downloadArchive(attachmentArchive);
+  const onSubmit = async (data: FormValues) => {
+    if (isPreparingAttachments) return;
+    setSubmitError("");
+    try {
+      const payload = {
+        ...data,
+        requestId,
+        website,
+        ...(attachmentArchive ? { attachment: { content: await encodeArchive(attachmentArchive) } } : {}),
+      };
+      const response = await fetch(`${import.meta.env.BASE_URL}api/quotes`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json().catch(() => null);
+      if (!response.ok) {
+        throw new Error(result?.error ?? (response.status === 413
+          ? "Les pièces jointes sont trop volumineuses. Retirez un fichier, puis réessayez."
+          : "L’envoi n’a pas pu être confirmé. Veuillez réessayer ou nous appeler."));
+      }
+      if (result?.requestId !== requestId || typeof result.confirmationSent !== "boolean") {
+        throw new Error("La réponse du service est invalide. Vos renseignements sont conservés; veuillez réessayer.");
+      }
+      setConfirmationSent(result.confirmationSent);
+      setIsSubmitted(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "L’envoi a échoué. Vos renseignements sont conservés; veuillez réessayer.");
     }
-
-    window.location.href = `mailto:mztconstruction2018@hotmail.com?subject=${encodeURIComponent(`Demande de soumission — ${data.firstName} ${data.lastName}`)}&body=${encodeURIComponent(body)}`;
-    setIsSubmitted(true);
   };
 
   const steps = [
@@ -218,20 +227,16 @@ export default function Soumission() {
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                     <CheckCircle2 className="w-8 h-8 text-primary" />
                   </div>
-                  <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-secondary">Votre courriel est prêt</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-secondary">Votre demande a été transmise.</h2>
                   <p className="text-base sm:text-lg leading-relaxed text-muted-foreground mb-8 max-w-lg mx-auto">
-                    Votre messagerie devrait s’ouvrir avec les détails du projet. {attachmentArchive ? "Ajoutez le fichier ZIP téléchargé au courriel avant de l’envoyer." : "Vous pouvez y joindre des photos ou des documents."} Rien n’a été envoyé automatiquement par le site. Si votre messagerie ne s’ouvre pas, écrivez directement à <a className="break-all underline underline-offset-4" href="mailto:mztconstruction2018@hotmail.com">mztconstruction2018@hotmail.com</a>.
+                    Merci! Votre demande{attachmentArchive ? " et vos pièces jointes ont" : " a"} été transmise{attachmentArchive ? "s" : ""} à MZT Construction. Notre équipe en prendra connaissance pour discuter de votre projet avec vous.
                   </p>
-                  {attachmentArchive && (
-                    <Button
-                      type="button"
-                      variant="outline"
-                      className="mb-3 h-12 rounded-md px-6 text-[13px] font-bold"
-                      onClick={() => downloadArchive(attachmentArchive)}
-                    >
-                      Télécharger à nouveau l’archive ZIP
-                    </Button>
-                  )}
+                  <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
+                    {confirmationSent
+                      ? "Un courriel récapitulatif vous a également été envoyé. Pensez à vérifier vos courriels indésirables."
+                      : "Votre demande a bien été transmise, mais le courriel de confirmation n’a pas pu être envoyé. Il n’est pas nécessaire de soumettre votre demande à nouveau."}
+                  </p>
+                  <p className="mb-8 break-all text-xs text-muted-foreground">Référence : MZT-{requestId}</p>
                   <Button className="h-12 rounded-md uppercase tracking-[0.12em] text-[13px] font-bold px-8" onClick={() => window.location.href = "/"}>
                     Retour à l'accueil
                   </Button>
@@ -255,7 +260,17 @@ export default function Soumission() {
                     <div className="h-full bg-primary transition-transform duration-500 origin-left" style={{ transform: `scaleX(${step / 3})` }} />
                   </div>
 
-                  <form onSubmit={handleSubmit(onSubmit)} className="p-5 sm:p-8 xl:p-10">
+                  <form onSubmit={(event) => {
+                    event.preventDefault();
+                    if (step === 3 && !isPreparingAttachments && !isSubmitting) {
+                      void handleSubmit(onSubmit)(event);
+                    }
+                  }} className="p-5 sm:p-8 xl:p-10" aria-busy={isSubmitting}>
+                    <fieldset disabled={isSubmitting} className="min-w-0">
+                    <div className="hidden" aria-hidden="true">
+                      <label htmlFor="quote-website">Site Web</label>
+                      <input id="quote-website" value={website} onChange={(event) => setWebsite(event.target.value)} tabIndex={-1} autoComplete="off" />
+                    </div>
                     
                     {/* STEP 1 */}
                     {step === 1 && (
@@ -332,7 +347,7 @@ export default function Soumission() {
                     )}
 
                     {/* STEP 2 */}
-                    {step === 2 && (
+                      <div hidden={step !== 2}>
                       <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                         <div className="space-y-3">
                           <Label htmlFor="field-description" className="font-semibold text-secondary">Description détaillée du projet *</Label>
@@ -362,7 +377,7 @@ export default function Soumission() {
                           onBusyChange={setIsPreparingAttachments}
                         />
                       </div>
-                    )}
+                      </div>
 
                     {/* STEP 3 */}
                     {step === 3 && (
@@ -417,6 +432,7 @@ export default function Soumission() {
                       </div>
                     )}
 
+                    {submitError && <p role="alert" className="mt-5 rounded-md border border-destructive/30 bg-destructive/5 p-4 text-sm leading-relaxed text-destructive">{submitError}</p>}
                     {/* Navigation Buttons */}
                     <div className="mt-8 flex flex-col-reverse gap-3 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
                       {step > 1 ? (
@@ -426,16 +442,17 @@ export default function Soumission() {
                       ) : <div className="hidden sm:block"></div>}
                       
                       {step < 3 ? (
-                        <Button data-testid="button-form-next" type="button" onClick={nextStep} className="h-12 w-full rounded-md px-8 text-[13px] font-bold uppercase tracking-[0.12em] hover:bg-[hsl(80_91%_40%)] sm:w-auto">
+                        <Button key="next-step" data-testid="button-form-next" type="button" onClick={(event) => { event.preventDefault(); void nextStep(); }} className="h-12 w-full rounded-md px-8 text-[13px] font-bold uppercase tracking-[0.12em] hover:bg-[hsl(80_91%_40%)] sm:w-auto">
                           Suivant <ChevronRight className="ml-2 w-4 h-4" />
                         </Button>
                       ) : (
-                         <Button data-testid="button-form-submit" type="submit" disabled={isPreparingAttachments} className="h-12 w-full rounded-md bg-forest px-8 text-[13px] font-bold uppercase tracking-[0.12em] text-white hover:bg-forest/90 disabled:cursor-wait disabled:opacity-60 sm:w-auto">
-                           {isPreparingAttachments ? "Préparation des fichiers…" : "Envoyer ma demande"}
+                         <Button key="send-quote" data-testid="button-form-submit" type="submit" disabled={isPreparingAttachments || isSubmitting} className="h-12 w-full rounded-md bg-forest px-8 text-[13px] font-bold uppercase tracking-[0.12em] text-white hover:bg-forest/90 disabled:cursor-wait disabled:opacity-60 sm:w-auto">
+                           {isSubmitting ? "Envoi en cours…" : isPreparingAttachments ? "Préparation des fichiers…" : "Envoyer ma demande"}
                         </Button>
                       )}
                     </div>
 
+                    </fieldset>
                   </form>
                 </>
               )}

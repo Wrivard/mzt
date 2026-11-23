@@ -40,7 +40,7 @@ export const privacySections: PrivacySection[] = [
     items: [
       "Prénom, nom, adresse courriel et numéro de téléphone.",
       "Municipalité du projet, type de travaux, envergure approximative, échéancier et description du projet.",
-      "Photos et fichiers PDF que vous choisissez dans le formulaire. Les photos sont compressées dans votre navigateur; les fichiers ne sont pas téléversés ni enregistrés par le site. Une archive ZIP est téléchargée sur votre appareil pour que vous puissiez l’ajouter au courriel.",
+      "Photos et fichiers PDF que vous choisissez de joindre au formulaire. Les photos sont compressées dans votre navigateur; les fichiers sont regroupés en archive ZIP, puis transmis avec la demande.",
       "Renseignements techniques pouvant être traités par l’hébergeur lors d’une connexion : adresse IP, date et heure, ressource demandée et informations sur le navigateur, notamment pour acheminer les pages et assurer la sécurité du service.",
       "Commentaires, captures d’écran ou fichiers que vous choisissez de transmettre avec l’outil de rétroaction de Replit, lorsque cet outil est affiché.",
     ],
@@ -49,9 +49,10 @@ export const privacySections: PrivacySection[] = [
     id: "formulaire",
     title: "3. Ce que fait réellement le formulaire",
     paragraphs: [
-      "Les champs du formulaire et les pièces jointes sont traités dans votre navigateur. Les photos sélectionnées y sont compressées; les PDF restent inchangés. Le site crée ensuite une archive ZIP et la télécharge sur votre appareil. Vous devez joindre cette archive au courriel préparé, puis envoyer le courriel vous-même.",
-      "Le site n’envoie pas automatiquement votre demande, ne téléverse pas les fichiers vers un serveur et ne possède pas de base de données enregistrant les champs du formulaire. Les renseignements et fichiers ne parviennent à MZT que lorsque vous envoyez effectivement le courriel. Votre fournisseur de messagerie intervient alors aussi dans cet envoi.",
-      "Vous pouvez quitter le formulaire sans envoyer de courriel, communiquer par téléphone ou écrire directement à l’entreprise. Ne pas fournir les renseignements nécessaires peut limiter notre capacité à évaluer le projet ou à vous répondre.",
+      "Lorsque vous cliquez sur « Envoyer ma demande », les renseignements saisis et l’archive de pièces jointes facultatives sont transmis au serveur, puis au service Resend pour acheminer un courriel à MZT Construction. Les photos sont compressées sur votre appareil avant l’envoi; les PDF gardent leur contenu.",
+      "Un courriel de confirmation contenant le récapitulatif de la demande est également envoyé à l’adresse que vous avez fournie. L’archive est jointe au courriel destiné à MZT, pas au courriel de confirmation. Les envois utilisent l’adresse bonjour@kua.quebec avec le nom MZT Construction. Les réponses sont dirigées vers l’entreprise ou vers le client, selon le destinataire.",
+      "Le formulaire ne crée pas de dossier en base de données et ne conserve pas les fichiers dans un espace de stockage du site. Ils sont traités temporairement par le serveur pour l’envoi et peuvent être conservés par les fournisseurs de messagerie selon leurs règles et par MZT dans ses courriels. L’acceptation d’un envoi par Resend ne garantit pas sa remise dans la boîte de réception.",
+      "Vous pouvez quitter le formulaire sans l’envoyer, communiquer par téléphone ou écrire directement à l’entreprise. Ne pas fournir les renseignements nécessaires peut limiter notre capacité à évaluer le projet ou à vous répondre.",
     ],
   },
   {
@@ -79,13 +80,16 @@ export const privacySections: PrivacySection[] = [
     id: "fournisseurs",
     title: "6. Fournisseurs et traitement hors du Québec",
     paragraphs: [
-      "Le site est hébergé sur Replit. L’hébergement du site publié comprend des outils de statistiques de fréquentation et de rétroaction : pages consultées, provenance des visites, pays approximatif, navigateur et appareil, ainsi que les commentaires ou pièces que vous choisissez de transmettre. Ces outils sont distincts du formulaire de soumission.",
-      "Les courriels envoyés à notre adresse Hotmail sont acheminés par les services de messagerie de Microsoft. Google intervient lors du chargement automatique de la carte. Ces fournisseurs peuvent traiter des renseignements techniques ou le contenu qui leur est confié selon leurs services et leurs propres politiques.",
+      "Cette version est configurée pour être hébergée sur Vercel. L’aperçu de développement est fourni par Replit, qui peut ajouter des outils de statistiques et de rétroaction distincts du formulaire. L’hébergeur peut traiter des renseignements techniques et des journaux nécessaires au fonctionnement et à la sécurité du site.",
+      "Resend traite les coordonnées, le contenu de la demande et les pièces jointes pour acheminer les courriels et gérer leur remise. L’infrastructure d’envoi utilise le domaine kua.quebec. Les fournisseurs des boîtes de messagerie des destinataires interviennent ensuite; Microsoft intervient notamment pour l’adresse Hotmail de l’entreprise. Google intervient lors du chargement automatique de la carte.",
+      "Pour limiter les abus, le serveur utilise temporairement une empreinte de l’adresse IP afin de limiter les demandes par instance. Les clés de déduplication transmises à Resend empêchent certains envois répétés. Ces protections ne sont pas utilisées à des fins publicitaires.",
       "Le recours à ces services peut entraîner un traitement ou un hébergement de renseignements à l’extérieur du Québec. Vous pouvez demander à notre responsable des précisions sur les fournisseurs et les communications applicables à votre dossier.",
       "Les courriels destinés à l’entreprise s’adressent aux personnes chargées de répondre aux demandes et de suivre les projets. Toute autre utilisation ou communication doit reposer sur votre consentement ou sur une disposition de la loi.",
     ],
     links: [
       { label: "Politique de confidentialité de Replit", href: "https://replit.com/privacy" },
+      { label: "Politique de confidentialité de Vercel", href: "https://vercel.com/legal/privacy-policy" },
+      { label: "Politique de confidentialité de Resend", href: "https://resend.com/legal/privacy-policy" },
       { label: "Déclaration de confidentialité de Microsoft", href: "https://privacy.microsoft.com/fr-ca/privacystatement" },
     ],
   },
@@ -95,7 +99,7 @@ export const privacySections: PrivacySection[] = [
     paragraphs: [
       "Le site ne constitue pas un registre des demandes de soumission. Les courriels et dossiers reçus par l’entreprise doivent être conservés uniquement pendant la durée nécessaire au traitement de votre demande, au suivi du projet et aux obligations légales applicables, puis être détruits ou anonymisés conformément à la loi.",
       "La durée applicable dépend de la nature du dossier et des obligations qui s’y rattachent. Pour connaître celle de votre dossier, adressez-vous à notre responsable. Les journaux et données techniques des fournisseurs relèvent aussi de leurs propres règles de conservation.",
-      "Le site publié utilise une connexion HTTPS. La protection des courriels et des dossiers dépend également de la sécurité de la messagerie et des pratiques de l’entreprise. Aucune transmission électronique n’est sans risque : limitez les renseignements envoyés à ceux qui sont nécessaires.",
+      "Le site publié utilise une connexion HTTPS. La protection des renseignements dépend également de la sécurité de l’hébergement, du service d’envoi, de la messagerie et des pratiques de l’entreprise. Aucune transmission électronique n’est sans risque : limitez les renseignements et fichiers envoyés à ceux qui sont nécessaires.",
     ],
   },
   {
