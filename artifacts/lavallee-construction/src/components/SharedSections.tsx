@@ -117,13 +117,14 @@ export function FAQContactSection() {
           <span className="section-eyebrow text-secondary uppercase mb-5">Questions fréquentes</span>
           <h2 className="text-3xl sm:text-4xl font-bold leading-[1.1] mb-8 lg:mb-10 text-secondary">Ce qu’il faut savoir</h2>
 
+          <noscript><style>{`[data-crawlable-faq][data-state="closed"]{display:block!important;height:auto!important}`}</style></noscript>
           <Accordion type="single" collapsible className="w-full border-t border-secondary/15">
             {faqItems.map(({ question, answer }, i) => (
               <AccordionItem key={question} value={`item-${i + 1}`} className="border-b border-secondary/15">
                 <AccordionTrigger className="text-left font-semibold text-base sm:text-[17px] py-5 sm:py-6 text-secondary hover:no-underline hover:text-[hsl(80_91%_25%)] [&[data-state=open]]:text-[hsl(80_91%_25%)] rounded-sm">
                   {question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6 pr-8 max-w-[60ch]">{answer}</AccordionContent>
+                <AccordionContent forceMount data-crawlable-faq="" className="text-muted-foreground text-base leading-relaxed pb-6 pr-8 max-w-[60ch]">{answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

@@ -2,7 +2,7 @@
 
 ## Scope
 
-Technical audit of the source, generated production HTML, local routes, crawler resources and Vercel configuration. Visible copy, layout, CSS, photography, form behaviour and the always-loaded map were left unchanged. No ranking score or measured Core Web Vitals is claimed.
+Technical audit of the source, generated production HTML, local routes, crawler resources and Vercel configuration. Visible copy, layout, photography, form behaviour and the always-loaded map are preserved. Public pages are now fully prerendered from the existing React components. No ranking score or measured Core Web Vitals is claimed.
 
 ## Canonical domain corrected
 
@@ -27,8 +27,10 @@ Vercel redirects and response headers require a new deployment; local Vite does 
 ## Existing foundations verified
 
 - Three public routes have distinct titles and descriptions, a canonical URL and French-Canadian social metadata.
-- Per-route HTML includes meaningful content and navigation without requiring JavaScript.
-- The site is a React application with simplified static HTML fallbacks, not full server-rendering of every section. Google can render JavaScript, but some other crawlers cannot; the fallback is useful but does not contain every visible section.
+- Every public route and the 404 document contain the actual React page markup in the first HTML response, not a reduced SEO-only fallback.
+- Build-time rendering includes the full homepage services, projects, certifications, contact information, map, navigation and footer. FAQ answers are present even while the accordion is collapsed; without JavaScript the answers are displayed.
+- React hydrates the generated HTML to activate menus, FAQ and the quotation form without replacing it with a different page. The form still requires JavaScript; a no-JavaScript notice offers a direct telephone link.
+- Production remains a static deployment plus the existing quotation API. No always-running SSR server is needed, and no user-specific form data is rendered at build time.
 - Sitemap and robots resources are generated from central route data rather than served as an HTML SPA fallback.
 - Unknown routes are 404/noindex in the local middleware; the production build emits a dedicated `404.html`.
 - The social-sharing image exists as a 1200 × 630 JPEG.

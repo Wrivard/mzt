@@ -266,6 +266,12 @@ export default function Soumission() {
                       void handleSubmit(onSubmit)(event);
                     }
                   }} className="p-5 sm:p-8 xl:p-10" aria-busy={isSubmitting}>
+                    <noscript>
+                      <p className="mb-6 text-sm text-secondary">
+                        Activez JavaScript pour utiliser le formulaire ou appelez-nous au{" "}
+                        <a href="tel:+14188836242" className="underline">(418) 883-6242</a>.
+                      </p>
+                    </noscript>
                     <fieldset disabled={isSubmitting} className="min-w-0">
                     <div className="hidden" aria-hidden="true">
                       <label htmlFor="quote-website">Site Web</label>

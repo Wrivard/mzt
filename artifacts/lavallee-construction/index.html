@@ -11,7 +11,7 @@
     </script>
     <style>
       #app-startup { display: none; }
-      html[data-app-loading] #root > .mzt-static-page { display: none; }
+      html[data-app-loading] #root { visibility: hidden; }
       html[data-app-loading] #app-startup {
         display: grid; position: fixed; inset: 0; z-index: 100;
         place-content: center; justify-items: center; gap: 20px;

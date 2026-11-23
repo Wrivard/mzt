@@ -5,7 +5,8 @@ import { fileURLToPath } from "node:url";
 import { readFileSync } from "node:fs";
 import { runInNewContext } from "node:vm";
 import { crawlFiles } from "../build/crawl-files.ts";
-import { pageHtml } from "../build/page-html.ts";
+import { pageHtml as buildPageHtml } from "../build/page-html.ts";
+import { createPageRenderer } from "../build/render-pages.ts";
 import { siteSupport } from "../build/site-support.ts";
 import { pageCopy, pages, PRIVACY_PATH, SITE_URL } from "../src/data/site.ts";
 import { privacyContact, privacySections } from "../src/data/privacy.ts";
@@ -13,6 +14,12 @@ import { seoForPath } from "../src/lib/seo.ts";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const shell = '<html lang="fr"><head><title>Old title</title><meta name="description" content="Old description"><meta name="robots" content="index, follow"><meta property="og:title" content="Old title"></head><body><div id="root"></div><script src="/assets/app.js"></script></body></html>';
+const renderer = await createPageRenderer(root, "/");
+const render = renderer.render;
+const rendered = new Map([...pages.map((page) => page.path), "/404"].map((route) => [route, render(route)]));
+await renderer.close();
+const pageHtml = (source, route, base = "/") =>
+  buildPageHtml(source, route, base, rendered.get(route) ?? rendered.get("/404"));
 
 test("technical SEO describes only established services, territory and business contacts", () => {
   const seo = seoForPath("/");
@@ -41,7 +48,7 @@ test("Vercel normalizes HTML aliases, excludes the API from indexing and caches 
   assert.ok(config.headers.find((entry) => entry.source === "/assets/(.*)").headers.some((header) => header.value.includes("immutable")));
 });
 
-test("startup hides the simplified fallback only while JavaScript boots, with a failure timeout", () => {
+test("startup preserves full no-JS HTML and has bounded recovery if hydration fails", () => {
   const source = readFileSync(path.join(root, "index.html"), "utf8");
   const html = pageHtml(source, "/soumission");
   const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
@@ -58,9 +65,9 @@ test("startup hides the simplified fallback only while JavaScript boots, with a 
     } },
   });
   assert.ok(attributes.has("data-app-loading"));
-  assert.match(html, /html\[data-app-loading\] #root > \.mzt-static-page \{ display: none; \}/);
+  assert.match(html, /html\[data-app-loading\] #root \{ visibility: hidden; \}/);
   assert.match(html, /#app-startup \{ display: none; \}/);
-  assert.ok(html.includes(`<h1>${pageCopy.quote.heading}</h1>`), "No-JS content is retained");
+  assert.ok(html.includes(pageCopy.quote.heading), "Full no-JS content is retained");
   recover();
   assert.equal(attributes.has("data-app-loading"), false, "Failure reveals the fallback instead of leaving a permanent loader");
 });
@@ -83,15 +90,15 @@ test("each public HTML page has unique metadata, canonical, schema, and useful t
   for (const page of pages) {
     const html = pageHtml(shell, page.path);
     assert.equal((html.match(/<title>/g) ?? []).length, 1);
-    assert.equal((html.match(/name="description"/g) ?? []).length, 1);
+    assert.equal((html.match(/<meta name="description"/g) ?? []).length, 1);
     assert.equal((html.match(/name="robots"/g) ?? []).length, 1);
     assert.equal((html.match(/rel="canonical"/g) ?? []).length, 1);
     assert.ok(html.includes(page.title));
     assert.ok(html.includes(new URL(page.path, SITE_URL).href));
     assert.match(html, /id="site-structured-data"/);
-    assert.equal((html.match(/<h1>/g) ?? []).length, 1);
-    if (page.path === "/") assert.ok(html.includes(`<h1>${pageCopy.home.heading}</h1>`));
-    if (page.path === "/soumission") assert.ok(html.includes(`<h1>${pageCopy.quote.heading}</h1>`));
+    assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1);
+    if (page.path === "/") assert.ok(html.includes(pageCopy.home.heading));
+    if (page.path === "/soumission") assert.ok(html.includes(pageCopy.quote.heading));
     assert.match(html, /<script src="\/assets\/app.js">/);
     assert.ok(!html.includes("Old title"));
     const graph = JSON.parse(html.match(/type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
@@ -116,14 +123,15 @@ test("404 metadata is noindex, has no canonical/schema, and does not reflect uns
   assert.match(html, /href="\/soumission"/);
 });
 
-function devMiddleware(base = "/") {
+function devMiddleware(base = "/", renderRoute = render) {
   const plugin = siteSupport();
-  plugin.configResolved({ base });
+  plugin.configResolved({ base, root });
   let handle;
   plugin.configureServer({
     config: { root, publicDir: path.join(root, "public") },
     middlewares: { use: (callback) => { handle = callback; } },
     transformIndexHtml: async (_pathname, source) => source,
+    ssrLoadModule: async () => ({ render: renderRoute }),
   });
   return (url, method = "GET", accept = "*/*") => new Promise((resolve, reject) => {
     const headers = {};
@@ -172,17 +180,22 @@ test("real public assets and Vite internals still work; base-prefixed routes are
   assert.equal((await request("/logo-mzt-construction.png", "GET", "text/html")).next, true);
   assert.equal((await request("/@vite/client")).next, true);
   assert.equal((await request("/src/index.css")).next, true);
-  const nested = await devMiddleware("/site/")("/site/politique-de-confidentialite");
-  assert.equal(nested.status, 200);
-  assert.match(nested.body, /href="\/site\/soumission"|href="\/site\/"/);
+  const nestedRenderer = await createPageRenderer(root, "/site/");
+  try {
+    const nested = await devMiddleware("/site/", nestedRenderer.render)("/site/politique-de-confidentialite");
+    assert.equal(nested.status, 200);
+    assert.match(nested.body, /href="\/site\/soumission"|href="\/site\/"/);
+  } finally {
+    await nestedRenderer.close();
+  }
 });
 
-test("build generates page HTML, custom 404, and crawler files from the same data", () => {
+test("build generates page HTML, custom 404, and crawler files from the same data", async () => {
   const plugin = siteSupport();
-  plugin.configResolved({ base: "/" });
+  plugin.configResolved({ base: "/", root });
   const bundle = { "index.html": { type: "asset", source: shell } };
   const emitted = new Map();
-  plugin.generateBundle.handler.call({
+  await plugin.generateBundle.handler.call({
     emitFile(asset) { emitted.set(asset.fileName, asset.source); },
   }, {}, bundle);
   for (const file of ["soumission/index.html", "politique-de-confidentialite/index.html", "404.html", ...Object.keys(crawlFiles())]) {
@@ -191,4 +204,29 @@ test("build generates page HTML, custom 404, and crawler files from the same dat
   assert.match(bundle["index.html"].source, /fetchpriority="high"/);
   assert.match(emitted.get("404.html"), /noindex, follow/);
   assert.match(emitted.get("politique-de-confidentialite/index.html"), /Lo[i] 25/);
+});
+
+test("initial HTML contains full services, projects, certifications, FAQ answers, map and footer", () => {
+  const html = pageHtml(shell, "/");
+  for (const id of ["a-propos", "services", "certifications", "en-images", "cta", "contact", "zone-desservie"]) {
+    assert.ok(html.includes(`id="${id}"`), `Missing public section: ${id}`);
+  }
+  for (const text of [
+    "Faites construire votre maison", "On retire l’excès de neige",
+    "Rénovez les pièces", "Nous desservons Bellechasse",
+    "Chaque situation est évaluée", "Nos réalisations",
+  ]) assert.ok(html.includes(text), `Missing public text: ${text}`);
+  assert.ok(html.includes("<footer"));
+  assert.ok(html.includes("<iframe"));
+  assert.ok(html.includes("data-crawlable-faq"));
+  assert.ok(!html.includes("mzt-static-page"));
+  assert.ok(!html.includes("Avis à venir"), "Unpublished testimonials stay unpublished");
+  const quote = pageHtml(shell, "/soumission");
+  assert.ok(quote.includes("<form"));
+  assert.ok(quote.includes('<select'));
+  assert.ok(quote.includes('name="timeline"'));
+});
+
+test("missing page rendering fails explicitly instead of shipping a reduced fallback", () => {
+  assert.throws(() => buildPageHtml(shell, "/", "/", ""), /Missing full page render/);
 });

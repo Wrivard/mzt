@@ -4,15 +4,18 @@ import type { Plugin } from "vite";
 import { getPageInfo, pages } from "../src/data/site.ts";
 import { crawlFiles } from "./crawl-files.ts";
 import { pageHtml } from "./page-html.ts";
+import { createPageRenderer } from "./render-pages.ts";
 
 /** Static crawl files, per-route HTML, and a real 404 instead of a blanket SPA rewrite. */
 export function siteSupport(): Plugin {
   let base = "/";
+  let root = "";
   return {
     name: "mzt-site-support",
     enforce: "post",
     configResolved(config) {
       base = config.base;
+      root = config.root;
     },
     configureServer(server) {
       const files = crawlFiles();
@@ -48,11 +51,12 @@ export function siteSupport(): Plugin {
           }
           const source = await readFile(path.join(server.config.root, "index.html"), "utf8");
           const transformed = await server.transformIndexHtml(pathname, source, req.originalUrl);
+          const { render } = await server.ssrLoadModule("/src/entry-server.tsx");
           res.statusCode = found ? 200 : 404;
           res.setHeader("Content-Type", "text/html; charset=utf-8");
           res.setHeader("Cache-Control", "no-cache");
           if (!found) res.setHeader("X-Robots-Tag", "noindex, follow");
-          res.end(req.method === "HEAD" ? undefined : pageHtml(transformed, route, base));
+          res.end(req.method === "HEAD" ? undefined : pageHtml(transformed, route, base, render(pathname)));
         } catch (error) {
           next(error);
         }
@@ -60,21 +64,27 @@ export function siteSupport(): Plugin {
     },
     generateBundle: {
       order: "post",
-      handler(_options, bundle) {
+      async handler(_options, bundle) {
         const index = bundle["index.html"];
         if (!index || index.type !== "asset") throw new Error("Missing built index.html for public site pages.");
         const shell = String(index.source);
-        index.source = pageHtml(shell, "/", base);
-        for (const page of pages.filter((entry) => entry.path !== "/")) {
-          this.emitFile({
-            type: "asset",
-            fileName: `${page.path.slice(1)}/index.html`,
-            source: pageHtml(shell, page.path, base),
-          });
-        }
-        this.emitFile({ type: "asset", fileName: "404.html", source: pageHtml(shell, "/404", base) });
-        for (const [fileName, file] of Object.entries(crawlFiles())) {
-          this.emitFile({ type: "asset", fileName, source: file.content });
+        const renderer = await createPageRenderer(root, base);
+        try {
+          const renderPage = (route: string) => renderer.render(`${base.replace(/\/$/, "")}${route}`);
+          index.source = pageHtml(shell, "/", base, renderPage("/"));
+          for (const page of pages.filter((entry) => entry.path !== "/")) {
+            this.emitFile({
+              type: "asset",
+              fileName: `${page.path.slice(1)}/index.html`,
+              source: pageHtml(shell, page.path, base, renderPage(page.path)),
+            });
+          }
+          this.emitFile({ type: "asset", fileName: "404.html", source: pageHtml(shell, "/404", base, renderPage("/404")) });
+          for (const [fileName, file] of Object.entries(crawlFiles())) {
+            this.emitFile({ type: "asset", fileName, source: file.content });
+          }
+        } finally {
+          await renderer.close();
         }
       },
     },
