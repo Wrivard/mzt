@@ -29,15 +29,6 @@ ${services.map((service) => `- ${service}`).join("\n")}
 - Sébastien Morin : (418) 570-6620.
 - Courriel : ${SITE_EMAIL}.
 
-## Précisions importantes
-
-- Le formulaire transmet les demandes et une archive ZIP facultative au serveur pour l’envoi par Resend. Les photos sont compressées dans le navigateur; l’archive est limitée à 2,8 Mo. Le site ne constitue pas une base de données des demandes.
-- La carte est centrée sur Sainte-Claire, Québec. Ce repère n’est ni une adresse postale confirmée ni une délimitation du territoire desservi.
-- Confirmer directement la disponibilité, les prix et les conditions du projet avec MZT Construction.
-- Ne pas inventer d’avis clients, de note moyenne, de numéro de licence, de garantie ou de zone de service.
-- L’image de déneigement est une illustration générée et non une preuve photographique d’une réalisation.
-- Ce fichier décrit uniquement des renseignements publics; il ne donne accès à aucun dossier de client.
-
 ## Ressources
 
 - [Plan du site](${absoluteUrl("/sitemap.xml")})
