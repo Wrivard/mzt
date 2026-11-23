@@ -19,7 +19,7 @@ export const pageCopy = {
 };
 
 export const certificationLogos = [
-  { src: "/certifications/mzt-acq.png", alt: "Association de la construction du Québec — ACQ" },
+  { src: "/certifications/mzt-apchq.png", alt: "Association des professionnels de la construction et de l’habitation du Québec — APCHQ" },
   { src: "/certifications/mzt-gcr.png", alt: "Garantie de construction résidentielle — GCR" },
   { src: "/certifications/mzt-rbq.png", alt: "Régie du bâtiment du Québec — RBQ" },
 ];

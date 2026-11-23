@@ -59,10 +59,11 @@ const serviceCards = [
 ];
 
 const projectPhotos = [
+  { src: "/photos/mzt/client/realisation-projet-commercial.webp", alt: "Bâtiment commercial aux façades contrastées et aux accents colorés, vu sous un autre angle", layout: "sm:col-span-2 sm:row-span-2" },
   { src: "/photos/mzt/client/realisation-maison.webp", alt: "Maison résidentielle avec garage et éclairage extérieur", layout: "sm:col-span-2 sm:row-span-2" },
   { src: "/photos/mzt/client/realisation-cuisine.webp", alt: "Cuisine ouverte avec îlot blanc et luminaires suspendus", layout: "" },
   { src: "/photos/mzt/client/realisation-salle-de-bain.webp", alt: "Salle de bain avec baignoire autoportante et douche vitrée", layout: "" },
-  { src: "/photos/mzt/client/realisation-structure.webp", alt: "Vue aérienne d’un chantier avec plancher et structure en bois", layout: "" },
+  { src: "/photos/mzt/client/maison-blanche.webp", alt: "Maison à deux étages avec revêtement blanc et toiture foncée, entourée d’arbres", layout: "" },
   { src: "/photos/mzt/client/realisation-contemporaine.webp", alt: "Maison contemporaine à deux étages avec revêtement foncé et maçonnerie", layout: "" },
 ];
 
@@ -153,10 +154,10 @@ export default function Home() {
               <span className={eyebrowDark}>À propos de MZT Construction</span>
               <h2 className={`${h2Cls} mb-7`}>Des travaux faits avec soin.</h2>
               <p className="text-lg text-muted-foreground mb-5 leading-relaxed">
-                Fondée en 2018, MZT Construction inc. s’appuie sur plus de 15 ans d’expérience dans le domaine de la construction. Nous réalisons des projets résidentiels et commerciaux, ainsi que des travaux de rénovation et des travaux spécialisés.
+                Fondée en 2018, MZT Construction inc. cumule plus de 15 ans d’expérience dans le domaine de la construction. Nous réalisons des projets résidentiels et commerciaux, ainsi que des travaux de rénovation et des travaux spécialisés.
               </p>
               <p className="text-base sm:text-lg text-muted-foreground mb-9 leading-relaxed">
-                Notre approche repose sur la rigueur, la qualité d’exécution et le souci du détail. Nous privilégions une communication honnête, le respect des échéanciers et des engagements, ainsi qu’une relation de confiance fondée sur le respect, la transparence, la fiabilité et le professionnalisme.
+                Notre approche repose sur la rigueur, la qualité d’exécution et le souci du détail. Nous privilégions une communication honnête, le respect des échéanciers et des engagements, ainsi qu’une relation de confiance fondée sur la transparence, la fiabilité et le professionnalisme.
               </p>
 
               <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-4 mb-10 border-t border-border pt-8">
@@ -232,8 +233,7 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid lg:grid-cols-[0.8fr_1.6fr] gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
             <div className="text-center lg:text-left">
-              <span className="section-eyebrow text-white/70 uppercase mb-5">Certifications</span>
-              <h2 className="text-3xl sm:text-4xl font-bold leading-[1.1]">Assurance et certifications</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold leading-[1.1]">Certifications</h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
@@ -289,7 +289,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(17,18,15,0.6),rgba(17,18,15,0.88))]" />
         </div>
 
-        <div className="container relative z-10 mx-auto px-6 md:px-12 text-center max-w-3xl">
+        <div className="container relative z-10 mx-auto px-6 md:px-12 text-center max-w-6xl">
           <span className="section-eyebrow text-white/75 uppercase mb-6">Parlons de votre projet</span>
           <h2 className="text-4xl sm:text-5xl xl:text-6xl font-bold mb-7 leading-[1.05] tracking-[-0.03em]">Un projet en tête? Parlons-en.</h2>
           <p className="text-lg md:text-xl text-white/75 mb-10 leading-relaxed max-w-2xl mx-auto">

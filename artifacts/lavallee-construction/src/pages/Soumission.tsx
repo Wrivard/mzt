@@ -168,7 +168,7 @@ export default function Soumission() {
 
             <section aria-labelledby="quote-certifications-title" className="mt-8 border-t border-white/15 pt-5">
               <h2 id="quote-certifications-title" className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white/55">
-                Assurance et certifications
+                Certifications
               </h2>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                 {certificationLogos.map((logo) => (

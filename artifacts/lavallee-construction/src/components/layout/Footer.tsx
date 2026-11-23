@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1fr_1.1fr] gap-10 xl:gap-12 mb-12 md:mb-16">
           <div className="flex flex-col items-start">
             <img
-              src="/logo-mzt-construction.png"
+              src="/logo-mzt-2018.png"
               alt="MZT Construction"
               className="h-[120px] md:h-[136px] w-auto object-contain object-left mb-5 -ml-2 mix-blend-screen"
               loading="lazy"
