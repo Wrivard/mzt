@@ -159,7 +159,7 @@ export default function Soumission() {
         </div>
 
         <div className="container relative z-10 mx-auto grid w-full items-center gap-10 px-6 pb-14 pt-[132px] sm:px-8 md:gap-12 md:px-12 md:pb-20 md:pt-[150px] xl:min-h-[100dvh] xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] xl:gap-20 xl:pt-[170px] xl:pb-24">
-          <div className="max-w-xl">
+          <div className="order-2 max-w-xl md:order-1">
             <span className="section-eyebrow mb-6 uppercase text-white/75">
               MZT Construction
             </span>
@@ -206,7 +206,7 @@ export default function Soumission() {
               <h2 id="quote-certifications-title" className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white/55">
                 Certifications
               </h2>
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {certificationLogos.map((logo) => (
                   <figure key={logo.src} className="flex h-12 items-center justify-center">
                     <img
@@ -221,7 +221,7 @@ export default function Soumission() {
             </section>
           </div>
 
-          <div className="min-w-0 overflow-hidden rounded-xl bg-background text-foreground shadow-[0_40px_100px_-30px_rgba(0,0,0,0.6)] ring-1 ring-black/5">
+          <div className="order-1 min-w-0 overflow-hidden rounded-xl bg-background text-foreground shadow-[0_40px_100px_-30px_rgba(0,0,0,0.6)] ring-1 ring-black/5 md:order-2">
               {isSubmitted ? (
                 <div className="text-center px-6 py-16 sm:px-10" role="status">
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
