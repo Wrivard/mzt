@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
-import { SubmitQuoteBody, SubmitQuoteResponse } from "@workspace/api-zod";
-import { customerTemplate, ownerTemplate } from "./templates";
+import { SubmitQuoteBody, SubmitQuoteResponse } from "../../api-zod/src/generated/api.js";
+import { customerTemplate, ownerTemplate } from "./templates.js";
 
 export const MAX_REQUEST_BYTES = 4_200_000;
 export const MAX_ARCHIVE_BYTES = 2_800_000;

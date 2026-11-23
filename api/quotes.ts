@@ -1,5 +1,7 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { handleQuoteRequest, MAX_REQUEST_BYTES } from "@workspace/quote-mail";
+// Vercel emits traced .ts files as .js, but does not rewrite workspace package
+// exports pointing at .ts. Keep this production ESM graph explicitly resolvable.
+import { handleQuoteRequest, MAX_REQUEST_BYTES } from "../lib/quote-mail/src/index.js";
 
 export const maxDuration = 45;
 

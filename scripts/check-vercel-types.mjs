@@ -25,6 +25,8 @@ while (pending.length) {
     options.strict = false;
   }
   Object.assign(options, {
+    // The Node builder sets rootDir to the repository base for its traced graph.
+    rootDir: process.cwd(),
     noEmit: true,
     incremental: false,
     composite: false,

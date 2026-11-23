@@ -26,3 +26,9 @@ Native Node fetch typings can lose Response members in mixed Web-global compilat
 **Why:** Deployment continued to report missing Response members even after the ordinary source check passed. A regression fixture exercising Node's conditional Web-global branch reproduced those exact diagnostics.
 
 **How to apply:** Retain explicit ES2022/DOM libraries on fetch consumers and the mixed-global regression fixture. A successful local configuration check is not proof of a successful hosted Vercel build.
+
+Vercel's traced TypeScript functions need a JavaScript-resolvable ESM import graph; successful type checks and `tsx` tests do not establish runtime compatibility.
+
+**Why:** The published quote endpoint crashed even on GET with `FUNCTION_INVOCATION_FAILED`. A compiled-only cold-start reproduction exposed workspace exports pointing to `.ts`, while the builder renames traced sources to `.js` without rewriting those package exports.
+
+**How to apply:** Preserve explicit relative `.js` imports in the serverless runtime graph, including shared-source dependencies. Keep a plain-Node cold-start check without TypeScript loaders in the deployment checks, alongside type checks and simulated-mail tests. Without hosted logs, distinguish the reproduced packaging failure from a confirmed remote stack trace.
