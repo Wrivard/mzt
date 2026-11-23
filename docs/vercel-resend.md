@@ -6,6 +6,8 @@
 - Le fichier `vercel.json` configure le build pnpm, le dossier statique et les réécritures des pages publiques. `api/quotes.ts` devient une fonction Node côté serveur.
 - Node 22 ou plus récent et pnpm sont requis. Ne pas utiliser de runtime Edge.
 - `api/tsconfig.json` active explicitement les types Node pour la compilation des fonctions par Vercel. La vérification locale `tsconfig.vercel.json` hérite de cette même configuration pour éviter une divergence entre les deux environnements.
+- Le mode `ESNext` / `Bundler` est également déclaré directement dans les configurations de l’API et des bibliothèques serveur. Le compilateur Vercel choisit sinon `NodeNext` avant de résoudre les configurations héritées, ce qui casse les imports sans extension du workspace.
+- `pnpm run check:vercel` reproduit cet ordre de configuration et vérifie les sources partagées sans dépendre de déclarations compilées localement. Cette vérification fait partie du build Vercel.
 - Le site reste testable dans l’aperçu Replit par la route Express équivalente.
 - Le domaine canonique et les fichiers SEO restent centralisés dans `artifacts/lavallee-construction/src/data/site.ts`. Lorsque le domaine final Vercel/personnalisé est connu, remplacer la valeur de `SITE_URL` et reconstruire; ne pas inventer de domaine.
 

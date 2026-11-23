@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "PORT=20943 BASE_PATH=/ pnpm --filter @workspace/lavallee-construction run build",
+  "buildCommand": "pnpm run check:vercel && PORT=20943 BASE_PATH=/ pnpm --filter @workspace/lavallee-construction run build",
   "outputDirectory": "artifacts/lavallee-construction/dist/public",
   "functions": {
     "api/quotes.ts": { "maxDuration": 45 }

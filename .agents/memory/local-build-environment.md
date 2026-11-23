@@ -14,3 +14,9 @@ Vercel's function compilation must discover the Node-specific TypeScript configu
 **Why:** The frontend build and local API type check passed, but Vercel's subsequent function compilation inherited an empty types list and failed on Node built-ins.
 
 **How to apply:** Keep a discoverable configuration beside the functions and have local checks inherit it. When verifying a Vercel change, check both the frontend build and the API configuration, not only the Vite bundle.
+
+Vercel's Node TypeScript builder applies its default module mode to raw configurations before resolving `extends`. Every server package it compiles needs an explicit module mode, not just the entrypoint package.
+
+**Why:** Adding Node types fixed the entrypoint error but exposed NodeNext import-resolution failures in shared packages despite passing normal local checks. The builder's configuration order was confirmed in its source and reproduced locally.
+
+**How to apply:** Preserve the workspace's intended ESNext/Bundler mode explicitly on server packages and run the Vercel-style source check. Do not rely on locally generated declarations masking shared-source diagnostics.
