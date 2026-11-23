@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { Facebook } from "lucide-react";
 import { PRIVACY_PATH } from "@/data/site";
 
 export function Footer() {
@@ -17,6 +18,15 @@ export function Footer() {
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
               Fondée en 2018, MZT Construction réalise des projets de construction résidentielle et commerciale, de rénovation, de toiture et de revêtement extérieur.
             </p>
+            <a
+              href="https://www.facebook.com/mztconstruction"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="MZT Construction sur Facebook (nouvel onglet)"
+              className="mt-5 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/75 transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              <Facebook className="h-5 w-5" aria-hidden="true" />
+            </a>
           </div>
 
           <div>
