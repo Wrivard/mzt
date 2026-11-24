@@ -10,8 +10,10 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.4fr_0.8fr_1fr_minmax(17.5rem,1.2fr)] gap-10 xl:gap-12 mb-12 md:mb-16">
           <div className="flex flex-col items-start">
             <img
-              src="/logo-mzt-2018.png"
+              src="/images/optimized/logo-mzt-512.webp"
               alt="MZT Construction"
+              width={512}
+              height={365}
               className="h-[120px] md:h-[136px] w-auto object-contain object-left mb-5 -ml-2 mix-blend-screen"
               loading="lazy"
             />

@@ -32,3 +32,18 @@ Vercel's traced TypeScript functions need a JavaScript-resolvable ESM import gra
 **Why:** The published quote endpoint crashed even on GET with `FUNCTION_INVOCATION_FAILED`. A compiled-only cold-start reproduction exposed workspace exports pointing to `.ts`, while the builder renames traced sources to `.js` without rewriting those package exports.
 
 **How to apply:** Preserve explicit relative `.js` imports in the serverless runtime graph, including shared-source dependencies. Keep a plain-Node cold-start check without TypeScript loaders in the deployment checks, alongside type checks and simulated-mail tests. Without hosted logs, distinguish the reproduced packaging failure from a confirmed remote stack trace.
+
+Legacy form resolvers can pick up an incompatible Zod major from hoisted
+diagnostic-tool dependencies when their imported type dependency is undeclared.
+After correcting resolution, TypeScript's incremental cache can retain the
+old incompatible type even while resolution tracing shows the correct version.
+
+**Why:** Adding Lighthouse introduced Zod 4 alongside this site's Zod 3 forms.
+Declaring the resolver's missing dependency corrected resolution, but the leaf
+type check continued reporting the former types until its generated cache was
+cleared; a nonincremental check confirmed the distinction.
+
+**How to apply:** Keep the dependency correction narrowly scoped to the legacy
+resolver, rather than upgrading form schemas or forcing every tool to Zod 3.
+If traced resolution and diagnostics disagree after a dependency change, verify
+without incremental caching before modifying otherwise-correct application code.

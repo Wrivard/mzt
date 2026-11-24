@@ -36,7 +36,7 @@ test("technical SEO describes only established services, territory and business 
   assert.ok(seo.meta.some((tag) => tag.key === "robots" && tag.content.includes("max-image-preview:large")));
   assert.equal(seoForPath("/soumission").structuredData["@graph"].find((entity) => entity["@id"].endsWith("#page"))["@type"], "ContactPage");
   const source = readFileSync(path.join(root, "index.html"), "utf8");
-  assert.match(source, /rel="preload" as="image" href="\/logo-mzt-2018.png"/);
+  assert.match(source, /rel="preload" as="image" href="\/images\/optimized\/logo-mzt-512.webp"/);
 });
 
 test("Vercel normalizes HTML aliases, excludes the API from indexing and caches fingerprinted assets", () => {
@@ -196,7 +196,12 @@ test("real public assets and Vite internals still work; base-prefixed routes are
 test("build generates page HTML, custom 404, and crawler files from the same data", async () => {
   const plugin = siteSupport();
   plugin.configResolved({ base: "/", root });
-  const bundle = { "index.html": { type: "asset", source: shell } };
+  const bundle = {
+    "index.html": { type: "asset", source: shell },
+    "assets/home.js": { type: "chunk", fileName: "assets/home.js", facadeModuleId: `${root}/src/pages/Home.tsx`, imports: ["assets/shared.js"] },
+    "assets/quote.js": { type: "chunk", fileName: "assets/quote.js", facadeModuleId: `${root}/src/pages/Soumission.tsx`, imports: ["assets/shared.js"] },
+    "assets/shared.js": { type: "chunk", fileName: "assets/shared.js", facadeModuleId: null, imports: [] },
+  };
   const emitted = new Map();
   await plugin.generateBundle.handler.call({
     emitFile(asset) { emitted.set(asset.fileName, asset.source); },
@@ -205,6 +210,16 @@ test("build generates page HTML, custom 404, and crawler files from the same dat
     assert.ok(emitted.has(file), file);
   }
   assert.match(bundle["index.html"].source, /fetchpriority="high"/);
+  assert.match(bundle["index.html"].source, /rel="modulepreload" crossorigin href="\/assets\/home.js"/);
+  assert.match(bundle["index.html"].source, /rel="modulepreload" crossorigin href="\/assets\/shared.js"/);
+  assert.ok(!bundle["index.html"].source.includes("/assets/quote.js"));
+  assert.match(emitted.get("soumission/index.html"), /rel="modulepreload" crossorigin href="\/assets\/quote.js"/);
+  assert.ok(!emitted.get("soumission/index.html").includes("/assets/home.js"));
+  assert.match(bundle["index.html"].source, /imagesrcset="[^"]+\.avif/);
+  assert.match(emitted.get("soumission/index.html"), /imagesrcset="[^"]*cuisine-/);
+  assert.ok(bundle["index.html"].source.indexOf('data-prerendered="true"') <
+    bundle["index.html"].source.lastIndexOf('document.documentElement.removeAttribute("data-app-loading")'),
+    "Reveal the complete production HTML after CSS, without waiting for hydration");
   assert.match(emitted.get("404.html"), /noindex, follow/);
   assert.match(emitted.get("politique-de-confidentialite/index.html"), /Lo[i] 25/);
   for (const html of [bundle["index.html"].source, ...[...emitted.values()].filter((value) => value.includes("<html"))]) {

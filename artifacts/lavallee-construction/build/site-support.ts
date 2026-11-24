@@ -68,19 +68,48 @@ export function siteSupport(): Plugin {
       async handler(_options, bundle) {
         const index = bundle["index.html"];
         if (!index || index.type !== "asset") throw new Error("Missing built index.html for public site pages.");
-        const shell = withProductionConsent(String(index.source));
+        // In production the stylesheet blocks this inline body script, so the
+        // complete prerendered page can appear as soon as CSS is ready. Do not
+        // wait for application hydration; keep the bounded loader in dev where
+        // Vite injects CSS through JavaScript instead.
+        const reveal = `<script data-cookieconsent="ignore">document.documentElement.removeAttribute("data-app-loading");document.getElementById("app-startup")?.remove();</script>`;
+        const shell = withProductionConsent(String(index.source))
+          .replace("</body>", `${reveal}</body>`);
+        const pageModules: Record<string, string> = {
+          "/": "/src/pages/Home.tsx",
+          "/soumission": "/src/pages/Soumission.tsx",
+          "/politique-de-confidentialite": "/src/pages/Privacy.tsx",
+          "/404": "/src/pages/not-found.tsx",
+        };
+        const shellForPage = (route: string) => {
+          const entry = Object.values(bundle).find((item) =>
+            item.type === "chunk" && item.facadeModuleId?.endsWith(pageModules[route]));
+          if (!entry || entry.type !== "chunk") return shell;
+          const dependencies = new Set<string>();
+          const visit = (filename: string) => {
+            if (dependencies.has(filename)) return;
+            dependencies.add(filename);
+            const chunk = bundle[filename];
+            if (chunk?.type === "chunk") chunk.imports.forEach(visit);
+          };
+          visit(entry.fileName);
+          const links = [...dependencies]
+            .filter((filename) => !shell.includes(`"${base}${filename}"`))
+            .map((filename) => `<link rel="modulepreload" crossorigin href="${base}${filename}" />`);
+          return shell.replace("</head>", `${links.join("\n")}</head>`);
+        };
         const renderer = await createPageRenderer(root, base);
         try {
           const renderPage = (route: string) => renderer.render(`${base.replace(/\/$/, "")}${route}`);
-          index.source = pageHtml(shell, "/", base, renderPage("/"));
+          index.source = pageHtml(shellForPage("/"), "/", base, renderPage("/"));
           for (const page of pages.filter((entry) => entry.path !== "/")) {
             this.emitFile({
               type: "asset",
               fileName: `${page.path.slice(1)}/index.html`,
-              source: pageHtml(shell, page.path, base, renderPage(page.path)),
+              source: pageHtml(shellForPage(page.path), page.path, base, renderPage(page.path)),
             });
           }
-          this.emitFile({ type: "asset", fileName: "404.html", source: pageHtml(shell, "/404", base, renderPage("/404")) });
+          this.emitFile({ type: "asset", fileName: "404.html", source: pageHtml(shellForPage("/404"), "/404", base, renderPage("/404")) });
           for (const [fileName, file] of Object.entries(crawlFiles())) {
             this.emitFile({ type: "asset", fileName, source: file.content });
           }

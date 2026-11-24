@@ -1,4 +1,5 @@
 import { MainLayout } from "@/components/layout/MainLayout";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { certificationLogos, pageCopy } from "@/data/site";
@@ -69,7 +70,7 @@ const projectPhotos = [
 
 function ProjectImage({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
-    <img src={src} alt={alt} className={`h-full w-full object-cover ${className}`} loading="lazy" decoding="async" />
+    <ResponsiveImage src={src} alt={alt} sizes="(min-width: 1280px) 640px, (min-width: 640px) 50vw, 100vw" className={`h-full w-full object-cover ${className}`} loading="lazy" decoding="async" />
   );
 }
 
@@ -81,9 +82,10 @@ export default function Home() {
     <MainLayout>
       {/* Hero Section */}
       <section className="relative min-h-[100dvh] flex flex-col overflow-hidden bg-[#1B1B1B]">
-        <img
+        <ResponsiveImage
           className="absolute inset-0 h-full w-full object-cover object-[65%_center]"
           src="/photos/mzt/client/hero-construction.webp"
+          sizes="(max-aspect-ratio: 4/3) 134vh, 100vw"
           alt=""
           width={2200}
           height={1650}
@@ -142,7 +144,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 xl:gap-24 items-center">
             <figure className="relative w-full max-w-xl lg:max-w-none mx-auto">
               <div className="aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5] overflow-hidden rounded-lg bg-muted">
-                <img src="/photos/mzt/client/maison-blanche.webp" alt="Maison à deux étages avec revêtement blanc et fenêtres noires" className="h-full w-full object-cover object-[45%_center]" loading="lazy" decoding="async" />
+                <ResponsiveImage src="/photos/mzt/client/maison-blanche.webp" sizes="(min-width: 768px) 50vw, 100vw" alt="Maison à deux étages avec revêtement blanc et fenêtres noires" className="h-full w-full object-cover object-[45%_center]" loading="lazy" decoding="async" />
               </div>
               <div className="absolute bottom-5 left-5 right-5 sm:right-auto sm:max-w-[16rem] rounded-md bg-[#1B1B1B]/90 backdrop-blur-md text-white p-5 flex items-start gap-3">
                 <HardHat className="w-6 h-6 text-primary shrink-0 mt-0.5" />
@@ -280,7 +282,7 @@ export default function Home() {
       {/* Final CTA */}
       <section id="cta" className="relative py-24 md:py-32 xl:py-36 bg-forest text-white overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <ResponsiveImage
             src="/photos/mzt/client/terrasse-couverte.webp"
             alt=""
             className="h-full w-full object-cover opacity-50"

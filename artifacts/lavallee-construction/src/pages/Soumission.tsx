@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { certificationLogos, pageCopy } from "@/data/site";
 import { MainLayout } from "@/components/layout/MainLayout";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { FAQContactSection } from "@/components/SharedSections";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -149,9 +150,10 @@ export default function Soumission() {
     <MainLayout>
       <section id="soumission" className="relative isolate overflow-hidden bg-forest text-white">
         <div className="absolute inset-0" aria-hidden="true">
-          <img
+          <ResponsiveImage
             src="/photos/mzt/cuisine.jpg"
             alt=""
+            sizes="(max-aspect-ratio: 1/1) 200vh, 100vw"
             className="h-full w-full object-cover object-center"
             fetchPriority="high"
           />

@@ -1,0 +1,82 @@
+{
+  "/photos/mzt/client/construction-commerciale.webp": {
+    "width": 1100,
+    "height": 554,
+    "avif": "/images/optimized/construction-commerciale-640.avif 640w, /images/optimized/construction-commerciale-1100.avif 1100w"
+  },
+  "/photos/mzt/client/construction-residentielle.webp": {
+    "width": 1100,
+    "height": 556,
+    "avif": "/images/optimized/construction-residentielle-640.avif 640w, /images/optimized/construction-residentielle-1100.avif 1100w"
+  },
+  "/photos/mzt/client/hero-construction.webp": {
+    "width": 2200,
+    "height": 1650,
+    "avif": "/images/optimized/hero-construction-640.avif 640w, /images/optimized/hero-construction-1280.avif 1280w, /images/optimized/hero-construction-2200.avif 2200w"
+  },
+  "/photos/mzt/client/maison-blanche.webp": {
+    "width": 1600,
+    "height": 900,
+    "avif": "/images/optimized/maison-blanche-640.avif 640w, /images/optimized/maison-blanche-1280.avif 1280w, /images/optimized/maison-blanche-1600.avif 1600w"
+  },
+  "/photos/mzt/client/realisation-contemporaine.webp": {
+    "width": 1200,
+    "height": 900,
+    "avif": "/images/optimized/realisation-contemporaine-640.avif 640w, /images/optimized/realisation-contemporaine-1200.avif 1200w"
+  },
+  "/photos/mzt/client/realisation-cuisine.webp": {
+    "width": 1200,
+    "height": 900,
+    "avif": "/images/optimized/realisation-cuisine-640.avif 640w, /images/optimized/realisation-cuisine-1200.avif 1200w"
+  },
+  "/photos/mzt/client/realisation-maison.webp": {
+    "width": 1440,
+    "height": 1080,
+    "avif": "/images/optimized/realisation-maison-640.avif 640w, /images/optimized/realisation-maison-1280.avif 1280w, /images/optimized/realisation-maison-1440.avif 1440w"
+  },
+  "/photos/mzt/client/realisation-projet-commercial.webp": {
+    "width": 1800,
+    "height": 1350,
+    "avif": "/images/optimized/realisation-projet-commercial-640.avif 640w, /images/optimized/realisation-projet-commercial-1280.avif 1280w, /images/optimized/realisation-projet-commercial-1800.avif 1800w"
+  },
+  "/photos/mzt/client/realisation-salle-de-bain.webp": {
+    "width": 1200,
+    "height": 900,
+    "avif": "/images/optimized/realisation-salle-de-bain-640.avif 640w, /images/optimized/realisation-salle-de-bain-1200.avif 1200w"
+  },
+  "/photos/mzt/client/realisation-structure.webp": {
+    "width": 1200,
+    "height": 675,
+    "avif": "/images/optimized/realisation-structure-640.avif 640w, /images/optimized/realisation-structure-1200.avif 1200w"
+  },
+  "/photos/mzt/client/renovation-interieure.webp": {
+    "width": 1100,
+    "height": 825,
+    "avif": "/images/optimized/renovation-interieure-640.avif 640w, /images/optimized/renovation-interieure-1100.avif 1100w"
+  },
+  "/photos/mzt/client/revetement-exterieur.webp": {
+    "width": 1100,
+    "height": 825,
+    "avif": "/images/optimized/revetement-exterieur-640.avif 640w, /images/optimized/revetement-exterieur-1100.avif 1100w"
+  },
+  "/photos/mzt/client/terrasse-couverte.webp": {
+    "width": 1600,
+    "height": 1200,
+    "avif": "/images/optimized/terrasse-couverte-640.avif 640w, /images/optimized/terrasse-couverte-1280.avif 1280w, /images/optimized/terrasse-couverte-1600.avif 1600w"
+  },
+  "/photos/mzt/client/toiture-metallique.webp": {
+    "width": 1100,
+    "height": 619,
+    "avif": "/images/optimized/toiture-metallique-640.avif 640w, /images/optimized/toiture-metallique-1100.avif 1100w"
+  },
+  "/photos/mzt/illustrations/deneigement-toiture.webp": {
+    "width": 1024,
+    "height": 1024,
+    "avif": "/images/optimized/deneigement-toiture-640.avif 640w, /images/optimized/deneigement-toiture-1024.avif 1024w"
+  },
+  "/photos/mzt/cuisine.jpg": {
+    "width": 1408,
+    "height": 768,
+    "avif": "/images/optimized/cuisine-640.avif 640w, /images/optimized/cuisine-1280.avif 1280w, /images/optimized/cuisine-1408.avif 1408w"
+  }
+}

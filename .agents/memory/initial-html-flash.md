@@ -14,3 +14,16 @@ Public pages must provide their full content before JavaScript, while retaining 
 **Why:** The user explicitly asked to make the site fully crawlable after learning that the earlier static fallback omitted public sections. Keeping one content source prevents differences between what visitors and crawlers receive.
 
 **How to apply:** Preserve build-time rendering and hydration when changing routing or loading. Keep FAQ answers in initial HTML and usable without JavaScript. Do not revert to an empty root, a reduced SEO-only fallback, or an indefinite loader.
+
+For performance work, production HTML may become visible once its blocking
+stylesheet has loaded, without waiting for hydration. Keep the development
+loader behavior separate.
+
+**Why:** The public pages already contain the complete styled component tree;
+waiting for all application JavaScript delays content unnecessarily. Development
+styles are injected by Vite, so using the same early reveal there can reintroduce
+the user's unstyled refresh flash.
+
+**How to apply:** Verify CSS-ready first paint, hydration, and script-failure
+recovery independently. Never obtain a better speed score by hiding content or
+disabling consent and map integrations for audit tools.

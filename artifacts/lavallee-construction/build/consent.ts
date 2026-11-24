@@ -1,6 +1,8 @@
 /** Insert only into production HTML. Keep Cookiebot ahead of all other scripts. */
 export function withProductionConsent(html: string) {
   const scripts = `
+    <link rel="preconnect" href="https://consent.cookiebot.com" />
+    <link rel="preconnect" href="https://consentcdn.cookiebot.com" crossorigin />
     <script data-cookieconsent="ignore">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}

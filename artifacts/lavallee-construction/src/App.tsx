@@ -1,12 +1,6 @@
-import { useEffect, useLayoutEffect, type ReactNode } from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Suspense, useEffect, useLayoutEffect, type ReactNode } from 'react';
 import { ErrorBoundary } from '@/components/error-boundary';
-import { Toaster } from '@/components/ui/toaster';
-import { TooltipProvider } from '@/components/ui/tooltip';
-import NotFound from '@/pages/not-found';
-import Home from '@/pages/Home';
-import Soumission from '@/pages/Soumission';
-import Privacy from '@/pages/Privacy';
+import { lazyPages, pageKey, type PageComponent } from '@/route-pages';
 import { PageMetadata } from '@/components/PageMetadata';
 import { PRIVACY_PATH } from '@/data/site';
 import {
@@ -15,8 +9,6 @@ import {
   useLocation,
   Router as WouterRouter,
 } from 'wouter';
-
-const queryClient = new QueryClient();
 
 function RouteScrollReset() {
   const [location] = useLocation();
@@ -39,15 +31,21 @@ function RouteScrollReset() {
   return null;
 }
 
-function Router() {
+function Router({ initialPage, initialPath }: { initialPage: PageComponent; initialPath: string }) {
+  const initialKey = pageKey(initialPath);
+  const component = (key: keyof typeof lazyPages) => key === initialKey ? initialPage : lazyPages[key];
   return (
     <RoutedErrorBoundary>
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/soumission" component={Soumission} />
-        <Route path={PRIVACY_PATH} component={Privacy} />
-        <Route component={NotFound} />
-      </Switch>
+      <Suspense fallback={<div className="min-h-screen bg-[#1B1B1B]" role="status" aria-label="Chargement de la page" />}>
+        <RouteScrollReset />
+        <BrandedMotion />
+        <Switch>
+          <Route path="/" component={component("/")} />
+          <Route path="/soumission" component={component("/soumission")} />
+          <Route path={PRIVACY_PATH} component={component(PRIVACY_PATH)} />
+          <Route component={component("/404")} />
+        </Switch>
+      </Suspense>
     </RoutedErrorBoundary>
   );
 }
@@ -94,19 +92,12 @@ function BrandedMotion() {
   return null;
 }
 
-function App({ ssrPath }: { ssrPath?: string }) {
+function App({ ssrPath, initialPage }: { ssrPath: string; initialPage: PageComponent }) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')} ssrPath={ssrPath}>
           <PageMetadata />
-          <RouteScrollReset />
-          <BrandedMotion />
-          <Router />
+          <Router initialPage={initialPage} initialPath={ssrPath} />
         </WouterRouter>
-        <Toaster />
-      </TooltipProvider>
-    </QueryClientProvider>
   );
 }
 

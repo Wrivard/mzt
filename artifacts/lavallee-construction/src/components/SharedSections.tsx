@@ -143,7 +143,7 @@ export function FAQContactSection() {
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground mb-1">{label}</h4>
+                    <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground mb-1">{label}</h3>
                     {content}
                   </div>
                 </li>

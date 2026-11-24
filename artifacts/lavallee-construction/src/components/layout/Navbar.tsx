@@ -59,8 +59,11 @@ export function Navbar() {
       <div className={`container mx-auto px-5 md:px-12 relative flex items-center justify-between transition-[min-height] duration-300 ${isScrolled ? "min-h-[76px] xl:min-h-[88px]" : "min-h-[88px] xl:min-h-[104px]"}`}>
         <Link href="/" className="absolute left-1/2 -translate-x-1/2 z-50 block" aria-label="MZT Construction — accueil" onClick={() => setMobileMenuOpen(false)}>
           <img
-            src="/logo-mzt-2018.png"
+            src="/images/optimized/logo-mzt-512.webp"
             alt="MZT Construction"
+            width={512}
+            height={365}
+            fetchPriority="high"
             className={`w-auto object-contain mix-blend-screen transition-[height] duration-300 ${isScrolled ? "h-[76px] xl:h-[88px]" : "h-[88px] xl:h-[104px]"}`}
           />
         </Link>
