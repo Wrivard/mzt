@@ -14,3 +14,14 @@ Lors d’une intégration Cookiebot avec blocage automatique, vérifier le HTML 
 **Why:** Vite recrée la balise du module principal et retire l’attribut personnalisé qui l’exemptait du blocage; il faut conserver le fonctionnement du formulaire indépendamment des choix statistiques et publicitaires.
 
 **How to apply:** Exempter uniquement le démarrage nécessaire de l’application dans le HTML final. Ne pas exempter les cartes ou outils de suivi pour contourner le consentement. Vérifier séparément les domaines autorisés Cookiebot et les règles de consentement des balises GTM sur le site publié.
+
+Pour les optimisations de vitesse, conserver le chargement immédiat de la carte
+et le mode de chargement actuel de GTM, sans reporter GTM à l’acceptation du
+consentement.
+
+**Why:** L’utilisateur a choisi « Keep current loading » lorsque ces deux
+reports ont été proposés pour améliorer les scores mobiles sans changer le design.
+
+**How to apply:** Optimiser les ressources du site sans modifier cette stratégie.
+Ne pas contourner les règles Cookiebot; demander une nouvelle autorisation avant
+de reporter la carte ou de changer le mode de consentement de GTM.
